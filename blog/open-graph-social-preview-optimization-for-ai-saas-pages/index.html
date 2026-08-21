@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Open Graph &amp; Social Preview Optimization for AI SaaS Landing Pages — Plinth</title>
+<meta name="description" content="A launch tweet or LinkedIn post with a broken or generic link preview loses most of its clicks before anyone reads a word of copy. The exact Open Graph and Twitter Card setup that makes a shared link look worth clicking."/>
+<meta property="og:title" content="Open Graph &amp; Social Preview Optimization for AI SaaS Landing Pages — Plinth"/>
+<meta property="og:description" content="A launch tweet or LinkedIn post with a broken or generic link preview loses most of its clicks before anyone reads a word of copy. The exact Open Graph and Twitter Card setup that makes a shared link look worth clicking."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/open-graph-social-preview-optimization-for-ai-saas-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/open-graph-social-preview-optimization-for-ai-saas-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-08-15</span>
+    <h1 class="post-title">Open Graph &amp; Social Preview Optimization for AI SaaS Landing Pages</h1>
+    <div class="prose">
+<p>Founders spend weeks polishing a landing page, then launch it with a tweet or LinkedIn post that renders as a bare blue link, or worse, a random screenshot with a cropped logo and no headline. The page itself was never the problem — the missing or wrong Open Graph tags were. A link preview is the first impression for nearly everyone who finds you through social sharing, and it's controlled by a handful of meta tags most templates get half-right. Here's how to get all of it right.</p>
+
+<h2>1. The four tags that actually control the preview</h2>
+<p>Every page that might get shared needs, at minimum: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>. Don't assume the crawler will fall back to your <code>&lt;title&gt;</code> and meta description sensibly — some platforms do, some show nothing, and none of them do it consistently enough to rely on. Write <code>og:title</code> and <code>og:description</code> as their own fields, even if they start as a copy of your existing tags. This also lets you write a punchier, more "share-worthy" version of your headline without touching your actual SEO title, which has different constraints.</p>
+
+<h2>2. Build a real og:image — don't let a crawler screenshot your page</h2>
+<p>Without an explicit <code>og:image</code>, some platforms fall back to grabbing the first image on the page, which is often a logo, an icon, or nothing at all. Design a dedicated share image: 1200×630px, the standard size that renders correctly across X, LinkedIn, Facebook, and Slack without awkward cropping. Put your product name, a short benefit-driven headline, and your accent color as the background — treat it as a tiny billboard, not a screenshot. Keep all text inside the center 1200×600px safe zone; some clients crop the outer edges on certain aspect ratios, and text near the border gets clipped.</p>
+
+<h2>3. Don't reuse one og:image sitewide</h2>
+<p>A single generic share image for every page — homepage, pricing, blog posts — means every link you share looks identical in a feed, and readers scrolling past lose the cue that tells them what's different about this particular link. Generate a distinct image per page type at minimum: one for the homepage, one template for blog posts that pulls in the article title, one for pricing. If you're on a static site with no build step, even three or four hand-made variants swapped in per page are a large improvement over one.</p>
+
+<h2>4. Twitter/X needs its own card tags — don't assume it reads Open Graph</h2>
+<p>X's crawler prioritizes its own <code>twitter:card</code>, <code>twitter:title</code>, <code>twitter:description</code>, and <code>twitter:image</code> tags over Open Graph equivalents, and will render a broken or missing preview if only OG tags are present. Set <code>twitter:card</code> to <code>summary_large_image</code> so the image renders full-width instead of as a small square thumbnail — the large format gets meaningfully more clicks in a feed than the summary-card default. You can point <code>twitter:image</code> at the same file as <code>og:image</code>; you don't need a second design, just the second set of tags.</p>
+
+<h2>5. Absolute URLs only, every time</h2>
+<p>A relative path like <code>/og-image.png</code> works fine in a browser but fails silently for most social crawlers, which need a full <code>https://yourdomain.com/og-image.png</code>. This is the single most common reason a preview shows no image at all despite the tag being present in the page source — the tag is technically there, but the crawler can't resolve where the file actually lives. Double-check <code>og:url</code> the same way: it should be the canonical absolute URL of the page, not a tracking-parameter-laden link someone happened to share.</p>
+
+<h2>6. Cache-bust after you change the image</h2>
+<p>Social platforms cache a link's preview aggressively — sometimes for weeks — keyed to the URL, not the image content. If you update your share image and the old one keeps showing up, the fix isn't waiting; it's forcing a re-scrape. LinkedIn's Post Inspector and X's Card Validator both offer a manual "re-scrape this URL" action, and running your URL through them after any og:image change is worth the thirty seconds it takes, especially right before a launch when you want the new design live immediately, not whenever the cache happens to expire.</p>
+
+<h2>7. Test before you post, not after</h2>
+<p>Paste your URL into LinkedIn's Post Inspector and X's Card Validator before you actually publish the launch post. Both tools show you exactly what a reader will see, and both catch the two failure modes that matter most: a missing image (usually a relative-path or file-not-found issue) and awkward cropping (usually a sizing or safe-zone issue). Five minutes of testing here prevents the worst outcome — a broken preview on the one post that was supposed to drive your launch-day traffic.</p>
+
+<h2>8. Keep descriptions scannable, not keyword-stuffed</h2>
+<p>The <code>og:description</code> shows up small, often truncated after 100–150 characters depending on the platform. Front-load the value: "Turn a prompt into a polished slide deck in minutes" beats "AI-powered presentation generation platform for sales, marketing, and startup teams" — the first is legible at a glance in a crowded feed, the second gets cut off before it says anything concrete. Write it for a human scrolling past, not for a search engine; this tag has no SEO ranking weight, its only job is to earn the click.</p>
+
+<h2>The takeaway</h2>
+<p>Open Graph tags are a small, one-time setup that pays off every single time someone shares your link from then on — in a launch thread, a newsletter roundup, or a Slack message from a happy customer. Get the four core tags right, design a real share image instead of hoping a crawler picks something reasonable, add the Twitter-specific tags separately, and test before every major post. It's a couple hours of work that determines whether your best marketing moments look credible or broken.</p>
+
+<p>If design isn't your strength, start from a template with an established color system already defined — pulling your accent colors and product name into a share image is a five-minute job once the palette is already decided, rather than a design project of its own.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/canvas-ai-design-copilot-landing.jpeg" alt="Canvas — AI Design &amp; UX Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Canvas — AI Design &amp; UX Copilot Landing Kit</h3><p class="muted">A visual, craft-forward landing page for AI design and UX copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/tzqdwy" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Open Graph & Social Preview Optimization for AI SaaS Landing Pages","description":"A launch tweet or LinkedIn post with a broken or generic link preview loses most of its clicks before anyone reads a word of copy. The exact Open Graph and Twitter Card setup that makes a shared link look worth clicking.","datePublished":"2026-08-15","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
