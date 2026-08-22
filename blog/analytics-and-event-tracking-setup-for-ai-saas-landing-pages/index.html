@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Analytics and Event Tracking for AI SaaS Landing Pages: What to Measure Before You Have Traffic — Plinth</title>
+<meta name="description" content="Most founders install Google Analytics, watch the pageview count, and learn nothing. The specific events worth tracking on a pre-launch landing page, how to set them up in an afternoon, and the vanity metrics to ignore."/>
+<meta property="og:title" content="Analytics and Event Tracking for AI SaaS Landing Pages: What to Measure Before You Have Traffic — Plinth"/>
+<meta property="og:description" content="Most founders install Google Analytics, watch the pageview count, and learn nothing. The specific events worth tracking on a pre-launch landing page, how to set them up in an afternoon, and the vanity metrics to ignore."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/analytics-and-event-tracking-setup-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/analytics-and-event-tracking-setup-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-22</span>
+    <h1 class="post-title">Analytics and Event Tracking for AI SaaS Landing Pages: What to Measure Before You Have Traffic</h1>
+    <div class="prose">
+<p>A pageview counter tells you that people arrived. It doesn't tell you whether your headline worked, whether visitors read past the hero, or where they gave up on your pricing table. Most founders wire up analytics once, glance at a rising line for reassurance, and never touch it again — which means the first real signal they get is "signups are lower than I hoped," with no way to say why. A landing page with five well-chosen events tells you more than a dashboard full of pageviews ever will. Here's what to track, in the order it matters.</p>
+
+<h2>1. Pick a tool that survives ad blockers and doesn't need a cookie banner</h2>
+<p>Google Analytics is free and familiar, but a meaningful share of your technical, privacy-conscious AI/SaaS audience runs an ad blocker that silently drops it — so your funnel numbers are quietly undercounted exactly for the visitors most likely to become customers. A lightweight, cookieless tool (Plausible, Fathom, or Umami if you want to self-host for free) loads faster, isn't blocked as often, and — because it doesn't use cookies — usually means you can skip the cookie-consent banner entirely, which is one less piece of friction between a visitor and your CTA. If you already have GA4 wired up elsewhere in your stack, keep it, but don't trust it alone for top-of-funnel numbers.</p>
+
+<h2>2. Track five events, not fifty</h2>
+<p>It's tempting to instrument everything on day one. Don't. Start with the events that map directly to your funnel: <code>hero_cta_click</code>, <code>pricing_view</code> (fires when the pricing section scrolls into view), <code>pricing_cta_click</code> (per tier, so you know which plan people actually want), <code>signup_start</code>, and <code>signup_complete</code>. That's enough to answer the only question that matters pre-launch: where do interested visitors stop being interested? Every additional event you add before you've acted on these five is a maintenance cost with no payoff yet.</p>
+
+<h2>3. Fire scroll-depth as a proxy for "did they actually read it"</h2>
+<p>Time-on-page is a bad metric — a visitor who opened your tab and walked away for ten minutes looks identical to one who read every word. Scroll depth at 25/50/75/100% is a much better proxy for engagement, and it's a two-line addition in most analytics tools. If your scroll data shows most visitors never pass 50%, the problem isn't your pricing or your FAQ — it's that your hero and second section aren't earning the scroll, and no amount of polishing further down the page will fix that.</p>
+
+<h2>4. Separate "clicked" from "converted" — they lie to each other</h2>
+<p>A high click-through rate on your hero CTA with a low signup-completion rate usually means your headline is over-promising relative to what the signup flow actually delivers, or that the form itself has friction (too many fields, an unclear password rule, a confirmation email that never arrives). Track both events separately and look at the ratio, not just the raw counts — a page with fewer clicks but a higher completion rate is often outperforming one with flashier top-of-funnel numbers.</p>
+
+<h2>5. Tag every outbound link with a real UTM, before you post it anywhere</h2>
+<p>The number one reason founders can't tell which channel actually drives signups is that they posted a bare link to Product Hunt, Twitter, and a newsletter on the same day and now all three show up as "direct" traffic in the dashboard. Before you share a link anywhere — a launch post, an email footer, a partner mention — add <code>utm_source</code> and <code>utm_medium</code> parameters. It takes fifteen seconds and it's the difference between knowing which channel to double down on next month and guessing.</p>
+
+<h2>6. Add a session-recording tool, but only watch the ones that matter</h2>
+<p>Microsoft Clarity is free and has no traffic cap, which makes it worth adding alongside your event tracker. The trap is watching every recording — don't. Filter for sessions where a visitor reached <code>pricing_view</code> but never fired <code>signup_start</code>; those are the recordings worth your time, because they show you exactly where a genuinely interested visitor changed their mind. Ten of those recordings will teach you more about your pricing page than a week of aggregate charts.</p>
+
+<h2>7. Build one dashboard, and check it on a schedule</h2>
+<p>A single view — visits, the five core events, and completion rate between each step — beats a scattered set of tool-specific dashboards you have to piece together manually. Check it weekly, not hourly; daily numbers on a low-traffic pre-launch page are mostly noise, and reacting to a single bad day will send you chasing changes that don't matter. Look for the trend over two to three weeks before you conclude a change to the page helped or hurt.</p>
+
+<h2>8. Ignore the vanity metrics until the funnel ones are healthy</h2>
+<p>Total pageviews, average session duration, and bounce rate feel good to watch trend upward, but none of them tell you whether the page is doing its job. A page can have rising traffic and a flat signup rate for months if nobody's watching the funnel events instead. Fix the conversion path first — hero to pricing to signup — and let the vanity numbers take care of themselves once the page is actually working.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Every useful analytics setup answers one question: at which specific step do interested people stop being interested? Pageviews can't answer that. A handful of funnel events, tagged links, and a few well-chosen session recordings can — and they take an afternoon to wire up, not a data team.</p>
+
+<p>If you're setting this up on a fresh page, start from a template that already has clearly named, trackable sections — a hero, a pricing band, a single CTA per tier — so your event names map cleanly to the page structure instead of fighting a layout that was never built with measurement in mind.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/lumen-analytics-landing.jpeg" alt="Lumen — Analytics SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Lumen — Analytics SaaS Landing Page Kit</h3><p class="muted">A data-forward landing page for analytics and BI SaaS products.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/lvrcjo" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Analytics and Event Tracking for AI SaaS Landing Pages: What to Measure Before You Have Traffic","description":"Most founders install Google Analytics, watch the pageview count, and learn nothing. The specific events worth tracking on a pre-launch landing page, how to set them up in an afternoon, and the vanity metrics to ignore.","datePublished":"2026-08-22","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
