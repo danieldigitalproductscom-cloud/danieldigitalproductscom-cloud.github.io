@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Google Search Console: The Setup and Monitoring Checklist Every New AI SaaS Site Needs — Plinth</title>
+<meta name="description" content="Most founders verify Search Console once, glance at it during launch week, and never open it again — missing the exact reports that catch indexing problems before they cost months of organic traffic."/>
+<meta property="og:title" content="Google Search Console: The Setup and Monitoring Checklist Every New AI SaaS Site Needs — Plinth"/>
+<meta property="og:description" content="Most founders verify Search Console once, glance at it during launch week, and never open it again — missing the exact reports that catch indexing problems before they cost months of organic traffic."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/google-search-console-setup-checklist-for-ai-saas-launches/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/google-search-console-setup-checklist-for-ai-saas-launches/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-29</span>
+    <h1 class="post-title">Google Search Console: The Setup and Monitoring Checklist Every New AI SaaS Site Needs</h1>
+    <div class="prose">
+<p>Search Console is the only tool that tells you the truth about how Google actually sees your site — not how you think it renders, not what a browser shows you, but what got crawled, what got indexed, and what got quietly dropped. Most AI SaaS founders set it up once during launch week, confirm the homepage is indexed, and never open it again. That's exactly the window where the expensive mistakes happen: a staging robots.txt that never got reverted, a canonical tag pointing at the wrong URL, a pricing page that silently fell out of the index three weeks after a redesign. Here's the setup and the recurring checks that catch those before they cost you a quarter of organic traffic.</p>
+
+<h2>1. Verify with a method you won't lose</h2>
+<p>Search Console offers several verification methods — HTML file upload, meta tag, DNS record, Google Analytics, Google Tag Manager. For a new SaaS site, verify by <strong>DNS TXT record</strong> at the domain level, not by a meta tag on the homepage or a file in the web root. A domain-level DNS verification survives every future redesign, framework migration, or hosting switch, and it automatically covers every subdomain (blog, docs, app) under one property. A meta-tag or file-based verification tied to a specific deploy has a way of quietly breaking the next time someone rebuilds the site from scratch.</p>
+
+<h2>2. Set up both property types</h2>
+<p>Add a <strong>Domain property</strong> (covers http, https, www, and all subdomains in one view) for your overall visibility, and keep a separate <strong>URL-prefix property</strong> for just your production marketing site (e.g. <code>https://yourproduct.com/</code>) if your app lives on a different subdomain. The domain property is better for the big-picture "is Google finding everything," while a URL-prefix property gives you cleaner, uncontaminated data when you specifically want to judge how the marketing pages alone are performing, without app or docs traffic mixed in.</p>
+
+<h2>3. Submit a sitemap — and check it actually reflects reality</h2>
+<p>Submit your XML sitemap under Sitemaps in the left nav, then don't just confirm it says "Success" — click into it and check the discovered-URL count against what you expect. A common early-stage bug: the sitemap generator only ran once at launch and never picked up new blog posts or landing page variants added since, so Search Console is working off a stale list. If you're on a static site generator, confirm the sitemap regenerates on every deploy, not just the initial build.</p>
+
+<h2>4. The Coverage (Indexing) report is where problems actually surface</h2>
+<p>This is the report to check weekly during your first few months, not the performance graph. It buckets every URL Google has crawled into indexed, excluded, and error states, and the excluded reasons are where founders find real bugs: "Crawled – currently not indexed" often means thin or duplicate content Google decided wasn't worth keeping; "Discovered – currently not indexed" can mean a crawl-budget or internal-linking problem on a large site; "Alternate page with proper canonical tag" is expected and fine; "Blocked by robots.txt" on a page that should be public is the single most common self-inflicted wound — usually a leftover <code>Disallow: /</code> from a staging environment that shipped to production.</p>
+
+<h2>5. Use URL Inspection before you assume anything is indexed</h2>
+<p>Don't guess whether a new pricing page or landing variant got indexed — paste the exact URL into the URL Inspection tool at the top of Search Console. It tells you the last crawl date, whether the page is indexed, which URL Google considers canonical (sometimes not the one you intended), and lets you request indexing directly for a page that hasn't been picked up yet. For a newly published page you want to rank quickly, requesting indexing after publishing typically gets it crawled within a day or two instead of waiting for the next scheduled crawl.</p>
+
+<h2>6. Check Mobile Usability and Core Web Vitals for regressions, not just once</h2>
+<p>These reports update on their own schedule and will flag new issues introduced by a redesign or a new component weeks after you shipped it — a font that got too small on mobile, a tap target that overlaps another element, a new script that pushed Interaction to Next Paint over threshold. Glance at both monthly rather than assuming a clean pass at launch stays clean forever; most regressions here come from a marketing team adding a widget or a banner without re-testing mobile layout.</p>
+
+<h2>7. Read the Performance report for query intent, not just clicks</h2>
+<p>Beyond total clicks and impressions, filter the Performance report by page to see which exact queries bring people to each landing page or article — this is free keyword research from people who already found you. A query with high impressions but a low click-through rate is a signal that your title tag or meta description doesn't match what searchers expect; rewriting it is usually a bigger lever than writing another new page. Also check the Pages tab sorted by impressions with zero clicks — that's your list of pages Google is showing but nobody is clicking, which almost always means the title tag needs work.</p>
+
+<h2>8. Turn on email alerts and check Security & Manual Actions</h2>
+<p>Under Settings, confirm email notifications are on for your verified account — Search Console emails you automatically for manual actions, security issues (hacked content, malware), and significant indexing drops. A manual action or security flag left unnoticed for weeks because nobody was watching the dashboard is one of the few SEO mistakes that can take a site from ranking to fully de-indexed. This report costs nothing to check and catches the highest-severity problems there are.</p>
+
+<h2>9. Cross-check with Bing Webmaster Tools too</h2>
+<p>It takes ten minutes to import your verified Search Console property directly into Bing Webmaster Tools, and Bing (plus the AI answer engines that partly rely on its index) sends real, if smaller, traffic to B2B SaaS sites. The indexing and sitemap concepts transfer directly, and it's the same verification-and-monitor discipline applied to a second index worth being findable in.</p>
+
+<h2>The habit that matters more than the setup</h2>
+<p>The checklist above takes under an hour to complete once. What actually protects your organic traffic is treating Search Console like a monitoring dashboard you glance at on a schedule — weekly for Coverage during the first few months post-launch, monthly for Core Web Vitals and Mobile Usability after that — rather than a one-time launch task. Most indexing disasters aren't caused by Google being unpredictable; they're caused by a robots.txt change, a canonical bug, or a redesign regression that sat unnoticed for the weeks it takes organic traffic to visibly drop.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/probe-ai-qa-landing.jpeg" alt="Probe — AI QA &amp; Testing Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Probe — AI QA &amp; Testing Copilot Landing Kit</h3><p class="muted">A precise, engineer-first landing page for AI QA, test-generation, and bug-triage copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Google Search Console: The Setup and Monitoring Checklist Every New AI SaaS Site Needs","description":"Most founders verify Search Console once, glance at it during launch week, and never open it again — missing the exact reports that catch indexing problems before they cost months of organic traffic.","datePublished":"2026-08-29","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
