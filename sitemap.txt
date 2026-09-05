@@ -56,11 +56,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/warden-ai-privacy-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/beacon-ai-trust-safety-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/chronos-ai-scheduling-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/melody-ai-music-generation-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/outpost-ai-email-marketing-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/interactive-product-tours-for-ai-saas-landing-pages/
 https://danieldigitalproductscom-cloud.github.io/blog/founder-led-content-distribution-for-early-stage-ai-saas/
 https://danieldigitalproductscom-cloud.github.io/blog/demo-request-pages-that-qualify-enterprise-ai-buyers/
 https://danieldigitalproductscom-cloud.github.io/blog/api-documentation-pages-for-ai-devtool-saas/
