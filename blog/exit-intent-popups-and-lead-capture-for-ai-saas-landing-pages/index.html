@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Exit-Intent Popups and Lead Capture: Doing It Without Tanking Your AI SaaS Landing Page — Plinth</title>
+<meta name="description" content="Exit-intent popups still recover real signups when done right, and still get pages penalized or abandoned when done wrong. The specific detection logic, copy patterns, and frequency rules that make lead capture feel helpful instead of hostile."/>
+<meta property="og:title" content="Exit-Intent Popups and Lead Capture: Doing It Without Tanking Your AI SaaS Landing Page — Plinth"/>
+<meta property="og:description" content="Exit-intent popups still recover real signups when done right, and still get pages penalized or abandoned when done wrong. The specific detection logic, copy patterns, and frequency rules that make lead capture feel helpful instead of hostile."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/exit-intent-popups-and-lead-capture-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/exit-intent-popups-and-lead-capture-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-11</span>
+    <h1 class="post-title">Exit-Intent Popups and Lead Capture: Doing It Without Tanking Your AI SaaS Landing Page</h1>
+    <div class="prose">
+<p>Most visitors who leave your landing page were never going to convert on that visit anyway — but a percentage of them were close, and an exit-intent popup is the last chance to turn "almost" into an email address you can follow up with later. Done well, it recovers 1-3% of leaving traffic without anyone noticing you were trying. Done badly, it's the reason someone bounces to a competitor and remembers your brand as the annoying one. The difference is almost entirely in the mechanics, not the idea.</p>
+
+<h2>1. Detect exit intent correctly — desktop and mobile are different problems</h2>
+<p>On desktop, the standard technique tracks the mouse's <code>y</code> position and fires when it crosses near the top of the viewport heading toward the browser chrome (tab bar, back button, URL bar) — that's the moment someone is actually about to leave, not just moving their cursor around the page. On mobile there's no cursor to track, so mouse-based exit intent doesn't exist; the closest useful proxy is a fast upward scroll back toward the top of the page combined with a minimum time-on-page threshold (say, 20+ seconds), or firing on the browser's back-button/history event where supported. Don't reuse desktop logic on mobile and call it exit intent — it'll fire randomly and just feels like a glitchy popup.</p>
+
+<h2>2. Never fire on someone's first ten seconds</h2>
+<p>A popup that appears before a visitor has read anything can't possibly be responding to their behavior — it's just an interruption on a timer, and Google's intrusive-interstitial guidance treats early, screen-covering popups as a ranking signal against you, particularly on mobile. Gate every exit-intent trigger behind both a minimum dwell time and, ideally, evidence of actual engagement — some scroll depth, or time past the fold. If someone bounced in four seconds, a popup won't save them; save the impression for visitors who showed real interest and are still leaving anyway.</p>
+
+<h2>3. Cap frequency with session and cross-session memory</h2>
+<p>Once a visitor dismisses your popup, store that decision (a cookie or <code>localStorage</code> flag) and never show it again in that session — showing it a second time to someone who just said no reads as not listening. Go further and suppress it for returning visitors within a window (7-30 days is typical) unless something material changed, like a new lead magnet. A popup that reappears every visit trains people to leave even faster next time, which is the opposite of what you built it for.</p>
+
+<h2>4. Offer something specific, not "join our newsletter"</h2>
+<p>A generic newsletter signup asks for an email in exchange for nothing concrete, and most visitors have learned to ignore that trade. A specific, single-use asset converts far better: a pricing worksheet, a checklist version of the page they were just reading, a discount code with an expiry, or early access to a waitlist feature. The strongest performers name the exact benefit in the headline — "Get the 12-point launch checklist" beats "Don't miss out" every time, because it tells the visitor precisely what they're trading their email for before they decide.</p>
+
+<h2>5. Make the exit honest, not manipulative</h2>
+<p>The dismiss button matters as much as the offer. "Confirmshaming" copy — a decline button that reads "No thanks, I don't want to grow my business" — briefly became a growth-hacking trend and is now widely recognized as something that damages trust the moment a visitor notices it, which they always do. Use a plain, respectful dismiss: "No thanks" or a simple × is enough. You want the visitor who declines to still think well of the brand, because a meaningful share of them will come back later through a different channel.</p>
+
+<h2>6. Keep the popup itself fast and accessible</h2>
+<p>A popup that ships a heavy third-party script can undo the page-speed work you did everywhere else, and a slow-to-render popup often flashes in after the visitor has already started leaving — the worst possible timing. Build it as lightweight markup that's already in the DOM (hidden by default) rather than lazy-loading a whole vendor widget on trigger. It also needs to be keyboard-dismissible (<kbd>Esc</kbd> should close it) and trap focus while open, or it becomes a genuine accessibility blocker rather than just an annoyance for keyboard and screen-reader users.</p>
+
+<h2>7. Treat the email capture as the start of a sequence, not the goal</h2>
+<p>An address collected through an exit popup is a colder lead than one who filled out a signup form mid-page — they were leaving, after all — so the follow-up needs to work harder. Send the promised asset immediately and automatically, then follow with two or three emails over the next week that build toward the same action the landing page wanted in the first place. A popup that captures an email and then goes silent for a month has converted a bounce into an unengaged subscriber, which helps nobody and can hurt your sender reputation if enough of them never open anything.</p>
+
+<h2>8. Measure recovery rate, not just capture rate</h2>
+<p>The vanity number is how many emails the popup collects. The number that matters is how many of those emails eventually become customers, compared to what would have happened if they'd just left. Tag popup-captured leads distinctly in your CRM or email tool so you can track their conversion rate separately from leads captured elsewhere on the page — in a lot of cases the popup's true value is smaller than the raw capture count suggests, and that's fine as long as you're measuring the real number instead of the flattering one.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Exit-intent popups aren't inherently hostile — badly-timed, badly-capped, generic ones are. The version that works fires late enough to be genuinely responsive, asks for an email in exchange for something specific, respects a "no," and treats the capture as step one of a sequence rather than the finish line.</p>
+
+<p>If you're building this into a page from scratch, start from a template with the layout and lead-capture patterns already in place, so you're tuning timing and copy instead of building popup mechanics under deadline pressure.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/outpost-ai-email-marketing-landing.jpeg" alt="Outpost — AI Email Marketing &amp; Lifecycle Campaign Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Outpost — AI Email Marketing &amp; Lifecycle Campaign Copilot Landing Kit</h3><p class="muted">A crisp, results-driven landing page for AI email marketing and lifecycle-campaign copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Exit-Intent Popups and Lead Capture: Doing It Without Tanking Your AI SaaS Landing Page","description":"Exit-intent popups still recover real signups when done right, and still get pages penalized or abandoned when done wrong. The specific detection logic, copy patterns, and frequency rules that make lead capture feel helpful instead of hostile.","datePublished":"2026-09-11","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

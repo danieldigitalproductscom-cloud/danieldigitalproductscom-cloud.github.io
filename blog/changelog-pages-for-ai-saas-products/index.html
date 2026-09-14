@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Changelog Pages: The Retention and Trust Channel Most AI SaaS Founders Skip — Plinth</title>
+<meta name="description" content="A public changelog is one of the cheapest retention tools an AI SaaS product has, and most founders either skip it or bury it in vague "bug fixes and improvements" entries. The specific format, cadence, and tone that make a changelog worth reading."/>
+<meta property="og:title" content="Changelog Pages: The Retention and Trust Channel Most AI SaaS Founders Skip — Plinth"/>
+<meta property="og:description" content="A public changelog is one of the cheapest retention tools an AI SaaS product has, and most founders either skip it or bury it in vague "bug fixes and improvements" entries. The specific format, cadence, and tone that make a changelog worth reading."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/changelog-pages-for-ai-saas-products/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/changelog-pages-for-ai-saas-products/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-01</span>
+    <h1 class="post-title">Changelog Pages: The Retention and Trust Channel Most AI SaaS Founders Skip</h1>
+    <div class="prose">
+<p>Most AI SaaS products ship changes constantly and tell almost nobody. The commits happen, a deploy goes out, and the only record is a Slack message in an internal channel. Meanwhile a trial user who bounced three weeks ago, or a paying customer quietly deciding whether to renew, has no way to see that the product has kept moving since they last looked. A public changelog fixes that for the cost of five minutes per release — and unlike most marketing content, it's read almost entirely by people who already know who you are, which makes it one of the highest-trust channels available to a young product.</p>
+
+<h2>1. Write for the customer deciding whether you're still building</h2>
+<p>The audience for a changelog isn't a stranger evaluating your product for the first time — it's someone who already signed up, trialed, or churned, and is implicitly asking "is this still actively getting better?" That reframes what belongs in it: not an engineering log of every merged pull request, but the handful of changes an actual user would notice or care about. A changelog that reads like commit messages ("fix: race condition in queue worker") serves nobody outside your own team; one that reads like "Exports now include the raw transcript, not just the summary" tells a real user something they can use today.</p>
+
+<h2>2. Lead every entry with the user-facing outcome, not the internal cause</h2>
+<p>"Fixed a bug in the retry logic" describes what you did. "Failed uploads now retry automatically instead of silently dropping" describes what changed for the person reading it. Every entry should pass a simple test: could someone who has never seen your codebase understand exactly what's different for them? If the answer is no, rewrite it from their side of the product, not yours. This is the single most common failure mode in SaaS changelogs, and it's also the cheapest one to fix — it's a phrasing choice, not a process change.</p>
+
+<h2>3. Categorize honestly: new, improved, fixed — and don't inflate the count</h2>
+<p>Three simple labels are enough for almost any product: <strong>New</strong> for capability that didn't exist before, <strong>Improved</strong> for something that worked but now works better or faster, and <strong>Fixed</strong> for something that was broken. Resist the temptation to label a one-line copy tweak as "New" just to pad the entry count — readers who've followed a changelog for a few months notice the inflation, and once they do, they stop trusting the "New" label even when it's genuinely earned. A shorter, honestly labeled list is worth more than a longer, padded one.</p>
+
+<h2>4. Ship on a visible, predictable cadence — even if it's short entries</h2>
+<p>A changelog updated twice in its first month and never again is worse than no changelog at all, because it now sits on your site as visible proof that momentum stalled. If you don't have enough user-facing change for a weekly entry, publish biweekly or monthly, but publish reliably. A short, honest "a few performance improvements to search, no visible changes" entry maintains the pattern of an actively maintained product; a six-month gap does the opposite, and a prospect doing due diligence will notice the date on your last entry before they notice much else.</p>
+
+<h2>5. Give it its own indexable page, and an RSS feed</h2>
+<p>A changelog folded into a blog, mixed in with marketing posts and guest content, gets lost — readers who specifically want release updates shouldn't have to filter out unrelated posts to find them. A dedicated <code>/changelog</code> page, with each entry as its own anchor or permalink, is easy to skim, easy to link to from a support reply ("that's fixed as of last week, see the changelog"), and easy to search for by version or feature name. Add a lightweight RSS feed too — a small but real segment of technical users, especially in developer-tool categories, still subscribe to changelogs specifically because it's a lower-noise channel than email.</p>
+
+<h2>6. Link each entry back to the feature or docs page it touches</h2>
+<p>A changelog entry that says "Added CSV export" is more useful the moment it links directly to the export feature or the docs page explaining it — the reader who cares can go try it in one click instead of hunting through the product for where the new thing lives. This also quietly does SEO work over time: a changelog accumulates internal links to your feature and docs pages at a steady, natural pace, which is exactly the kind of link pattern that reads as organic rather than manufactured.</p>
+
+<h2>7. Use it to re-engage churned trials and lapsed customers</h2>
+<p>A changelog is one of the few legitimate reasons to email someone who churned without it feeling like a cold pitch: "Since you left, we shipped the two things you told support you needed" is a specific, honest re-engagement message, not a generic "we miss you" blast. Tag entries that address a common churn reason, and when that entry ships, it's worth a short, targeted email to the segment of past users who hit that exact wall — this converts at a meaningfully higher rate than a generic win-back campaign because it's answering an objection you already know they had.</p>
+
+<h2>8. Don't hide breaking changes in the same tone as feature additions</h2>
+<p>A changelog that buries "the API response format for this endpoint has changed" in the same cheerful tone as a new feature announcement is a support-ticket generator. Breaking changes need their own visual weight — a distinct label, a short migration note, and enough lead time before the old behavior is removed if you can manage it. Users forgive breaking changes that were flagged clearly and explained; they don't forgive ones they discovered because something silently stopped working.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>A changelog builds trust the same way a case study or a comparison page does: it replaces a vague impression ("this team seems active") with something checkable — dated entries, specific outcomes, a consistent cadence a visitor can scroll through themselves. The founders who get real value from it aren't the ones who write the most entries; they're the ones who write honestly labeled, user-facing ones on a rhythm they can actually sustain.</p>
+
+<p>If you're building a product where users are actively tracking what's shipped — project management, workflow, or any tool a team relies on daily — a visible changelog is a natural extension of the same trust your product page is already trying to earn; start from a landing page that's built around clarity and momentum, so the changelog you add next reinforces the same story instead of feeling bolted on.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/compass-ai-pm-landing.jpeg" alt="Compass — AI Project Management Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Compass — AI Project Management Copilot Landing Kit</h3><p class="muted">A focused, no-fluff landing page for AI project management and task-orchestration copilots.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Changelog Pages: The Retention and Trust Channel Most AI SaaS Founders Skip","description":"A public changelog is one of the cheapest retention tools an AI SaaS product has, and most founders either skip it or bury it in vague \"bug fixes and improvements\" entries. The specific format, cadence, and tone that make a changelog worth reading.","datePublished":"2026-08-01","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

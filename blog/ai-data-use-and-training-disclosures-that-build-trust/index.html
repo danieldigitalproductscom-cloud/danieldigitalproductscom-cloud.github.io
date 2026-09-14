@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The AI Data-Use Disclosure Section That Builds Trust Instead of Raising Alarms — Plinth</title>
+<meta name="description" content="Buyers now ask 'does this train on our data?' before they ask about price. The specific wording, placement, and honesty rules for an AI data-use section that answers the question instead of dodging it."/>
+<meta property="og:title" content="The AI Data-Use Disclosure Section That Builds Trust Instead of Raising Alarms — Plinth"/>
+<meta property="og:description" content="Buyers now ask 'does this train on our data?' before they ask about price. The specific wording, placement, and honesty rules for an AI data-use section that answers the question instead of dodging it."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/ai-data-use-and-training-disclosures-that-build-trust/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/ai-data-use-and-training-disclosures-that-build-trust/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-07-30</span>
+    <h1 class="post-title">The AI Data-Use Disclosure Section That Builds Trust Instead of Raising Alarms</h1>
+    <div class="prose">
+<p>Two years ago, "we use AI" was a selling point on its own. Now it's the first thing a buyer gets nervous about. Every prospective customer has read a story about a chatbot leaking one company's data into another's answers, or a vendor quietly changing its terms to allow model training on customer content. The result: before a buyer asks about price or features, a growing number now ask "does this train on our data?" — and if your page doesn't answer that question in plain language, they'll assume the answer is yes and move on. Here's how to write a data-use section that closes that gap instead of dodging it.</p>
+
+<h2>1. Answer the training question in one direct sentence</h2>
+<p>Don't make a visitor infer your policy from a link to a 4,000-word privacy policy. State it outright, near the top of the section: "Your data is never used to train our models — yours or anyone else's." If the honest answer is more nuanced (you do use aggregated, anonymized data for training, or customers can opt in), say that plainly instead: "By default, your data is not used for training. You can opt in to help improve the model — off unless you turn it on." A visitor who has to go hunting for the real answer assumes you're hiding something, even when you aren't.</p>
+
+<h2>2. Separate "using AI" from "training on your data" — buyers conflate them</h2>
+<p>Most buyers don't distinguish between your product calling a third-party model API and your product retaining their inputs to fine-tune anything. That confusion is exactly what makes them nervous, so untangle it for them: "We send your prompts to [Model Provider] to generate a response. Neither we nor [Model Provider] store that data for training — it's processed and discarded." Naming the underlying model provider, if you use one, is a strength here, not a liability. Vague language like "powered by advanced AI" reads as evasive to a buyer who's specifically trying to find out whose model is touching their data.</p>
+
+<h2>3. State your retention window in days, not adjectives</h2>
+<p>"We don't keep your data longer than necessary" answers nothing. "Prompts and outputs are retained for 30 days for abuse monitoring, then permanently deleted" is a number a security reviewer can actually put in a vendor-risk spreadsheet. If you retain nothing at all beyond the request/response cycle, say that too — zero-retention is an increasingly common and genuinely differentiating claim, but only if you state it as a fact instead of implying it with soft language.</p>
+
+<h2>4. Put the opt-out (or opt-in) control where the buyer can find it, not just describe it</h2>
+<p>If customers can control whether their data contributes to model improvement, don't just mention the setting exists — link to exactly where it lives: "Turn this off anytime in Settings → Privacy → Model Training." A described-but-unlocatable control reads as theoretical. A buyer doing due diligence will often go check that the control is real and where you said it would be; make that check trivially easy and you've turned a skeptical visitor into a more confident one.</p>
+
+<h2>5. Address the multi-tenant fear directly</h2>
+<p>The specific nightmare scenario buyers have in mind — one customer's data leaking into another customer's AI output — deserves a direct, named answer, not a general privacy statement. "Your workspace's data is isolated from every other customer. Model context for your account never includes another customer's content." If your architecture supports it, a one-line technical detail (per-tenant vector stores, request-scoped context windows) does more to reassure a technical buyer than a paragraph of reassurance without specifics.</p>
+
+<h2>6. Don't bury this in the privacy policy — give it its own visible section</h2>
+<p>A privacy policy is where this information is legally required to live, but almost nobody reads it before signing up, and by the time they do, they've already formed a judgment. Pull the two or three sentences that actually matter — training, retention, isolation — into a short, plainly labeled section on the pricing or security page itself: "How we handle your data." Link to the full policy for the legal detail, but don't make a buyer choose between reading a wall of legal text and taking your claims on faith.</p>
+
+<h2>7. Match your public claims to your actual terms of service, exactly</h2>
+<p>This is the one place where a mismatch is genuinely dangerous, not just a trust problem. If your landing page says "we never train on your data" but your terms of service include a broader data-use license you haven't updated, that's a real legal exposure, not a copywriting nitpick. Before you publish a data-use section, have whoever owns your actual ToS confirm the two documents say the same thing. A buyer's legal team will read both, and a contradiction between your marketing page and your binding terms is worse for trust than never having made the claim at all.</p>
+
+<h2>8. Update the section the moment your model provider or policy changes</h2>
+<p>Switching model providers, adding a new AI feature, or changing your retention window all change the true answer to "does this train on our data" — and a stale data-use section is one of the fastest ways to accidentally publish a false claim. Treat this section like your pricing page: something that gets reviewed as part of any change to how the product actually works, not a paragraph written once at launch and forgotten.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>A data-use section builds trust for the same reason a security trust band or a comparison table does: it replaces a vague reassurance with something specific and checkable — a retention window in days, a named model provider, a settings path a buyer can actually click through to verify. The founders who lose deals here aren't the ones with an imperfect policy; they're the ones who make a buyer guess at the answer instead of stating it.</p>
+
+<p>If you're building this page for a category where buyers are already primed to be careful about data — legal, HR, finance, security — start from a template with a trust and compliance section already structured, so a clear data-use disclosure fits naturally instead of feeling bolted on as an afterthought.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/quill-ai-legal-landing.jpeg" alt="Quill — AI Legal &amp; Contract Review Landing Kit" width="560" height="315"/>
+      <div><h3>Quill — AI Legal &amp; Contract Review Landing Kit</h3><p class="muted">A precise, editorial landing page for AI contract review and legal-tech products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The AI Data-Use Disclosure Section That Builds Trust Instead of Raising Alarms","description":"Buyers now ask 'does this train on our data?' before they ask about price. The specific wording, placement, and honesty rules for an AI data-use section that answers the question instead of dodging it.","datePublished":"2026-07-30","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
