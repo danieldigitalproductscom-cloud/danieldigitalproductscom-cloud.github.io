@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Client-Side vs. Server-Side Rendering: Why AI SaaS Landing Pages Go Invisible to Crawlers — Plinth</title>
+<meta name="description" content="A landing page built as a pure client-side React or Vue app can look perfect in the browser and still be an empty shell to Google, Bing, and every AI answer engine. How to check if this is happening to you and the specific fixes."/>
+<meta property="og:title" content="Client-Side vs. Server-Side Rendering: Why AI SaaS Landing Pages Go Invisible to Crawlers — Plinth"/>
+<meta property="og:description" content="A landing page built as a pure client-side React or Vue app can look perfect in the browser and still be an empty shell to Google, Bing, and every AI answer engine. How to check if this is happening to you and the specific fixes."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/client-side-vs-server-side-rendering-for-ai-saas-crawlability/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/client-side-vs-server-side-rendering-for-ai-saas-crawlability/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-17</span>
+    <h1 class="post-title">Client-Side vs. Server-Side Rendering: Why AI SaaS Landing Pages Go Invisible to Crawlers</h1>
+    <div class="prose">
+<p>A founder ships a landing page built with their app's React stack, because it's the tool already open on their laptop. It looks flawless in the browser. Then three months later, organic traffic is flat, ChatGPT and Perplexity never mention the product even when asked directly about the category, and Search Console shows the page indexed with a title and nothing else. The page isn't broken — it's invisible. Here's why that happens and exactly how to fix it.</p>
+
+<h2>1. What "client-side rendered" actually means for a crawler</h2>
+<p>When a browser requests a client-side rendered (CSR) page, the server sends back a nearly empty HTML shell — a <code>&lt;div id="root"&gt;&lt;/div&gt;</code> and a bundle of JavaScript. The browser then runs that JavaScript to build the actual page in the DOM. A human never notices this happens in milliseconds. But a crawler that only fetches HTML — which is still most of them — sees the empty shell and stops there. It never runs your JavaScript, so as far as it's concerned, your headline, your pricing table, and your FAQ don't exist.</p>
+
+<h2>2. Googlebot is the exception, not the rule</h2>
+<p>Google's crawler does execute JavaScript, using a headless Chromium renderer — but it does so in a second, deferred pass that can lag the initial crawl by days, and it runs on a finite "render budget" per site. Bing's crawler renders JavaScript far less reliably. And the crawlers that matter most for 2026's traffic mix — GPTBot, ClaudeBot, PerplexityBot, and the other AI answer-engine crawlers — largely do not execute JavaScript at all. They fetch raw HTML and read what's there. If your content only exists after a script runs, these crawlers see nothing, and your product simply can't be cited in an AI-generated answer no matter how good it is.</p>
+
+<h2>3. Check this in five minutes, not with an audit tool</h2>
+<p>You don't need a paid crawler to find out if you have this problem. Run <code>curl -A "Mozilla/5.0" https://yoursite.com | less</code> and read the raw HTML that comes back. If your headline, body copy, and pricing text are sitting there in plain text, you're fine. If you see a near-empty shell and a pile of <code>&lt;script&gt;</code> tags, that's exactly what every non-JS-executing crawler sees too. A faster check: open your page, disable JavaScript in DevTools, and hard-refresh. Whatever's still on screen is what most AI crawlers can read.</p>
+
+<h2>4. Server-side rendering and static generation both fix this — pick based on your stack</h2>
+<p>The fix isn't to abandon your framework, it's to make sure the HTML that leaves your server already contains the content. You have two solid options. Server-side rendering (SSR) — Next.js, Nuxt, SvelteKit's server mode — renders the page to HTML on each request, so the first response already has real content, and the JavaScript then "hydrates" it for interactivity. Static site generation (SSG) — Astro, Eleventy, Next.js's static export, or even a prerendering step that runs a headless browser at build time and saves the output as plain HTML files — goes further and produces the finished HTML once, ahead of time, which is also faster and cheaper to serve. For a marketing landing page specifically, SSG is almost always the better call: the content doesn't change per-visitor, so there's no reason to pay a render cost on every request.</p>
+
+<h2>5. The common half-fix: SSR the app shell, hide the content anyway</h2>
+<p>Teams sometimes "fix" this by switching their framework to SSR mode, then still lose the content because of a second, subtler issue: data that's fetched client-side after the initial render. If your pricing table, testimonials, or FAQ answers are populated by a <code>useEffect</code> or a client-side API call that fires after mount, the server still ships an empty container for that section — SSR only rendered the shell around it. Anything a crawler needs to see has to be present in the HTML the server sends on the very first response, not fetched afterward. Audit each section of your page and ask specifically: is this text present in the raw HTML, or does something have to run first to produce it?</p>
+
+<h2>6. Accordions, tabs, and "click to expand" FAQs have the same failure mode</h2>
+<p>Even on a properly server-rendered page, a common pattern quietly defeats the purpose: FAQ answers or feature descriptions that only exist in the DOM once a user clicks to expand them, built with JavaScript that injects the content on interaction rather than CSS that just hides it. If the answer text isn't in the HTML at all until a click fires, it doesn't matter that the rest of the page rendered server-side — that content is still invisible to a crawler that never clicks anything. Use a native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> element or CSS-only show/hide so the text ships in the HTML and is simply visually collapsed, not absent.</p>
+
+<h2>7. Keep the app SPA, make the marketing site static</h2>
+<p>You don't have to rebuild your product dashboard's rendering strategy to fix this — the dashboard sits behind a login wall no crawler will ever reach anyway. The fix only needs to apply to the public-facing marketing site: the homepage, pricing, and any content pages. It's common and entirely reasonable to run your authenticated app as a pure client-side SPA for speed and simplicity, while building the marketing site as a separate static or server-rendered project, even on a different framework, that ships at <code>yoursite.com</code> while the app lives at <code>app.yoursite.com</code>.</p>
+
+<h2>The five-minute audit</h2>
+<ul>
+  <li><strong>Curl your homepage</strong> with a plain user agent and check whether your headline and body copy are in the raw response.</li>
+  <li><strong>Disable JavaScript</strong> in your browser and reload every marketing page — pricing, FAQ, comparison pages — to see what survives.</li>
+  <li><strong>Search Console → URL Inspection → "View Crawled Page"</strong> to see exactly what Google's renderer captured, not what you assume it captured.</li>
+  <li><strong>Grep your codebase for FAQ or pricing content</strong> gated behind a <code>useEffect</code>, a click handler, or a client-only fetch, and move it into the initial server-rendered payload.</li>
+</ul>
+
+<p>None of this requires a rewrite. It requires making sure the words you already wrote are actually sitting in the HTML your server sends out — before any JavaScript runs, for every visitor that will never run it, human or otherwise.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/vertex-ai-search-landing.jpeg" alt="Vertex — AI Search &amp; Knowledge Retrieval Landing Kit" width="560" height="315"/>
+      <div><h3>Vertex — AI Search &amp; Knowledge Retrieval Landing Kit</h3><p class="muted">A precise, enterprise-grade landing page for AI search, RAG, and knowledge retrieval platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/oxbrxt" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Client-Side vs. Server-Side Rendering: Why AI SaaS Landing Pages Go Invisible to Crawlers","description":"A landing page built as a pure client-side React or Vue app can look perfect in the browser and still be an empty shell to Google, Bing, and every AI answer engine. How to check if this is happening to you and the specific fixes.","datePublished":"2026-09-17","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

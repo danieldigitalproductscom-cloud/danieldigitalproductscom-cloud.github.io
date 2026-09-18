@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>404 Pages and Redirect Hygiene: The SEO Leak Most AI/SaaS Sites Never Check — Plinth</title>
+<meta name="description" content="Every rename, every pruned blog post, every "temporary" landing page leaves a broken link behind. How dead links and sloppy redirects quietly drain the rankings and referral traffic an AI/SaaS site already earned."/>
+<meta property="og:title" content="404 Pages and Redirect Hygiene: The SEO Leak Most AI/SaaS Sites Never Check — Plinth"/>
+<meta property="og:description" content="Every rename, every pruned blog post, every "temporary" landing page leaves a broken link behind. How dead links and sloppy redirects quietly drain the rankings and referral traffic an AI/SaaS site already earned."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/404-pages-and-redirect-hygiene-for-ai-saas-marketing-sites/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/404-pages-and-redirect-hygiene-for-ai-saas-marketing-sites/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-09-16</span>
+    <h1 class="post-title">404 Pages and Redirect Hygiene: The SEO Leak Most AI/SaaS Sites Never Check</h1>
+    <div class="prose">
+<p>Founders spend real effort earning a backlink, a Product Hunt mention, or a ranking position — then quietly lose the value of all three by renaming a slug, retiring a landing page, or shipping a pricing-page redesign without a redirect plan. Broken links and messy redirects don't show up in a demo the way a slow page or a bad headline does, which is exactly why they survive unnoticed for months. Here's what to actually check and fix.</p>
+
+<h2>1. A 404 is a dead end for link equity, not just a bad experience</h2>
+<p>When another site links to a page on yours and that page later 404s, the ranking value of that link doesn't transfer anywhere — it just evaporates. This is the part founders underestimate: the backlink you got from a launch article, a "best AI tools" roundup, or a partner's integrations page is still pointing at a URL that no longer resolves, and search engines eventually stop crediting you for it. If you've ever renamed a slug, moved a blog post, or killed an old comparison page, there's a good chance a real backlink is now pointing at a dead end.</p>
+
+<h2>2. Every permanent move needs a 301, not a 302, not nothing</h2>
+<p>A 301 (permanent) redirect tells search engines to transfer ranking signals from the old URL to the new one. A 302 (temporary) redirect tells them not to — which is correct for genuinely temporary situations (an A/B test, a seasonal promo) and wrong for everything else. The common mistake is leaving a 302 in place for a change that was actually permanent, because most frameworks default to 302 unless you specify otherwise. If you renamed <code>/pricing-old</code> to <code>/pricing</code> six months ago and it's still a 302, you're still leaking equity today. Audit your redirects the same way you'd audit anything else you assumed was "probably fine."</p>
+
+<h2>3. Redirect chains cost you more than they look like they should</h2>
+<p>A single 301 is nearly free. A chain of three or four — <code>/old-page</code> → <code>/newer-page</code> → <code>/newest-page</code> → <code>/current-page</code> — adds real latency to every visit that follows an old link, and search engines are far less reliable about following long chains all the way to the end. These chains build up silently: each redesign adds one more hop instead of someone going back and pointing every old redirect straight at the current URL. Once or twice a year, pull your redirect map and collapse every chain down to a single hop from each historical URL to wherever content actually lives now.</p>
+
+<h2>4. Don't redirect everything to the homepage</h2>
+<p>It's tempting to catch every dead URL with a blanket redirect to the homepage, but search engines read a pattern of many unrelated URLs all resolving to the same page as a soft 404 — and stop trusting your redirects as meaningful signals at all. Worse, a visitor who followed a link expecting a specific feature or article and lands on your homepage instead usually just leaves. Redirect to the closest living equivalent: a renamed feature page goes to the new feature page, a merged blog post goes to whichever post absorbed its content, and only genuinely gone-forever content with no replacement should return a real, deliberate 404.</p>
+
+<h2>5. Make your 404 page do one job well</h2>
+<p>A visitor who hits a 404 isn't gone yet — they clicked a link because they wanted something specific. A good 404 page says plainly that the page is gone, then gets them moving again: a search box, links to your two or three most-trafficked pages (usually the homepage, pricing, and your best-performing guide), and your normal navigation intact. Skip the elaborate illustration and the joke copy; a visitor who's already slightly annoyed doesn't need whimsy, they need a fast way to keep going. And critically, the page must return an actual HTTP 404 or 410 status — a "page not found" message that quietly returns a 200 status is a soft 404, and search engines will index it as real content while still treating the broken link as broken.</p>
+
+<h2>6. Check internal links after every redirect, don't rely on the redirect alone</h2>
+<p>A redirect fixes the experience for an external visitor, but it doesn't fix your own site: if your nav, footer, or old blog posts still link internally to the pre-redirect URL, every one of those clicks now takes an unnecessary hop through a redirect instead of going straight to the current page. This adds up in aggregate page-speed terms and occasionally breaks when a redirect is later removed. After any URL change, grep your own codebase or CMS for the old path and update internal links to point directly at the new one — the redirect should be a safety net for external and historical links, not the primary path for your own site.</p>
+
+<h2>The quarterly check</h2>
+<ul>
+  <li><strong>Crawl your own site</strong> with a free crawler (even a basic sitemap-following script) and flag every internal link that resolves to a 4xx or a redirect chain of two or more hops.</li>
+  <li><strong>Pull your backlinks</strong> from Search Console or any free backlink checker and confirm the pages they point to are live, 200-status URLs — not old redirected or dead ones.</li>
+  <li><strong>Grep for hardcoded old paths</strong> in your nav, footer, and content so internal links go straight to the current URL instead of through a redirect.</li>
+</ul>
+
+<p>None of this is glamorous work, and none of it shows up in a product demo — but it's the difference between keeping every bit of ranking value you've already earned and quietly leaking it one renamed page at a time.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/meridian-ai-observability-landing.jpeg" alt="Meridian — AI Observability &amp; Monitoring Landing Kit" width="560" height="315"/>
+      <div><h3>Meridian — AI Observability &amp; Monitoring Landing Kit</h3><p class="muted">A technical, data-dense landing page for AI observability, monitoring, and eval platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"404 Pages and Redirect Hygiene: The SEO Leak Most AI/SaaS Sites Never Check","description":"Every rename, every pruned blog post, every \"temporary\" landing page leaves a broken link behind. How dead links and sloppy redirects quietly drain the rankings and referral traffic an AI/SaaS site already earned.","datePublished":"2026-09-16","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

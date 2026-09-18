@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Site Search: The Free Content Research and Findability Tool Most AI SaaS Sites Ignore — Plinth</title>
+<meta name="description" content="The search box on your docs, help center, or marketing site is a live feed of exactly what visitors can't find. How to instrument it, what to do with zero-result queries, and the findability bugs that quietly waste it."/>
+<meta property="og:title" content="Site Search: The Free Content Research and Findability Tool Most AI SaaS Sites Ignore — Plinth"/>
+<meta property="og:description" content="The search box on your docs, help center, or marketing site is a live feed of exactly what visitors can't find. How to instrument it, what to do with zero-result queries, and the findability bugs that quietly waste it."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/site-search-as-a-content-and-findability-signal-for-ai-saas/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/site-search-as-a-content-and-findability-signal-for-ai-saas/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-18</span>
+    <h1 class="post-title">Site Search: The Free Content Research and Findability Tool Most AI SaaS Sites Ignore</h1>
+    <div class="prose">
+<p>Most AI SaaS sites bolt on a search box — to the docs, the help center, sometimes the marketing site — and never look at it again. That's a mistake. Unlike almost every other analytics signal you have, a search query is a visitor typing their exact intent in their own words. No inference, no funnel guesswork. If you're not capturing and reviewing that data, you're throwing away the cheapest, most direct research channel you have.</p>
+
+<h2>1. Track every query, not just clicks</h2>
+<p>Most search widgets (docs search, help center search, an Algolia or Pagefind instance) only report what people clicked on. What you actually want is the raw query string itself, logged as an event, whether or not it returned a result and whether or not the visitor clicked anything after. Fire a simple analytics event on search submit — <code>{ event: 'site_search', query: q, resultCount: n }</code> — and you now have a running log of exactly what people expected to find on your site. This one event is worth more than most of the dashboards founders spend hours building.</p>
+
+<h2>2. Zero-result queries are a pre-validated content backlog</h2>
+<p>Filter that log to searches that returned nothing. Each one is a topic a real visitor wanted, phrased in their own words, that your site currently fails to answer. If "pricing for teams over 50 seats" shows up ten times with zero results, that's not a hypothesis for your next blog post or FAQ entry — it's demand you've already measured. Most content teams start from a keyword tool and guess at intent; a zero-result query log skips the guessing and hands you validated intent for free. Review it monthly and turn the top recurring misses into FAQ answers, docs pages, or glossary entries.</p>
+
+<h2>3. Distinguish "no result" from "bad result"</h2>
+<p>A query that returns something but gets no click is arguably a worse signal than one that returns nothing, because it means your content exists but is losing to a bad title, a buried answer, or ranking logic that surfaces the wrong page first. Log click-through alongside result count so you can separate two distinct problems: content you haven't written yet, and content you've written but your search index is failing to surface. The fix for the first is a new page. The fix for the second is almost always in your indexing or ranking config, not your content.</p>
+
+<h2>4. Check for the findability bugs before blaming the content</h2>
+<p>Before you conclude a topic needs a new page, rule out the boring failures that quietly break search on most sites:</p>
+<ul>
+  <li><strong>No stemming or plural handling.</strong> A search for "integration" that misses a page titled "Integrations" is a config bug, not a content gap.</li>
+  <li><strong>PDFs, changelogs, or a separate docs subdomain excluded from the index.</strong> If your search only covers the marketing pages, every docs-related query looks like a miss even when the answer exists two clicks away.</li>
+  <li><strong>No synonym mapping for your own product's jargon.</strong> If customers call a feature by an old name or a nickname, add it as a synonym rather than waiting for them to learn your current terminology.</li>
+  <li><strong>Typo intolerance.</strong> A one-character typo returning zero results is one of the single biggest silent leaks in on-site search — most lightweight search libraries (Pagefind, Fuse.js, Algolia) support fuzzy matching; make sure it's actually turned on, not just available.</li>
+</ul>
+
+<h2>5. Never let "no results" be a dead end</h2>
+<p>A blank "No results found" page is a lost visitor. At minimum, the zero-results state should offer: a link to your most-visited help articles, a "contact support" or "ask in chat" option, and — if you're logging queries per (3) — an implicit invitation for your team to close that gap next sprint. Some teams go further and route the exact query to an AI-assisted search or a support inbox automatically, turning a dead end into a captured lead or a support ticket with the customer's own words already attached.</p>
+
+<h2>6. You don't need enterprise search infrastructure to start</h2>
+<p>For a static marketing site or docs set, you don't need a hosted search service to get this signal. Pagefind indexes a static site at build time and ships a small WASM-based search client with no backend required. For larger doc sets, Algolia DocSearch is free for qualifying open-source and technical documentation. Either way, the instrumentation in step 1 — logging the query string as an event — works the same regardless of which search engine sits underneath it. Start capturing the data before you worry about upgrading the search experience itself.</p>
+
+<h2>7. Feed the same log into your product roadmap, not just content</h2>
+<p>If your product has an in-app search — a command palette, a help widget, a knowledge base search inside the dashboard — the same principle applies, and the stakes are higher: a zero-result query inside your product is a customer trying to do something and hitting a wall in real time. Route that log to whoever owns the roadmap, not just whoever owns content. A recurring in-app search for a feature that doesn't exist yet is one of the most direct signals of unmet demand you'll ever get, delivered without anyone having to fill out a feature-request form.</p>
+
+<h2>The monthly review</h2>
+<ul>
+  <li><strong>Pull every zero-result query</strong> from the last 30 days and sort by frequency. Turn the top five into content or FAQ answers.</li>
+  <li><strong>Pull every low-click-through query</strong> that did return results, and check whether the top result actually answers it.</li>
+  <li><strong>Spot-check for stemming, synonym, and typo-tolerance gaps</strong> by searching your own site for three common misspellings or nicknames of your product's core features.</li>
+  <li><strong>Confirm your zero-results state</strong> offers a next step, not a dead end.</li>
+</ul>
+
+<p>None of this requires new tooling most teams don't already have — it requires logging one event you're probably already discarding, and reading it once a month. Few SEO or content habits are this cheap for the signal they return.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/vertex-ai-search-landing.jpeg" alt="Vertex — AI Search &amp; Knowledge Retrieval Landing Kit" width="560" height="315"/>
+      <div><h3>Vertex — AI Search &amp; Knowledge Retrieval Landing Kit</h3><p class="muted">A precise, enterprise-grade landing page for AI search, RAG, and knowledge retrieval platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/oxbrxt" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Site Search: The Free Content Research and Findability Tool Most AI SaaS Sites Ignore","description":"The search box on your docs, help center, or marketing site is a live feed of exactly what visitors can't find. How to instrument it, what to do with zero-result queries, and the findability bugs that quietly waste it.","datePublished":"2026-09-18","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
