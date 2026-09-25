@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Trust Center Page: How to Stop Losing Enterprise Deals to Security Questionnaires — Plinth</title>
+<meta name="description" content="A trust center page turns the security review that stalls enterprise AI SaaS deals into a five-minute self-serve check. What to put on it, what order, and the mistakes that make procurement teams distrust it more than having none at all."/>
+<meta property="og:title" content="The Trust Center Page: How to Stop Losing Enterprise Deals to Security Questionnaires — Plinth"/>
+<meta property="og:description" content="A trust center page turns the security review that stalls enterprise AI SaaS deals into a five-minute self-serve check. What to put on it, what order, and the mistakes that make procurement teams distrust it more than having none at all."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/trust-center-pages-for-enterprise-security-reviews/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/trust-center-pages-for-enterprise-security-reviews/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">8 min read · 2026-09-22</span>
+    <h1 class="post-title">The Trust Center Page: How to Stop Losing Enterprise Deals to Security Questionnaires</h1>
+    <div class="prose">
+<p>The first time an AI SaaS founder hits a 40-question security spreadsheet from a prospect's procurement team, the deal usually stalls for two to six weeks — not because the answers are hard, but because nobody at the company has ever assembled them in one place. A trust center page fixes this before it happens: a single URL, usually <code>trust.yourproduct.com</code> or <code>/trust</code>, that answers the questions a security reviewer asks on every deal, so most buyers never have to send the spreadsheet at all. It is one of the highest-leverage pages a B2B AI SaaS company can build, and almost nobody under Series A has one.</p>
+
+<h2>1. Compliance status, stated precisely</h2>
+<p>List every framework you actually have, with the real status — "SOC 2 Type II, audit period Jan–Jun 2026" is worth ten times more than a badge with no date on it. If you're mid-audit, say "SOC 2 Type I complete, Type II in progress, expected Q1 2027" — reviewers have seen enough vendors to respect an honest in-progress status far more than a vague claim. If you have nothing yet, don't put a badge on the page at all; an unverifiable badge is a bigger red flag to a security reviewer than an honest gap, because it reads as either dishonest or careless about the difference.</p>
+
+<h2>2. Subprocessor list</h2>
+<p>Every AI SaaS product runs on other companies' infrastructure — hosting, the model API, email delivery, analytics, error tracking, payment processing. List every one of them by name, what data they touch, and where they're located. This single table is what most procurement teams are actually looking for first, because it determines whether your product even passes their vendor risk policy before anyone reads the rest. For an AI product specifically, be explicit about which model provider you call, whether prompts and outputs are used for training, and how long they're retained — this is the question that kills more AI vendor deals than any other, and burying the answer in a FAQ instead of the subprocessor table reads as evasive.</p>
+
+<h2>3. Data handling, in plain terms</h2>
+<p>Where is customer data stored (region, not just "the cloud")? Is it encrypted at rest and in transit? How is it deleted on offboarding, and how long does deletion actually take? Do employees have access to customer data, and under what conditions? Answer each in two sentences, not a legal paragraph — the reviewer reading this is usually a security engineer or a GRC analyst, not a lawyer, and they're scanning for specific facts, not tone.</p>
+
+<h2>4. Security practices summary</h2>
+<p>A short list covers most of what gets asked: MFA enforcement, encryption standards, penetration testing cadence (with the date of the last test, even if you just link a summary letter instead of the full report), vulnerability disclosure process, incident response process, and employee background checks. You don't need to publish the pentest report itself — link to a one-paragraph executive summary, and offer the full report under NDA via a request form. That single move turns "please fill out our 40-question form" into "here's our summary, request the full report if you need it," which is the exchange that actually closes deals faster.</p>
+
+<h2>5. Uptime and availability</h2>
+<p>Link your public status page (see status pages as their own trust asset) and state your actual historical uptime, not a contractual SLA number nobody has verified. If you offer an SLA, state the percentage and what happens when you miss it. Reviewers cross-reference this against the status page history, so don't state a number your incident history contradicts.</p>
+
+<h2>6. Downloadable artifacts, gated sensibly</h2>
+<p>Put your DPA (Data Processing Agreement), security whitepaper, and SOC 2 report behind a short request form, not a public download — these documents contain enough detail that most companies restrict them, and gating them also tells you exactly which prospects are in active security review, which is a useful sales signal. Everything above the gate (compliance status, subprocessors, data handling, security summary) should stay fully public with zero form, because the whole point is to let a reviewer self-serve the 80% of questions that don't need a signed NDA.</p>
+
+<h2>7. A named contact, not a generic inbox</h2>
+<p>"Questions? Email security@yourproduct.com" is fine, but it's stronger if that inbox is actually monitored and you say so ("we respond to security inquiries within one business day"). A reviewer who's been ignored by vendors before treats a responsive contact line as a signal about how the whole vendor relationship will go.</p>
+
+<h2>The build-vs-buy decision</h2>
+<p>At seed stage, a single well-written static page with the seven sections above is enough — you don't need a $10k/year trust platform to list your subprocessors and link a pentest summary. Once you're fielding the same spreadsheet from multiple enterprise prospects a month, tools like Vanta, Drata, or SafeBase start paying for themselves by keeping the page synced to your actual compliance state and adding self-serve NDA-gated downloads. Don't buy the platform before you have the underlying facts (an actual SOC 2 in progress, an actual subprocessor list) — the tool organizes real answers, it doesn't manufacture them.</p>
+
+<h2>The mistakes that make reviewers trust you less</h2>
+<ul>
+  <li><strong>Compliance badges with no date or audit period.</strong> Reads as decorative, not verifiable.</li>
+  <li><strong>Vague AI data-use language.</strong> "We take your privacy seriously" answers nothing; state plainly whether prompts train the model.</li>
+  <li><strong>Gating everything, including the subprocessor list.</strong> Forces a form-fill for information that should take ten seconds to find.</li>
+  <li><strong>A page that hasn't been updated since it launched.</strong> An 18-month-old subprocessor list is worse than none — it signals the page is decorative, so the reviewer stops trusting anything else on it and sends the spreadsheet anyway.</li>
+</ul>
+
+<p>The founders who build this early aren't the ones with the most to show — they're the ones who got tired of losing three weeks of deal momentum to the same spreadsheet every quarter. A trust center page doesn't replace the security review; it answers 80% of it before the call even gets scheduled.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/vault-security-landing.jpeg" alt="Vault — Security SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Vault — Security SaaS Landing Page Kit</h3><p class="muted">A high-trust landing page for cybersecurity and compliance SaaS.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Trust Center Page: How to Stop Losing Enterprise Deals to Security Questionnaires","description":"A trust center page turns the security review that stalls enterprise AI SaaS deals into a five-minute self-serve check. What to put on it, what order, and the mistakes that make procurement teams distrust it more than having none at all.","datePublished":"2026-09-22","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

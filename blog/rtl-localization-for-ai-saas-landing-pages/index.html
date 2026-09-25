@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Designing AI SaaS Landing Pages for RTL Languages: The CSS Mistakes That Break Arabic and Hebrew Sites — Plinth</title>
+<meta name="description" content="Flipping a landing page for Arabic or Hebrew is more than dir="rtl". The specific CSS, typography, and layout decisions that make a mirrored page feel native instead of visibly translated."/>
+<meta property="og:title" content="Designing AI SaaS Landing Pages for RTL Languages: The CSS Mistakes That Break Arabic and Hebrew Sites — Plinth"/>
+<meta property="og:description" content="Flipping a landing page for Arabic or Hebrew is more than dir="rtl". The specific CSS, typography, and layout decisions that make a mirrored page feel native instead of visibly translated."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/rtl-localization-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/rtl-localization-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">8 min read · 2026-09-25</span>
+    <h1 class="post-title">Designing AI SaaS Landing Pages for RTL Languages: The CSS Mistakes That Break Arabic and Hebrew Sites</h1>
+    <div class="prose">
+<p>Founders who localize into Arabic or Hebrew for the first time almost always ship the same bug: they translate the copy, add <code>dir="rtl"</code> to the <code>&lt;html&gt;</code> tag, and call it done. The page technically mirrors, but it still reads as a translated English page wearing a costume — icons pointing the wrong way, numbers reversed, form fields misaligned. Buyers in these markets notice immediately, and "this was clearly an afterthought" is not the impression you want on a page that's supposed to build trust. Here's what actually goes into a landing page that feels native in a right-to-left language, not just flipped.</p>
+
+<h2>1. Use logical CSS properties, not physical ones</h2>
+<p><code>margin-left</code>, <code>padding-right</code>, and <code>text-align: left</code> don't know which direction the page is reading in — they'll happily apply the wrong spacing once <code>dir="rtl"</code> flips the layout around them, which is why so many "RTL-supported" pages still have a card with padding bunched on the wrong side. Replace them with logical equivalents: <code>margin-inline-start</code>, <code>padding-inline-end</code>, <code>text-align: start</code>. Written this way, the browser resolves "start" and "end" based on the page's actual direction, and the same stylesheet works for both LTR and RTL without a second, parallel set of overrides. If you're maintaining an existing English page, this refactor is the single highest-leverage change before attempting any RTL launch.</p>
+
+<h2>2. Mirror the layout, but not everything in it</h2>
+<p>Full mirroring is correct for navigation order, card layout, the direction a hero image "points," and the flow of a step-by-step process — a 1-2-3 how-it-works section should visually run right to left. But some things must <em>not</em> mirror: numerals stay left-to-right within themselves (١٢٣ or 123 reads left-to-right even inside RTL text), phone numbers and email addresses stay LTR, and universally recognized icons — a play button, a checkmark, a magnifying glass — should generally stay as-is rather than flip, since flipping them makes them harder to recognize, not more native. Directional icons are the real exception: an arrow pointing toward "next" or a chevron in a carousel should flip to point the way the page now reads.</p>
+
+<h2>3. Don't just flip icons that show real-world objects</h2>
+<p>A back-arrow icon should flip. A settings gear, a bell, a shopping cart, or a chat bubble should not — these represent physical objects, and physical objects don't reverse handedness just because the page direction changed. The practical rule: if the icon encodes a direction (arrow, chevron, "forward/back" affordance), mirror it. If the icon represents a thing, leave it alone. Getting this backwards is a small detail, but it's exactly the kind of small detail a native reader clocks in the first two seconds.</p>
+
+<h2>4. Pick a typeface that was actually designed for the script</h2>
+<p>Arabic and Hebrew have different letterforms, connecting-letter behavior (Arabic letters change shape based on position in a word), and vertical rhythm than Latin scripts, and a Latin webfont stack with a generic fallback renders Arabic in whatever ugly system font the browser defaults to — usually with cramped line-height and awkward letter joins. Use a webfont explicitly designed and hinted for the script (Google Fonts has solid Arabic and Hebrew families like Noto Sans Arabic, Noto Sans Hebrew, Cairo, Rubik), and increase <code>line-height</code> beyond your Latin default — Arabic in particular needs more vertical breathing room because of ascenders, descenders, and diacritics that Latin type doesn't have. Testing your English line-height value against Arabic copy is one of the fastest ways to spot a page that wasn't built for the language.</p>
+
+<h2>5. Handle bidi text — mixed RTL copy with embedded English or numbers</h2>
+<p>Real Arabic and Hebrew marketing copy is rarely pure single-direction text: a sentence mentioning "Slack" or "API" or a price like "$49/month" mixes an RTL sentence with LTR tokens embedded inside it, and the browser's bidirectional (bidi) algorithm doesn't always guess the intended order correctly, especially around punctuation and parentheses. When you see a phrase render with words in a visibly wrong order, wrap the embedded LTR token in a <code>&lt;span dir="ltr"&gt;</code> (or use the Unicode isolate characters) rather than trying to fix it by reordering the source text — reordering the text usually breaks it worse the next time a translator edits that string.</p>
+
+<h2>6. Forms: label position, input alignment, and placeholder text all need to flip together</h2>
+<p>A form is one of the easiest places for an RTL page to visibly break, because labels, inputs, icons-inside-inputs (like a search icon), and validation messages all need to move together. A search box with a magnifying-glass icon pinned to the physical left edge via <code>left: 12px</code> will end up on the wrong side of an RTL input — use <code>inset-inline-start</code> instead. Test every form on the page (email capture, contact, pricing calculator) specifically in RTL mode; forms get missed far more often than hero sections because they're usually built and QA'd last.</p>
+
+<h2>7. Don't mirror your product screenshots</h2>
+<p>If your landing page shows a screenshot or mock of the actual product UI, don't flip the image itself just because the surrounding page is RTL — unless the product UI is itself genuinely localized and mirrored (rare, and usually not worth building just for a landing page). A flipped screenshot of an English, LTR product looks obviously wrong to anyone who's used software before, because window chrome, buttons, and text inside the image will read backwards. Keep product screenshots as they naturally are and let the surrounding page layout do the direction work.</p>
+
+<h2>8. Test with a native reader, not just a translation checker</h2>
+<p>Automated RTL linters catch missing <code>dir</code> attributes and obvious CSS direction bugs, but they can't tell you that a headline reads stiffly, that a idiom translated literally sounds odd, or that a color or icon carries an unintended connotation in the target market. Before launch, have a native speaker actually use the page — fill out the form, read the pricing table, scan the FAQ — and treat their "this feels off" as seriously as a functional bug report, because for a localized page, "feels off" often <em>is</em> the bug.</p>
+
+<h2>The shortcut</h2>
+<p>Building RTL support into a page after the fact means auditing every physical CSS property, every icon, and every form on a page that was never structured for it — which is why it's dramatically easier to start from a template built with logical properties and a direction-aware layout system from day one, so flipping to Arabic or Hebrew is a configuration change instead of a rebuild.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/aria-ai-localization-landing.jpeg" alt="Aria — AI Localization &amp; Translation Landing Kit" width="560" height="315"/>
+      <div><h3>Aria — AI Localization &amp; Translation Landing Kit</h3><p class="muted">A polished, globally-minded landing page for AI localization, translation, and multilingual content platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Designing AI SaaS Landing Pages for RTL Languages: The CSS Mistakes That Break Arabic and Hebrew Sites","description":"Flipping a landing page for Arabic or Hebrew is more than dir=\"rtl\". The specific CSS, typography, and layout decisions that make a mirrored page feel native instead of visibly translated.","datePublished":"2026-09-25","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

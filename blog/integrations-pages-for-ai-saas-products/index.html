@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Integrations Page: The Most Underused SEO and Trust Asset in AI/SaaS — Plinth</title>
+<meta name="description" content="Most AI SaaS products bury their integrations in a footer logo strip. Built out properly, an integrations page captures long-tail search traffic and answers the buyer question that kills more deals than price does: "will this actually fit into what I already use?""/>
+<meta property="og:title" content="The Integrations Page: The Most Underused SEO and Trust Asset in AI/SaaS — Plinth"/>
+<meta property="og:description" content="Most AI SaaS products bury their integrations in a footer logo strip. Built out properly, an integrations page captures long-tail search traffic and answers the buyer question that kills more deals than price does: "will this actually fit into what I already use?""/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/integrations-pages-for-ai-saas-products/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/integrations-pages-for-ai-saas-products/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-07-23</span>
+    <h1 class="post-title">The Integrations Page: The Most Underused SEO and Trust Asset in AI/SaaS</h1>
+    <div class="prose">
+<p>Ask a buyer why they didn't convert on an AI product that otherwise looked right, and the honest answer is often not price or features — it's "I couldn't tell if it would actually fit into our stack." Most founders answer that question with a logo strip under the hero and call it done. That's a missed opportunity twice over: it under-serves the buyer who needed a real answer, and it skips a form of search traffic that's cheap to capture and unusually high-intent. Here's how to build an integrations page that does both jobs properly.</p>
+
+<h2>1. Give every integration its own URL</h2>
+<p>A single "/integrations" page with fifty logos in a grid is fine as an index, but it can't rank for the query that actually matters: "[your product] [specific tool] integration." Someone searching that phrase has already picked their other tool and is checking compatibility — that's about as close to bottom-of-funnel as organic search gets. Build one lightweight page per integration ("/integrations/slack", "/integrations/hubspot") even if the content is short. An index page ranks for nothing specific; fifty individual pages each rank for one thing precisely.</p>
+
+<h2>2. Answer three questions on every integration page, in order</h2>
+<p>Buyers checking a specific integration want, in this order: does it exist, what does it actually do, and how long does setup take. Structure the page around exactly that: a one-line yes ("Connect [Product] to Slack in under 2 minutes"), three to five bullet points of what the integration actually does (not "seamless integration" — say "post a summary to a channel when a workflow completes," "trigger a run from a slash command"), and a real setup-time estimate. Vague integration pages that only say a tool is "supported" leave the actual question — what does it do — unanswered, and unanswered questions don't convert.</p>
+
+<h2>3. Show the trigger and the action, not just the logo</h2>
+<p>For AI workflow and automation products specifically, "integrates with X" is ambiguous — does your product pull data from X, push results to X, or both? A short line making this explicit ("Trigger: new row in your spreadsheet. Action: draft a reply and post it to the thread.") does more to convert a technical buyer than any amount of marketing copy, because it's the exact detail they need to evaluate fit before they'll invest time in a trial.</p>
+
+<h2>4. Use structured data so the integration count shows up in search</h2>
+<p>An <code>ItemList</code> JSON-LD block listing your integrations helps search engines understand the shape of your index page and can surface a richer result for "[category] integrations" queries. It's a small addition — a script tag with names and URLs — but it's the kind of detail that separates a page search engines fully understand from one they're guessing at.</p>
+
+<h2>5. Don't fake depth you don't have</h2>
+<p>It's tempting to list an integration the moment you support a generic webhook or Zapier connector for it, even without a dedicated build. That's fine — but say so plainly: "Available via Zapier" reads as honest; implying a native integration you don't have reads as deceptive the moment a buyer tries to set it up and can't find it. If the connection goes through a middleware tool, name the tool. A buyer who feels misled on setup won't come back to check whether you've since built the real thing.</p>
+
+<h2>6. Sort by relevance to your actual buyer, not alphabetically</h2>
+<p>An alphabetical grid buries your three most-requested integrations next to ones nobody's asked about. Put the handful that matter most to your core audience first — the CRM, the chat tool, the data source your buyer already uses daily — and group the long tail underneath as "also available." This isn't just a conversion choice; it also signals to search engines which pages you consider most important via internal linking weight.</p>
+
+<h2>7. Let the "request an integration" path be real, and visible</h2>
+<p>A visible "don't see yours? Request it" link with a simple form does two things: it captures demand signal you can use to prioritize the roadmap, and it keeps a buyer who didn't find their exact tool from bouncing immediately. Route these requests somewhere you'll actually read them — a form nobody checks is worse than no form, because it sets an expectation you then quietly break.</p>
+
+<h2>8. Update pages the moment an integration ships, not on a batch schedule</h2>
+<p>Search engines and buyers both discount pages that feel stale, and an integrations section is one of the first places staleness shows — a listed integration that's actually been deprecated, or a missing one that shipped two releases ago. Treat each integration page as part of your release checklist, not a quarterly content task, so the page stays a source of truth instead of a liability.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>An integrations page works the same way a comparison page or a pricing page works: it's most valuable when it answers a specific, checkable question instead of gesturing at a vague benefit. "Integrates with your tools" convinces no one. "Here's exactly what it does with Slack, and it takes two minutes to set up" convinces someone who was one honest answer away from signing up.</p>
+
+<p>If you're building an automation or workflow product where integrations are the whole pitch, start from a template that already has an integrations band and workflow-mock section built in, so the page's structure is doing some of this work before you've written a word of the real content.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/orbit-ai-workflow-landing.jpeg" alt="Orbit — AI Workflow Automation Landing Kit" width="560" height="315"/>
+      <div><h3>Orbit — AI Workflow Automation Landing Kit</h3><p class="muted">A clean landing page for no-code AI workflow and automation builders.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Integrations Page: The Most Underused SEO and Trust Asset in AI/SaaS","description":"Most AI SaaS products bury their integrations in a footer logo strip. Built out properly, an integrations page captures long-tail search traffic and answers the buyer question that kills more deals than price does: \"will this actually fit into what I already use?\"","datePublished":"2026-07-23","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
