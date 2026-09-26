@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI Content Disclosure: When and How to Label AI-Assisted Writing on Your SaaS Blog — Plinth</title>
+<meta name="description" content="Google says it rewards helpful content regardless of how it was produced, but readers and regulators are moving faster than the search guidelines. A practical framework for when to disclose AI assistance, how to phrase it, and the two failure modes to avoid."/>
+<meta property="og:title" content="AI Content Disclosure: When and How to Label AI-Assisted Writing on Your SaaS Blog — Plinth"/>
+<meta property="og:description" content="Google says it rewards helpful content regardless of how it was produced, but readers and regulators are moving faster than the search guidelines. A practical framework for when to disclose AI assistance, how to phrase it, and the two failure modes to avoid."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/ai-content-disclosure-labeling-ai-assisted-writing-for-saas-blogs/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/ai-content-disclosure-labeling-ai-assisted-writing-for-saas-blogs/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-26</span>
+    <h1 class="post-title">AI Content Disclosure: When and How to Label AI-Assisted Writing on Your SaaS Blog</h1>
+    <div class="prose">
+<p>Every AI/SaaS founder publishing content in 2026 runs into the same unresolved question: do you have to say a machine helped write it? There's no single law forcing your hand on a blog post, but the pressure to answer is real — from search engines evaluating quality, from readers who've gotten sharper at spotting AI phrasing, and from a general drift toward disclosure norms in advertising and media. Here's a framework that avoids both failure modes: silently shipping unreviewed AI output, and burying every page in disclaimers nobody asked for.</p>
+
+<h2>1. What the search engines actually reward (and don't)</h2>
+<p>Google's public guidance has been consistent on one point: it evaluates content on whether it's helpful, reliable, and demonstrates real expertise — not on whether a human or a model typed the first draft. That means AI assistance itself isn't the risk. The risk is the thing AI makes cheap to produce at scale: thin, unedited, interchangeable pages that don't add anything a reader couldn't get from ten other AI-generated pages. If your process is "prompt in, publish out" with no fact-check and no editorial judgment, that's what gets suppressed — and disclosure wouldn't have saved it anyway. Fix the quality problem first; disclosure is a separate, secondary question.</p>
+
+<h2>2. The three tiers of AI involvement, and which ones need a label</h2>
+<p>Not all AI-assisted content carries the same disclosure obligation. It helps to sort your pipeline into three tiers before deciding: <strong>(a) AI as a drafting accelerant</strong> — you outline, a model drafts, a named person edits, fact-checks, and takes ownership of every claim. <strong>(b) AI as a research and structuring tool</strong> — a model helps you find angles or organize a first pass, but the final sentences are substantially rewritten by a person. <strong>(c) Fully generated, lightly-touched output</strong> — a model produces the piece and a human does a read-through but doesn't meaningfully verify claims or rewrite substance. Tier (a) and (b) are standard editorial practice and don't need a special disclosure beyond your normal byline — this is no different from a writer using a research assistant. Tier (c) is where disclosure stops being optional, because you're publishing under an implied claim of expertise you didn't actually apply.</p>
+
+<h2>3. Where the regulatory pressure is actually pointing</h2>
+<p>Don't over-index on a specific statute — most jurisdictions don't yet have a law requiring a "written by AI" tag on a blog post. But the direction of travel across advertising, political, and platform-policy rules is toward disclosure for synthetic content presented as authentic human testimony or expertise: reviews, endorsements, and "as told to a real person" narratives. If your content includes anything that reads like a first-person account, a customer story, or an expert opinion attributed to a specific person, treat that as the highest-risk category — that's where an undisclosed AI origin looks like deception rather than efficiency, and where a platform or regulator is most likely to draw a line next.</p>
+
+<h2>4. How to phrase it when you do disclose</h2>
+<p>Skip the defensive, over-explained version ("This article was generated using advanced artificial intelligence technology to assist our team..."). It reads as either a legal department wrote it or you're apologizing for something. A single factual line does the job: <em>"Drafted with AI assistance, fact-checked and edited by [Name]."</em> or, for heavier automation, <em>"This guide was generated from our product data using AI and reviewed by our team before publishing."</em> Both name a real accountable party, which is the part that actually builds trust — the AI mention is almost incidental once a human owns the claims.</p>
+
+<h2>5. Where the disclosure lives</h2>
+<p>Byline placement (next to the author name and date) is the right spot for editorial content — visible to anyone who cares, invisible as friction to anyone who doesn't. Reserve a persistent site-wide banner or modal for cases where you're running substantial tier-(c) content at scale, since a single per-article line stops being an honest signal if it's on every single page regardless of how it was made. If you want a structured, machine-readable version for search engines and AI crawlers, <code>schema.org/CreativeWork</code> supports a <code>creativeWorkStatus</code> and <code>accountablePerson</code> pairing you can add to your page's JSON-LD without cluttering the visible page at all.</p>
+
+<h2>6. The two failure modes</h2>
+<ul>
+  <li><strong>Silent tier-(c) publishing.</strong> Shipping unreviewed model output under a founder's byline, especially attached to a claimed customer story or expert opinion, is the scenario most likely to blow up publicly — a reader or competitor screenshotting an obvious AI artifact next to your "written by our CEO" byline does more damage than any search penalty.</li>
+  <li><strong>Disclosure theater.</strong> Slapping a heavy AI disclaimer on content that a person genuinely researched, wrote, and stands behind undersells your actual editorial work and trains readers to discount everything on the page, including the parts that took real expertise to write.</li>
+</ul>
+
+<h2>7. A practical checklist before you publish</h2>
+<ul>
+  <li>Does a named person take ownership of every factual claim in this piece? If not, fix that before you fix the disclosure.</li>
+  <li>Does the piece include a first-person story, testimonial, or attributed expert opinion? If yes, disclosure is not optional — that's the highest-risk category.</li>
+  <li>Is the disclosure line specific and factual, naming a real person or process, rather than a generic legal disclaimer?</li>
+  <li>Would you be comfortable with a reader finding the disclosure on their own, rather than only seeing it because you buried it in a footer?</li>
+</ul>
+
+<h2>The pattern underneath all of this</h2>
+<p>Disclosure isn't really about the AI — it's about whether a real, named, accountable person stands behind what the page claims. Content that clears that bar reads as trustworthy whether or not you mention the tooling. Content that doesn't clear it isn't fixed by adding or removing a disclaimer. Get the editorial ownership right first, and the disclosure question answers itself.</p>
+
+<p>If you're building the content engine behind an AI product, start from a template that already treats bylines, author trust, and structured markup as first-class sections instead of an afterthought bolted on before launch.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/scribe-ai-content-landing.jpeg" alt="Scribe — AI Content &amp; Marketing Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Scribe — AI Content &amp; Marketing Copilot Landing Kit</h3><p class="muted">A friendly, benefit-led landing page for AI content, copywriting, and marketing copilot tools.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Content Disclosure: When and How to Label AI-Assisted Writing on Your SaaS Blog","description":"Google says it rewards helpful content regardless of how it was produced, but readers and regulators are moving faster than the search guidelines. A practical framework for when to disclose AI assistance, how to phrase it, and the two failure modes to avoid.","datePublished":"2026-09-26","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

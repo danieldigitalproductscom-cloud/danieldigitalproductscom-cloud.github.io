@@ -77,11 +77,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/muster-ai-influencer-marke
 https://danieldigitalproductscom-cloud.github.io/demo/lattice-ai-data-catalog-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/rampart-ai-vulnerability-management-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/foresight-ai-deal-sourcing-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/waypoint-ai-travel-planning-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/ai-content-disclosure-labeling-ai-assisted-writing-for-saas-blogs/
 https://danieldigitalproductscom-cloud.github.io/blog/rtl-localization-for-ai-saas-landing-pages/
 https://danieldigitalproductscom-cloud.github.io/blog/webinar-and-event-registration-pages-for-ai-saas/
 https://danieldigitalproductscom-cloud.github.io/blog/migration-guide-pages-for-switching-from-competitors-ai-saas/
