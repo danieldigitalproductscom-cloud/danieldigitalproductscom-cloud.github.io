@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Accuracy and Hallucination Disclaimers: How to Talk About AI Error Rates Without Undermining the Sale — Plinth</title>
+<meta name="description" content="Every AI product is wrong sometimes, and buyers know it. The specific ways to phrase accuracy claims, show error handling, and disclose limitations that build trust — instead of triggering the skepticism that kills the deal."/>
+<meta property="og:title" content="Accuracy and Hallucination Disclaimers: How to Talk About AI Error Rates Without Undermining the Sale — Plinth"/>
+<meta property="og:description" content="Every AI product is wrong sometimes, and buyers know it. The specific ways to phrase accuracy claims, show error handling, and disclose limitations that build trust — instead of triggering the skepticism that kills the deal."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/accuracy-and-hallucination-disclaimers-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/accuracy-and-hallucination-disclaimers-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-12</span>
+    <h1 class="post-title">Accuracy and Hallucination Disclaimers: How to Talk About AI Error Rates Without Undermining the Sale</h1>
+    <div class="prose">
+<p>Founders building AI products face a copywriting problem that didn't exist for most of SaaS history: the product is genuinely, unavoidably sometimes wrong, and the buyer already assumes that going in. Pretend otherwise on your landing page and a technical evaluator loses trust the moment they hit an edge case in the free trial. Over-hedge instead and a business buyer reads "may occasionally produce errors" as "we don't know if this works" and closes the tab. The founders who convert skeptical buyers aren't the ones with the lowest error rate — they're the ones who talk about error rate like an engineer instead of a marketer.</p>
+
+<h2>1. Never claim accuracy you haven't measured</h2>
+<p>"99% accurate" with no source is worse than no number at all, because a technical buyer's first instinct is to ask 99% of what, measured how, on what dataset — and if you can't answer, the whole page reads as unreliable by association. If you have a real internal eval, cite it precisely: "94.2% exact-match accuracy on our 1,200-query benchmark, last run March 2026." If you don't have a rigorous number yet, say something true instead of a fabricated stat: "Every release is checked against a growing internal test set" is honest and still shows rigor. A specific, sourced number beats a rounder, vaguer one every time — precision itself is a credibility signal.</p>
+
+<h2>2. Separate "wrong" from "unhelpful" in your own head first</h2>
+<p>Buyers conflate two different failure modes that your copy should treat differently: the model states something false with confidence (a hallucination), versus the model correctly says "I don't know" or asks a clarifying question. The second failure mode is a feature, not a bug, and it's worth calling out explicitly: "When the answer isn't in your data, it says so instead of guessing." A product that visibly declines to answer sometimes reads as more trustworthy than one that always has a confident response, because buyers have learned that overconfidence is the actual danger.</p>
+
+<h2>3. Show the safety net, not just the disclaimer</h2>
+<p>A line like "AI-generated content may contain errors — please review before use" is legally sensible but does nothing to reassure anyone; it just states the risk and walks away. Pair every disclaimer with the mechanism that catches the error: a citation linking every claim back to its source document, a confidence score shown next to each output, a required human-approval step before anything ships externally, or a one-click "flag this answer" button that feeds a correction loop. The disclaimer says "this can go wrong." The safety net says "and here's what happens when it does." Buyers need both halves; most landing pages only ship the first.</p>
+
+<h2>4. Use a human baseline, not a perfection baseline</h2>
+<p>Comparing your AI's error rate to zero is a comparison you'll always lose. Comparing it to the error rate of the manual process it replaces is usually a comparison you'll win, and it's the fairer one: "Manual review catches roughly 85% of policy violations; our model catches 93% on the same test set, and every flag is still reviewable." This reframes an admitted imperfection as a measurable improvement instead of an unexplained risk, and it's a claim you can actually defend under questioning.</p>
+
+<h2>5. Put the limitation next to the use case it affects, not in one generic disclaimer</h2>
+<p>A single catch-all disclaimer buried in the footer tells a buyer nothing about whether the limitation applies to their specific situation. If your model is weaker on non-English input, say that on the localization section, not just once at the bottom. If it struggles with handwritten documents versus typed ones, mention it where you describe document support. Specific, contextual limitations read as the product of real testing. One vague disclaimer reads as legal boilerplate nobody actually thought about.</p>
+
+<h2>6. Let buyers self-serve the evidence instead of taking your word for it</h2>
+<p>The strongest version of this page doesn't just assert an accuracy number — it links to a public benchmark page, a changelog of model/eval updates, or a live demo where the visitor can test an edge case themselves and see how the product handles it, including how it handles being wrong. "Try a query we know it struggles with" is an unusual thing to put on a landing page, but for a technical audience it's often the single highest-trust move available: it proves you know your own limitations well enough to name them in advance.</p>
+
+<h2>7. Match the tone to how high the stakes actually are</h2>
+<p>An AI tool that drafts marketing copy can afford a light, confident tone about occasional misses — a bad draft costs a rewrite. An AI tool touching medical notes, financial figures, or legal contracts needs a measurably more careful register: named review steps, audit trails, and explicit statements about what a human must verify before anything is final. Copying the breezy tone of a consumer AI writing tool onto a clinical documentation product doesn't just undersell the seriousness of the work — in a regulated space it can read as a compliance gap before a buyer even reaches the pricing section.</p>
+
+<h2>8. Update the claim when the model changes</h2>
+<p>An accuracy number from an old model version, left uncorrected on the page after a model upgrade, is a claim you can no longer stand behind — and eventually a competitor's comparison page or a disappointed customer will notice the gap. Treat your accuracy and limitations copy as something that gets revisited on every meaningful model or pipeline change, the same way you'd revisit pricing after a plan change. A dated benchmark ("as of March 2026") signals that the number is actively maintained rather than a one-time marketing claim frozen in place.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Buyers of AI products aren't looking for a vendor who claims to be perfect — they've learned not to believe that claim from anyone. They're looking for a vendor who clearly understands where the product is strong, where it's weak, and what happens the moment it's wrong. Specific numbers, visible safety nets, and honest, contextual limitations do more to close a skeptical technical buyer than any amount of confident marketing language ever will.</p>
+
+<p>If you're building this into a page from scratch, start from a template that already has room for a metrics band and a dedicated trust section, so you're filling in real evaluation numbers instead of designing the layout under deadline pressure.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/meridian-ai-observability-landing.jpeg" alt="Meridian — AI Observability &amp; Monitoring Landing Kit" width="560" height="315"/>
+      <div><h3>Meridian — AI Observability &amp; Monitoring Landing Kit</h3><p class="muted">A technical, data-dense landing page for AI observability, monitoring, and eval platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Accuracy and Hallucination Disclaimers: How to Talk About AI Error Rates Without Undermining the Sale","description":"Every AI product is wrong sometimes, and buyers know it. The specific ways to phrase accuracy claims, show error handling, and disclose limitations that build trust — instead of triggering the skepticism that kills the deal.","datePublished":"2026-09-12","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
