@@ -84,11 +84,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/kiln-ai-prompt-management-
 https://danieldigitalproductscom-cloud.github.io/demo/parcel-ai-document-processing-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/guardrail-ai-safety-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/atlas-ai-agent-builder-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/lodestone-ai-lead-enrichment-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/search-console-quick-wins-position-8-to-20-for-ai-saas/
 https://danieldigitalproductscom-cloud.github.io/blog/search-intent-matching-page-types-to-queries-for-ai-saas/
 https://danieldigitalproductscom-cloud.github.io/blog/image-seo-for-ai-saas-product-screenshots-and-diagrams/
 https://danieldigitalproductscom-cloud.github.io/blog/canonical-tags-and-duplicate-content-for-ai-saas-sites/
