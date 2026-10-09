@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The "Powered By" Page: Disclosing Your AI Model Stack Without Scaring Off Buyers — Plinth</title>
+<meta name="description" content="Buyers now ask which model runs under your product before they ask about pricing. What to disclose about your AI stack, what to leave out, and where to put it so it builds trust instead of raising questions."/>
+<meta property="og:title" content="The "Powered By" Page: Disclosing Your AI Model Stack Without Scaring Off Buyers — Plinth"/>
+<meta property="og:description" content="Buyers now ask which model runs under your product before they ask about pricing. What to disclose about your AI stack, what to leave out, and where to put it so it builds trust instead of raising questions."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/disclosing-your-ai-model-stack-without-scaring-buyers/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/disclosing-your-ai-model-stack-without-scaring-buyers/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-06</span>
+    <h1 class="post-title">The "Powered By" Page: Disclosing Your AI Model Stack Without Scaring Off Buyers</h1>
+    <div class="prose">
+<p>Two years ago, almost no landing page said which model it ran on. Now a sizable share of technical buyers — and a growing share of non-technical ones who've read enough AI news to be cautious — ask "which model is this actually calling?" before they ask about price. If your page doesn't answer that question somewhere, visitors either assume the worst (a cheap, unnamed model wrapped in marketing) or bounce to a competitor who did bother to say. Here's how to build that disclosure so it earns trust instead of inviting more scrutiny than you wanted.</p>
+
+<h2>1. Decide what tier of disclosure your buyer needs</h2>
+<p>Not every product needs a detailed model page. A consumer app can usually get away with one sentence in the FAQ ("Built on leading language models, continuously evaluated for quality and safety"). A developer tool or enterprise product selling to technical buyers needs more: which provider, roughly which model family, and how you handle updates. Match the depth of disclosure to how technical and skeptical your buyer is — over-explaining to a consumer audience reads as strange; under-explaining to a developer audience reads as evasive.</p>
+
+<h2>2. Name the provider, not necessarily the exact model version</h2>
+<p>"Powered by Anthropic's Claude models" or "built on OpenAI's GPT family" is specific enough to be credible and vague enough to survive a model upgrade without a page edit. Pinning to an exact version number ("running GPT-4o") makes your page stale the moment you upgrade, and commits you to defending performance claims tied to a specific snapshot. Name the family, keep the version out of marketing copy, and put exact version details in a changelog or status page instead, where staleness is expected and easy to update.</p>
+
+<h2>3. Say what you send, not just what model you use</h2>
+<p>The question underneath "which model" is almost always "what happens to my data." Answer it directly: do you send customer inputs to a third-party API, is that data used to train the underlying model, how long is it retained. Most major model providers now offer zero-data-retention or no-training terms for API customers — if you've secured that, it's one of your strongest trust signals and belongs next to the model disclosure, not buried in a separate privacy page. "We use Anthropic's API under a no-training agreement; your data is never used to train underlying models" answers the real fear in one sentence.</p>
+
+<h2>4. Disclose fallback and multi-model routing honestly</h2>
+<p>Plenty of products now route between multiple models for cost or reliability reasons — a fast, cheap model for simple requests and a stronger one for complex ones, or a fallback provider if the primary API is degraded. That's a legitimate engineering decision, not something to hide, and disclosing it can be a differentiator: "We automatically route to the best available model for each request, with automatic failover if a provider has an outage" reads as more sophisticated than pretending you run on one model with 100% uptime. What erodes trust is silence followed by a visible quality difference a user notices and can't explain.</p>
+
+<h2>5. Explain how you handle model updates and quality drift</h2>
+<p>Buyers who've been burned by a provider silently swapping a model version and changing output quality want to know you're watching for it. A short line — "We run automated evaluation suites against every model update before rolling it out to production" — signals engineering maturity that a feature list never will. If you don't have this process yet, this is worth building before you claim it; it's exactly the kind of claim a technical buyer will ask you to prove in a sales call.</p>
+
+<h2>6. Keep competitive-sensitive details out of the public page</h2>
+<p>Disclosure doesn't mean publishing your prompts, your fine-tuning data, or the exact orchestration logic that took months to get right — that's genuinely proprietary and telling competitors your architecture helps them, not your buyer. The line to hold: disclose what affects a buyer's trust and risk (which provider, what happens to their data, how updates are handled), not what affects your competitive moat (how you prompt it, what you fine-tuned, your internal evaluation harness).</p>
+
+<h2>7. Put it where the skeptical visitor is already looking</h2>
+<p>A dedicated "AI & Data" or "Trust" page linked from the footer works for buyers doing deliberate due diligence. But your FAQ needs at least one entry too — "What AI model do you use, and what happens to our data?" — because that's genuinely the fastest and most-searched place to look, and a visitor who has to hunt for the answer often assumes there isn't a good one.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Model disclosure works the same way every other trust signal on a landing page does: it replaces a buyer's assumption with a fact they can act on. The founders who get this right aren't hiding behind "proprietary AI technology" language, and they aren't over-sharing implementation details nobody asked for — they're answering the one question a skeptical visitor actually has, in one place, in plain language, and moving on.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/meridian-ai-observability-landing.jpeg" alt="Meridian — AI Observability &amp; Monitoring Landing Kit" width="560" height="315"/>
+      <div><h3>Meridian — AI Observability &amp; Monitoring Landing Kit</h3><p class="muted">A technical, data-dense landing page for AI observability, monitoring, and eval platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The \"Powered By\" Page: Disclosing Your AI Model Stack Without Scaring Off Buyers","description":"Buyers now ask which model runs under your product before they ask about pricing. What to disclose about your AI stack, what to leave out, and where to put it so it builds trust instead of raising questions.","datePublished":"2026-09-06","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

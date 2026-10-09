@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Accessibility Basics Every AI/SaaS Landing Page Needs (and What It Costs to Skip Them) — Plinth</title>
+<meta name="description" content="Color contrast, keyboard navigation, and reduced motion are not compliance checkboxes — they are conversion features that most AI/SaaS landing pages get wrong in the same handful of predictable ways."/>
+<meta property="og:title" content="Accessibility Basics Every AI/SaaS Landing Page Needs (and What It Costs to Skip Them) — Plinth"/>
+<meta property="og:description" content="Color contrast, keyboard navigation, and reduced motion are not compliance checkboxes — they are conversion features that most AI/SaaS landing pages get wrong in the same handful of predictable ways."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/accessibility-basics-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/accessibility-basics-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-07-29</span>
+    <h1 class="post-title">Accessibility Basics Every AI/SaaS Landing Page Needs (and What It Costs to Skip Them)</h1>
+    <div class="prose">
+<p>Accessibility gets treated as a legal checkbox founders mean to get to "after launch," which usually means never. That's a mistake on two fronts: a meaningful share of visitors — people using screen readers, keyboard-only navigation, or a browser zoomed to 200% — simply bounce off an inaccessible page without ever telling you why, and accessibility complaints against SaaS marketing sites have become common enough that ignoring them is a real legal exposure, not a hypothetical one. None of the fixes below require a framework or a redesign. Here's what actually matters, in the order it's cheapest to fix.</p>
+
+<h2>1. Color contrast: check it, don't eyeball it</h2>
+<p>WCAG AA requires a 4.5:1 contrast ratio for normal text and 3:1 for large text (18px+ bold or 24px+ regular) and UI components like button borders. The most common failure on AI/SaaS pages is a light accent color — the violets, cyans, and pastels that read as "modern" — used as text on a white or near-white background, or white text on a mid-tone accent button. Run every text/background pairing through WebAIM's contrast checker before you ship, not after a complaint. If a brand color fails, don't abandon it: darken it a few shades for text use and keep the lighter version for decorative accents where legibility doesn't matter.</p>
+
+<h2>2. Keyboard navigation: tab through your own page once</h2>
+<p>Every interactive element — nav links, the pricing toggle, FAQ accordions, the CTA button — needs to be reachable and operable using only the Tab and Enter keys, in an order that matches the visual layout. The single most common violation is removing the default focus outline with <code>outline: none</code> for aesthetics and never replacing it, which leaves keyboard users with no way to see where they are on the page. If you don't like the default outline, style a custom one with <code>:focus-visible</code> — don't remove it outright. Do a full keyboard-only pass on your own page before launch; it takes three minutes and catches this instantly.</p>
+
+<h2>3. Respect <code>prefers-reduced-motion</code></h2>
+<p>Scroll-reveal animations and parallax effects are common on modern landing pages, and for a meaningful number of visitors with vestibular disorders, that motion causes real discomfort, not just mild annoyance. Wrap animation rules in a media query and disable or drastically simplify them when the user has requested it:</p>
+<pre><code>@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</code></pre>
+<p>This is a five-minute addition to a stylesheet, and it costs nothing for the visitors who don't have the preference set — the animation runs exactly as designed for everyone else.</p>
+
+<h2>4. One H1, a real heading hierarchy, and landmark regions</h2>
+<p>Screen reader users frequently navigate a page by jumping between headings, not by reading top to bottom — which means a page with three H1s, a skipped H3, or "features" and "pricing" both marked as generic <code>&lt;div&gt;</code>s is far harder to scan than one with a clean H1 → H2 → H3 structure. Wrap the page in real landmark elements too: <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>. These cost nothing visually — they're a markup choice, not a design choice — but they're the difference between a screen reader user skimming your page in ten seconds and giving up on it.</p>
+
+<h2>5. Label every form field, not just the placeholder</h2>
+<p>A placeholder that disappears the moment someone starts typing is not a label — screen readers may not announce it consistently, and sighted users lose the field's purpose the moment they start filling it in. Every input needs a real <code>&lt;label&gt;</code> element (visually hidden if your design calls for it) tied to the input via a matching <code>for</code>/<code>id</code> pair. Error messages need the same treatment: associate them with <code>aria-describedby</code> so a screen reader announces "email — invalid format" instead of leaving the user to guess which field the red text below the form refers to.</p>
+
+<h2>6. Alt text that describes, decorative images that don't need it</h2>
+<p>An image that conveys real information — a screenshot of the product, a chart, a diagram — needs alt text that describes what it shows, not the filename ("hero-image-final-v2.png" tells a screen reader user nothing). An image that's purely decorative — a background texture, a gradient blob — should have <code>alt=""</code> so screen readers skip it entirely instead of announcing something meaningless and wasting the listener's time. Getting this backwards in either direction is worse than doing nothing: describing decoration is noise, and leaving real content undescribed is a gap.</p>
+
+<h2>7. Build accordions and toggles out of real buttons</h2>
+<p>An FAQ accordion or pricing toggle built from a <code>&lt;div onclick=""&gt;</code> is invisible to keyboard and screen reader users — it has no focus state, no announced role, and no way to activate it without a mouse. Use a real <code>&lt;button&gt;</code> element with <code>aria-expanded="true/false"</code> reflecting its current state. This is a small markup change that makes the same visual component fully operable for everyone, with no design compromise.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Every fix here replaces something a visitor has to guess at — where the focus is, what a field is for, whether an image matters — with something they can perceive directly, which is exactly the same principle that makes a comparison table or a pricing page trustworthy. Accessibility isn't a separate audience to design for after the "real" page is done; a page built with real semantic HTML, labeled forms, and visible focus states is very often just a better-built page for every visitor, screen reader or not.</p>
+
+<p>If you're building a page for a category where trust and fairness are already part of the pitch — hiring, HR, finance — getting the accessibility basics right on your own landing page is a quiet but real credibility signal before a visitor has read a word of copy.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/anchor-ai-recruiting-landing.jpeg" alt="Anchor — AI Recruiting &amp; Hiring Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Anchor — AI Recruiting &amp; Hiring Copilot Landing Kit</h3><p class="muted">A calm, trustworthy landing page for AI recruiting, sourcing, and hiring copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Accessibility Basics Every AI/SaaS Landing Page Needs (and What It Costs to Skip Them)","description":"Color contrast, keyboard navigation, and reduced motion are not compliance checkboxes — they are conversion features that most AI/SaaS landing pages get wrong in the same handful of predictable ways.","datePublished":"2026-07-29","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

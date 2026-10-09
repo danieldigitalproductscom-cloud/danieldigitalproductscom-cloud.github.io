@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Free AI SaaS Headline Generator — Plinth</title>
+<meta name="description" content="Generate conversion-tested landing page headlines for your AI or SaaS product in seconds. Free, no signup."/>
+<meta property="og:title" content="Free AI SaaS Headline Generator — Plinth"/>
+<meta property="og:description" content="Generate conversion-tested landing page headlines for your AI or SaaS product in seconds. Free, no signup."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/tools/headline-generator/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/tools/headline-generator/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><section class="section"><div class="container narrow">
+  <div class="head"><span class="eyebrow">Free tool</span><h1 class="post-title">AI SaaS Landing Page Headline Generator</h1>
+    <p class="lead muted">Describe your product and get a dozen conversion-tested headline + subheadline options, instantly. No signup.</p></div>
+
+  <div class="tool">
+    <div class="tool-form">
+      <label>My product helps people…<input id="t-outcome" placeholder="ship launch posts in their brand voice"/></label>
+      <label>…who are (audience)<input id="t-aud" placeholder="founders"/></label>
+      <label>…by (what it does)<input id="t-does" placeholder="drafting on-brand copy with AI"/></label>
+      <label>…in (timeframe)<input id="t-time" placeholder="30 seconds"/></label>
+      <button id="t-go" class="btn btn-primary btn-lg">Generate headlines →</button>
+    </div>
+    <div id="t-out" class="tool-out" aria-live="polite"></div>
+  </div>
+
+  <div class="inline-cta">
+    <div><h3>Like what you wrote? Now you need the page.</h3>
+    <p class="muted">Drop your new headline into a ready-made AI/SaaS landing kit and launch today.</p>
+    <a href="/#templates" class="btn btn-primary">See the templates →</a></div>
+  </div>
+  </div></section>
+
+  <script>
+  (function(){
+    var $=function(id){return document.getElementById(id)};
+    var cap=function(s){return s?s.charAt(0).toUpperCase()+s.slice(1):s};
+    function gen(){
+      var outcome=($('t-outcome').value||'ship work faster').trim();
+      var aud=($('t-aud').value||'teams').trim();
+      var does=($('t-does').value||'automating the busywork').trim();
+      var time=($('t-time').value||'minutes').trim();
+      var H=[
+        cap(outcome)+' in '+time+'.',
+        'The fastest way to '+outcome+'.',
+        cap(aud)+': '+outcome+' without the busywork.',
+        cap(outcome)+' — on autopilot.',
+        'Stop wrestling with it. '+cap(outcome)+', '+time+' flat.',
+        'Built for '+aud+' who want to '+outcome+'.',
+        'From idea to done in '+time+'.',
+        cap(does)+', so you can '+outcome+'.',
+        'Finally, '+outcome+' without '+does.toLowerCase().replace(/^by /,'')+' eating your day.',
+        'Your unfair advantage: '+outcome+' in '+time+'.',
+        cap(outcome)+'. Today. Not next sprint.',
+        'The '+time+' way to '+outcome+'.'
+      ];
+      var subs=[
+        cap(does)+' for '+aud+'. No setup, no learning curve.',
+        'Made for '+aud+'. Start free, upgrade when you are ready.',
+        'Everything you need to '+outcome+' — nothing you do not.'
+      ];
+      var out=$('t-out');
+      out.innerHTML='<p class="muted small">Tap any headline to copy it. Pair with a subheadline below.</p>'+
+        H.map(function(h){return '<button class="hl" data-c="'+h.replace(/"/g,'&quot;')+'">'+h+'</button>'}).join('')+
+        '<h4 class="subs-h">Subheadlines</h4>'+
+        subs.map(function(s){return '<button class="hl sub" data-c="'+s.replace(/"/g,'&quot;')+'">'+s+'</button>'}).join('');
+      Array.prototype.forEach.call(out.querySelectorAll('.hl'),function(b){
+        b.addEventListener('click',function(){navigator.clipboard&&navigator.clipboard.writeText(b.getAttribute('data-c'));var t=b.textContent;b.textContent='Copied ✓';setTimeout(function(){b.textContent=t},900);});
+      });
+    }
+    $('t-go').addEventListener('click',gen);
+    gen();
+  })();
+  </script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
