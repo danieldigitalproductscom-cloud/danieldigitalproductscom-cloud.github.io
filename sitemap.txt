@@ -91,6 +91,7 @@ https://danieldigitalproductscom-cloud.github.io/demo/tether-ai-contract-lifecyc
 https://danieldigitalproductscom-cloud.github.io/demo/evalkit-ai-model-evaluation-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/mosaic-ai-customer-research-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/tariff-ai-pricing-optimization-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/switchboard-ai-llm-gateway-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
