@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Page Speed and Core Web Vitals for AI SaaS Landing Pages: What Actually Moves the Numbers — Plinth</title>
+<meta name="description" content="Most AI SaaS landing pages fail Core Web Vitals for the same handful of preventable reasons. The specific fixes that move LCP, CLS, and INP, in the order that gets you the most improvement per hour spent."/>
+<meta property="og:title" content="Page Speed and Core Web Vitals for AI SaaS Landing Pages: What Actually Moves the Numbers — Plinth"/>
+<meta property="og:description" content="Most AI SaaS landing pages fail Core Web Vitals for the same handful of preventable reasons. The specific fixes that move LCP, CLS, and INP, in the order that gets you the most improvement per hour spent."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/page-speed-core-web-vitals-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/page-speed-core-web-vitals-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-07-27</span>
+    <h1 class="post-title">Page Speed and Core Web Vitals for AI SaaS Landing Pages: What Actually Moves the Numbers</h1>
+    <div class="prose">
+<p>A slow landing page doesn't just lose Google's favor — it loses the visitor before your headline finishes loading. Founders usually notice Core Web Vitals only after a Search Console warning shows up, then reach for generic advice ("use a CDN," "compress images") that doesn't explain which fix actually matters for the page they built. Here's what to fix, in the order that gets you the most improvement per hour spent.</p>
+
+<h2>1. Find your real bottleneck before you touch anything</h2>
+<p>Run the page through PageSpeed Insights and read the "field data" (real visitor experience) separately from "lab data" (a single simulated run). Field data is the truth — it's what Google actually uses for ranking signals — and it will tell you which of the three metrics is failing: Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), or Interaction to Next Paint (INP). Don't optimize blind; a page failing CLS needs a completely different fix than one failing LCP, and time spent on the wrong one is wasted.</p>
+
+<h2>2. LCP: the hero image or heading is almost always the culprit</h2>
+<p>On a typical SaaS landing page, the Largest Contentful Paint element is either the hero heading text or a hero image/screenshot above the fold. If it's an image, make sure it's not being loaded through a JavaScript component that has to hydrate first — a plain <code>&lt;img&gt;</code> with a <code>fetchpriority="high"</code> attribute and no <code>loading="lazy"</code> (lazy-loading your own LCP image is a common self-inflicted mistake) will almost always beat a component-rendered one. Preload the hero image with a <code>&lt;link rel="preload"&gt;</code> tag in the head, and serve it as a modern format (WebP or AVIF) at the actual display size, not a 4000px original scaled down by CSS.</p>
+
+<h2>3. CLS: reserve space before content arrives, every time</h2>
+<p>Layout shift almost always traces back to one of three causes: images without explicit <code>width</code>/<code>height</code> attributes, web fonts swapping in and reflowing text, or a cookie banner/announcement bar injecting itself above the fold after load. Fix each directly — set explicit dimensions on every image, use <code>font-display: optional</code> or preload critical fonts so the fallback and web font occupy the same space, and reserve a fixed-height slot for any banner instead of pushing content down when it appears. CLS is the cheapest metric to fix and the one most founders ignore because it doesn't look "slow" — it just looks janky.</p>
+
+<h2>4. INP: audit what runs on first interaction, not just page load</h2>
+<p>Interaction to Next Paint measures how long the page takes to respond after a visitor clicks something — a pricing toggle, a FAQ accordion, a mobile nav button. The usual cause is a large JavaScript bundle blocking the main thread, often from a component library or analytics script loaded synchronously. Defer anything that isn't needed for the first interaction, split large scripts so they load after paint, and test your actual click targets (not just scroll performance) in Chrome DevTools' Performance panel.</p>
+
+<h2>5. Third-party scripts are the silent tax</h2>
+<p>Analytics, chat widgets, A/B testing tools, and ad pixels are the single most common reason an otherwise fast static page scores poorly. Each one adds its own network request, parse time, and often main-thread blocking work you didn't write and can't easily optimize. Audit every third-party tag on the page and ask whether it earns its cost — a chat widget that loads on every page for a 0.3% conversion lift may not be worth a 400ms INP hit. Load what you keep with <code>async</code> or <code>defer</code>, and consider firing non-critical scripts only after the first user interaction.</p>
+
+<h2>6. Fonts: fewer weights, self-hosted, preloaded</h2>
+<p>Pulling four font weights from a third-party CDN is an easy way to add several render-blocking requests to every page load. Self-host your fonts, subset them to the character set you actually use, limit yourself to two weights per family, and preload the ones used above the fold. This single change often improves both LCP (faster text paint) and CLS (less reflow from font swapping) at the same time.</p>
+
+<h2>7. Static HTML beats a framework you don't need</h2>
+<p>If your landing page doesn't need client-side routing, state management, or a component tree, shipping one anyway means paying a JavaScript parse-and-hydrate tax on every visit for a page that's fundamentally just marketing copy. A plain HTML/CSS page with a handful of small, deferred scripts for interactivity (accordion, mobile nav, form validation) will out-perform a React or Vue bundle on Core Web Vitals almost every time, because there's no framework runtime to download before the content is usable.</p>
+
+<h2>8. Re-test after every deploy, not once</h2>
+<p>Core Web Vitals field data is a rolling 28-day average, so a fix you ship today won't show improved numbers in Search Console for weeks — and a regression from an unrelated change (a new script, a redesigned hero) can silently erode months of work before anyone notices. Run PageSpeed Insights as part of your deploy checklist, not as an occasional audit, so regressions get caught within days instead of discovered in a quarterly review.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Almost every Core Web Vitals failure on a SaaS landing page traces back to the same root cause: work that could happen before the visitor arrives (image sizing, font loading, layout reservation) is instead happening after, competing with their attention for the first few seconds. Fix the timing, not just the assets.</p>
+
+<p>If you're starting a new page, it's far easier to keep it fast than to retrofit speed onto a framework-heavy one later — a zero-dependency HTML/CSS template with sized images and deferred scripts by default starts every Core Web Vitals audit from a passing score instead of a rescue project.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/echo-ai-meeting-landing.jpeg" alt="Echo — AI Meeting Notes &amp; Transcription Landing Kit" width="560" height="315"/>
+      <div><h3>Echo — AI Meeting Notes &amp; Transcription Landing Kit</h3><p class="muted">A clean, transcript-forward landing page for AI meeting notes and transcription tools.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Page Speed and Core Web Vitals for AI SaaS Landing Pages: What Actually Moves the Numbers","description":"Most AI SaaS landing pages fail Core Web Vitals for the same handful of preventable reasons. The specific fixes that move LCP, CLS, and INP, in the order that gets you the most improvement per hour spent.","datePublished":"2026-07-27","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

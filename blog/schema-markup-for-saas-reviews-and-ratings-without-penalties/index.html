@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Review and Rating Markup for AI SaaS Pages: What Is Allowed and What Backfires — Plinth</title>
+<meta name="description" content="How AI/SaaS founders can show real customer ratings, mark them up with structured data safely, and avoid the self-serving review patterns that lose rich results or trigger manual actions."/>
+<meta property="og:title" content="Review and Rating Markup for AI SaaS Pages: What Is Allowed and What Backfires — Plinth"/>
+<meta property="og:description" content="How AI/SaaS founders can show real customer ratings, mark them up with structured data safely, and avoid the self-serving review patterns that lose rich results or trigger manual actions."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/schema-markup-for-saas-reviews-and-ratings-without-penalties/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/schema-markup-for-saas-reviews-and-ratings-without-penalties/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-13</span>
+    <h1 class="post-title">Review and Rating Markup for AI SaaS Pages: What Is Allowed and What Backfires</h1>
+    <div class="prose">
+<p>Star ratings in search results can lift click-through rate, and founders reasonably want them. But review markup is one of the most abused corners of structured data, and Google's rules for it are specific. Get it wrong and you lose the rich result at best, or receive a manual action at worst. This guide explains what is allowed for a software product page and how to build social proof that is both honest and indexable.</p>
+
+<h2>Know the rules that matter for SaaS</h2>
+<p>Three constraints cause most problems:</p>
+<ul>
+  <li><strong>Reviews must be visible on the page.</strong> Markup describing ratings users cannot see is treated as spam.</li>
+  <li><strong>Self-serving reviews on your own pages are ineligible.</strong> Google stopped showing star snippets for LocalBusiness and Organization entities when the reviews are about the entity marking them up. Do not put <code>aggregateRating</code> on your organization or home page expecting stars.</li>
+  <li><strong>The item reviewed must be a supported type.</strong> For software, that means <code>SoftwareApplication</code> (or <code>WebApplication</code>/<code>MobileApplication</code>), with the rating attached to that product page.</li>
+</ul>
+<p>Always check the current documentation before shipping, as eligibility rules change. Treat rich results as a bonus, never as a plan.</p>
+
+<h2>Only mark up ratings you can prove</h2>
+<p>An <code>aggregateRating</code> needs a real rating value, a real count, and a source. If you have eleven reviews, say eleven. Do not round up, do not invent a count, and do not copy a score from a third-party site unless that site's reviews appear on your page with attribution. A defensible setup looks like this:</p>
+<ol>
+  <li>Collect reviews through a system you control, such as a post-onboarding email or an in-app prompt, and store the raw responses.</li>
+  <li>Display the average and count on the product page, with a link to where reviews live.</li>
+  <li>Generate the JSON-LD from the same data source as the visible number, so they can never drift apart.</li>
+</ol>
+<p>That third point is the one teams skip. A hardcoded <code>ratingValue</code> in a template that nobody updates becomes a liability the day the real average changes.</p>
+
+<h2>A minimal, valid example</h2>
+<p>On a product page, the structure is a <code>SoftwareApplication</code> with an offer and a rating:</p>
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ExampleApp",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.6",
+    "ratingCount": "87"
+  }
+}</code></pre>
+<p>Validate it with the Rich Results Test, then confirm the same numbers appear in the visible page copy.</p>
+
+<h2>Use third-party reviews the right way</h2>
+<p>Review platforms such as G2 and Capterra carry more weight with buyers than reviews you host yourself. You can quote them, but with discipline:</p>
+<ul>
+  <li>Attribute each quote to a named person, role, and company where permitted, and link to the original listing.</li>
+  <li>Do not cherry-pick a five-star quote and imply it represents the average. Show the platform's overall score next to the quote.</li>
+  <li>Use platform badges as images with alt text, not as a substitute for readable text.</li>
+  <li>Keep the numbers current. A "4.8 on G2" badge from two years ago erodes trust when a buyer clicks through and sees 4.3.</li>
+</ul>
+<p>Review-platform rules matter too. Some forbid incentivizing reviews with anything beyond a small, disclosed thank-you, and offering rewards only for positive feedback violates nearly everyone's terms.</p>
+
+<h2>Do not gate or filter to inflate</h2>
+<p>"Review gating" means asking happy customers to post publicly while routing unhappy ones to private feedback. It skews ratings and breaks the guidelines of major review platforms and consumer-protection rules in several regions. A cleaner approach is to ask every customer at the same moment, route complaints to support in parallel, and respond publicly to critical reviews. Buyers trust a 4.5 with thoughtful replies to the one-star reviews more than a flawless 5.0.</p>
+
+<h2>Handle AI-specific credibility concerns</h2>
+<p>Buyers of AI products worry about accuracy, data handling, and reliability. Reviews that speak to those points carry weight. When requesting reviews, prompt for specifics: what task did you use it for, how long did it take before, and what changed? Specific language such as "cut first-response time from four hours to forty minutes" persuades far more than "great tool". It also gives you unique, keyword-relevant text that people actually search for.</p>
+<p>Never generate testimonials with a language model and present them as customers. It is deceptive, it is increasingly illegal in some jurisdictions, and it is easy to detect when every quote shares the same cadence.</p>
+
+<h2>Where to place proof on the page</h2>
+<ul>
+  <li>Put one strong, attributed quote and the aggregate score near the primary call to action.</li>
+  <li>Place a fuller reviews section lower on the page, with the date of each review.</li>
+  <li>On pricing pages, put a short quote about value or onboarding next to the plan most people choose.</li>
+  <li>Keep a dedicated reviews or customers page that links out to your listings, and link to it from the footer.</li>
+</ul>
+
+<h2>Monitor for problems</h2>
+<p>After launch, check the Enhancements section in Search Console for review snippet warnings. Look for "missing field" notices and any manual actions under Security and Manual Actions. If star snippets disappear, it usually means the markup no longer matches the page, the entity type is ineligible, or the rule changed. Audit by comparing the rendered page against the JSON-LD, not by assuming the template is fine.</p>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Markup only on product pages, not on organization or home pages for self-reviews.</li>
+  <li>Ratings and counts visible on the page and generated from the same data.</li>
+  <li>Real review count, no rounding or invented numbers.</li>
+  <li>Third-party scores attributed, current, and linked to the source.</li>
+  <li>Every customer asked, no gating of negative feedback.</li>
+  <li>No incentives tied to positive ratings; any thank-you disclosed.</li>
+  <li>No AI-generated testimonials presented as real customers.</li>
+  <li>Validated with the Rich Results Test and monitored in Search Console.</li>
+</ol>
+
+<p>If you are assembling a product page and want a testimonials block and metrics band already laid out, the support-focused landing kit linked here includes both and is easy to wire to your own review data.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/halo-ai-support-landing.jpeg" alt="Halo — AI Customer Support Landing Kit" width="560" height="315"/>
+      <div><h3>Halo — AI Customer Support Landing Kit</h3><p class="muted">A warm, trustworthy landing page for AI customer support and helpdesk products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Review and Rating Markup for AI SaaS Pages: What Is Allowed and What Backfires","description":"How AI/SaaS founders can show real customer ratings, mark them up with structured data safely, and avoid the self-serving review patterns that lose rich results or trigger manual actions.","datePublished":"2026-10-13","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
