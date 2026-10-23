@@ -1,0 +1,4 @@
+# Changelog
+
+## 1.0.0 — 2026-08-11
+- Initial release of the Keystone landing page template.
