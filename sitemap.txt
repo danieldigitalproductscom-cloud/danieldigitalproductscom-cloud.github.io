@@ -105,11 +105,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/ledgerhawk-ai-audit-landin
 https://danieldigitalproductscom-cloud.github.io/demo/ardent-ai-customer-insights-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/tessera-ai-product-analytics-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/mason-ai-internal-tools-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/nectar-ai-ecommerce-support-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/pagination-and-load-more-seo-for-ai-saas-blogs-and-changelogs/
 https://danieldigitalproductscom-cloud.github.io/blog/server-log-analysis-for-ai-saas-seo-what-googlebot-actually-crawls/
 https://danieldigitalproductscom-cloud.github.io/blog/shared-outputs-and-user-generated-pages-indexing-for-ai-saas/
 https://danieldigitalproductscom-cloud.github.io/blog/versioned-docs-and-deprecated-api-pages-seo-for-ai-saas/
