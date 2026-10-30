@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Enterprise-Readiness Pages: What to Show About SSO, SCIM, and RBAC Before You Fully Have Them — Plinth</title>
+<meta name="description" content="What SSO, SCIM provisioning, RBAC, and audit logs actually mean to an enterprise buyer, how to build an honest enterprise-readiness page before every feature exists, and the procurement questions that stall deals when nobody answers them upfront."/>
+<meta property="og:title" content="Enterprise-Readiness Pages: What to Show About SSO, SCIM, and RBAC Before You Fully Have Them — Plinth"/>
+<meta property="og:description" content="What SSO, SCIM provisioning, RBAC, and audit logs actually mean to an enterprise buyer, how to build an honest enterprise-readiness page before every feature exists, and the procurement questions that stall deals when nobody answers them upfront."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/enterprise-readiness-pages-sso-scim-rbac-for-ai-saas/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/enterprise-readiness-pages-sso-scim-rbac-for-ai-saas/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-14</span>
+    <h1 class="post-title">Enterprise-Readiness Pages: What to Show About SSO, SCIM, and RBAC Before You Fully Have Them</h1>
+    <div class="prose">
+<p>Somewhere around your first $20–50k contract, the questions change. A buyer stops asking what your product does and starts asking who at their company can log into it, how someone gets removed the day they're terminated, and whether their IT team controls that or you do. None of that is about your AI model or your features — it's procurement, and it decides deals before your champion even gets to demo the product again. Founders who treat this as a late-stage surprise lose weeks to it. The ones who put a clear enterprise-readiness page up front skip most of that back-and-forth entirely.</p>
+
+<h2>1. SSO/SAML: the first question, every time</h2>
+<p>Single sign-on isn't a nice-to-have past a certain company size — it's how an IT team keeps a central, revocable list of who can access every tool the company pays for. If a buyer can't provision your product through Okta, Azure AD, or Google Workspace, security review often stops there, regardless of how good the product is. If you have SSO, name the providers you support explicitly ("SAML 2.0 via Okta, Azure AD, and Google Workspace") rather than a vague "enterprise SSO available." If you don't have it yet, say so precisely: "SAML SSO is on our roadmap for Q1 2027" reads as far more credible than silence, and it lets a buyer decide whether to wait or move on instead of finding out after a month of back-and-forth.</p>
+
+<h2>2. SCIM provisioning solves the problem SSO doesn't</h2>
+<p>SSO controls how someone logs in; SCIM controls how their account gets created and — critically — deleted when they leave the company. Without SCIM, offboarding is a manual step someone on the customer's IT team has to remember to do in your product specifically, and "former employee still has access to a tool nobody remembered" is exactly the kind of finding that fails a SOC 2 audit or an internal security review. If you support SCIM, say which identity providers it works with. If you don't yet, a documented manual offboarding process ("deprovision within 24 hours of a written request") is a reasonable stopgap to state plainly — an unanswered question here reads as a risk nobody's thought about, even if you have.</p>
+
+<h2>3. RBAC: the feature that unblocks the security sign-off, not just the org chart</h2>
+<p>Role-based access control gets pitched internally as a permissions convenience feature, but to a security reviewer it answers a specific question: can a company limit who sees sensitive data inside your product without giving everyone admin access by default. A simple page section showing your actual roles (Owner, Admin, Member, Viewer, or whatever you support) and what each can see and do is more convincing than a paragraph claiming "granular permissions." If your RBAC is still coarse — say, everyone with an account can see everything — don't hide it. State the current model honestly and, if it's coming, when a finer-grained version ships.</p>
+
+<h2>4. Audit logs: the quiet dealbreaker nobody asks about directly</h2>
+<p>Audit logs rarely come up in the first conversation, but they show up on almost every enterprise security questionnaire: "can you provide a record of who accessed or changed what, and for how long is it retained?" A short, specific answer — "Full audit log of logins, permission changes, and data exports, retained for 12 months, exportable by admins" — closes a line item that would otherwise become a follow-up email and a week of delay. If your logging is thinner than that today, say exactly what you do capture rather than implying more than you have; a buyer's security team will test the claim against the product, not just the page.</p>
+
+<h2>5. Data residency and single-tenant options, stated as a fact, not a pitch</h2>
+<p>Larger buyers, especially in the EU, healthcare, or finance, often need to know which region their data lives in and whether it's ever comingled with other customers' data. If you offer regional hosting or a single-tenant deployment option, put the specifics on the page: which regions, what the tradeoffs are (usually price and onboarding time), and who it's actually for — most customers don't need it, and pretending otherwise just adds noise. If you don't offer it yet, it's fine to say "available on our Enterprise plan, contact us to discuss requirements" rather than leaving the question unanswered.</p>
+
+<h2>6. Pre-fill the security questionnaire before they send it</h2>
+<p>Most enterprise procurement teams use a standardized form — a SIG Lite, a CAIQ, or their own internal version — asking the same forty to eighty questions every vendor gets asked: encryption standards, subprocessor list, incident response process, pen test cadence, backup and disaster recovery. Publishing a one-page summary that answers the dozen most common questions (encryption at rest and in transit, subprocessors, last pen test date, RTO/RPO targets) doesn't replace the formal questionnaire, but it lets your champion self-serve the easy 80% and reserves the real back-and-forth for questions specific to their deployment. It also signals, correctly, that you've done this before.</p>
+
+<h2>7. Be honest about what's a roadmap item, not a shipped feature</h2>
+<p>The instinct under deal pressure is to blur the line between "we have this" and "we're building this." Resist it. An enterprise buyer's security team will verify claims during a trial or a technical review, and getting caught overstating SSO support or audit-log depth doesn't just kill that deal — it becomes the story their security lead tells the next vendor they evaluate. A clearly labeled "Available now" versus "On our roadmap, targeting [quarter]" split costs you nothing in credibility and often nothing in the deal either, because buyers who need something six months out are usually still willing to sign now if the timeline is real and specific.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Every item on an enterprise-readiness page answers the same underlying question a security or IT reviewer has: who can control access to this system, and can we prove it later if something goes wrong. Specific, verifiable answers — named providers, actual retention periods, a real roadmap quarter — move a deal forward. Vague reassurance just delays the moment someone asks the question again, this time over email, mid-quarter, with your deal at risk.</p>
+
+<p>If you're building this page from scratch, start from a template already structured around trust and compliance sections, so you're filling in your actual SSO providers and retention numbers instead of designing the layout the week a security review lands on your desk.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/vault-security-landing.jpeg" alt="Vault — Security SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Vault — Security SaaS Landing Page Kit</h3><p class="muted">A high-trust landing page for cybersecurity and compliance SaaS.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Enterprise-Readiness Pages: What to Show About SSO, SCIM, and RBAC Before You Fully Have Them","description":"What SSO, SCIM provisioning, RBAC, and audit logs actually mean to an enterprise buyer, how to build an honest enterprise-readiness page before every feature exists, and the procurement questions that stall deals when nobody answers them upfront.","datePublished":"2026-09-14","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

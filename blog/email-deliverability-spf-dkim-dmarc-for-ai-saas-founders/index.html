@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Email Deliverability Basics for AI/SaaS Founders: SPF, DKIM, DMARC, and Why Your Signup Emails Land in Spam — Plinth</title>
+<meta name="description" content="The three DNS records and handful of sending habits that decide whether your welcome, verification, and billing emails reach the inbox — or quietly die in spam. A practical setup guide for solo and small AI/SaaS teams."/>
+<meta property="og:title" content="Email Deliverability Basics for AI/SaaS Founders: SPF, DKIM, DMARC, and Why Your Signup Emails Land in Spam — Plinth"/>
+<meta property="og:description" content="The three DNS records and handful of sending habits that decide whether your welcome, verification, and billing emails reach the inbox — or quietly die in spam. A practical setup guide for solo and small AI/SaaS teams."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/email-deliverability-spf-dkim-dmarc-for-ai-saas-founders/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/email-deliverability-spf-dkim-dmarc-for-ai-saas-founders/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-24</span>
+    <h1 class="post-title">Email Deliverability Basics for AI/SaaS Founders: SPF, DKIM, DMARC, and Why Your Signup Emails Land in Spam</h1>
+    <div class="prose">
+<p>A founder will spend a week polishing a landing page and then wire up transactional email in ten minutes with whatever the framework defaults to — and never notice that half their signup-confirmation emails are landing in spam. Nobody complains when an email goes missing; the user just assumes your product is broken and leaves. Deliverability is invisible until it's costing you activated users, and the fix is a handful of DNS records most founders have simply never set up.</p>
+
+<h2>The three records that decide your fate</h2>
+<p><strong>SPF (Sender Policy Framework)</strong> is a DNS TXT record that lists which servers are allowed to send mail claiming to be from your domain. It looks like <code>v=spf1 include:_spf.google.com include:sendgrid.net ~all</code>. Every mailbox provider checks this before anything else — if the sending server isn't on the list, your mail starts with a strike against it. The most common mistake is having <em>two</em> SPF records (one added by your old ESP, one by your new one) instead of merging them into a single record; DNS only honors the first SPF TXT record it finds, so the second one is silently ignored.</p>
+<p><strong>DKIM (DomainKeys Identified Mail)</strong> cryptographically signs each outgoing email with a private key, and the matching public key sits in a DNS TXT record at a selector like <code>selector1._domainkey.yourdomain.com</code>. This proves the email wasn't altered in transit and really came from a server you authorized. Your email service (Postmark, SES, Resend, SendGrid) generates the keypair and gives you the exact record to add — you almost never write this by hand.</p>
+<p><strong>DMARC (Domain-based Message Authentication)</strong> is the record that ties SPF and DKIM together and tells receiving servers what to do when a message fails both: ignore it, quarantine it, or reject it outright. Start permissive: <code>v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com</code>. The <code>rua</code> address collects daily aggregate reports from Google, Microsoft, and Yahoo showing every server that sent mail claiming to be you — including ones you didn't authorize. Watch those reports for two to four weeks, confirm every legitimate source is passing, then move to <code>p=quarantine</code> and eventually <code>p=reject</code>. Jumping straight to <code>p=reject</code> without watching reports first is how founders accidentally block their own signup emails.</p>
+
+<h2>Separate your sending domains — this is the highest-leverage move</h2>
+<p>Send transactional mail (password resets, receipts, verification codes) and marketing mail (newsletters, product updates, cold outreach) from different subdomains — <code>mail.yourdomain.com</code> for transactional, <code>news.yourdomain.com</code> for marketing — each with its own SPF/DKIM/DMARC. Subdomains build independent sender reputation. If your marketing blast gets flagged for spam complaints, it won't drag down deliverability for the password-reset email a user is actively waiting for. Never send both categories through the same domain and provider combination; it's the single most common cause of "our critical emails randomly stop arriving."</p>
+
+<h2>Warm a new sending domain before you need it to work</h2>
+<p>A brand-new domain or IP has no reputation, and mailbox providers throttle or spam-box mail from unknown senders by default. If you're about to launch and expect a burst of signups, don't let day one be the first time you've ever sent mail from that domain. Send a small, steady volume of real transactional email for one to two weeks beforehand — even test signups to your own team's addresses across Gmail, Outlook, and Yahoo — so the domain has an established, clean sending pattern before real user volume hits it.</p>
+
+<h2>Pick a transactional-first ESP, not just whatever your marketing tool bundles</h2>
+<p>Marketing platforms (Mailchimp, Customer.io, Loops) are optimized for broadcast sends and often share IP pools across many customers — if a neighbor on that shared IP gets flagged as a spammer, your deliverability can suffer with them. For transactional mail specifically, use a provider built for it: Postmark, Amazon SES, or Resend. These track a "transactional reputation" separately from bulk mail and give you per-message delivery status, bounce, and open events via webhook, which you want anyway for debugging "the user says they never got the email" support tickets.</p>
+
+<h2>List hygiene is a deliverability control, not just tidiness</h2>
+<p>Every hard bounce (invalid address) and spam complaint counts against your domain's reputation with the receiving provider, and providers remember over months, not days. Suppress hard-bounced addresses immediately and never retry them — most ESPs do this automatically, but verify it's actually wired into your app's signup flow and not just the marketing tool. Never import a purchased or scraped list; a spike of unknown addresses with no prior relationship to your domain is the fastest way to get your entire domain reputation tanked in a single afternoon.</p>
+
+<h2>The rule that changed in 2024 and still trips people up</h2>
+<p>Google and Yahoo now require, for any sender pushing more than roughly 5,000 messages a day to their users, a one-click <code>List-Unsubscribe</code> header (RFC 8058) on marketing mail, plus a spam complaint rate under 0.3%. Below that volume it's not enforced, but doing it anyway costs nothing and protects you the day you cross the threshold. Most modern ESPs add the header automatically if you use their built-in unsubscribe link — the mistake is hand-rolling an unsubscribe flow that only works via a link click on your website, which doesn't satisfy the one-click mail-client requirement.</p>
+
+<h2>Check your work with free tools, not guesswork</h2>
+<p>Register your domain with <a href="https://postmaster.google.com">Google Postmaster Tools</a> — it's free and shows your actual spam-rate and reputation data as seen by Gmail, which is the single most useful deliverability dashboard available to a small team. Send a test message to <a href="https://www.mail-tester.com">mail-tester.com</a> before a launch to get an instant score covering SPF, DKIM, DMARC, and common content-based spam triggers. Both take under five minutes and catch the mistakes above before your users do.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/threadly-ai-inbox-landing.jpeg" alt="Threadly — AI Inbox &amp; Email Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Threadly — AI Inbox &amp; Email Copilot Landing Kit</h3><p class="muted">A calm, focused landing page for AI inbox management, email triage, and reply-drafting copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Email Deliverability Basics for AI/SaaS Founders: SPF, DKIM, DMARC, and Why Your Signup Emails Land in Spam","description":"The three DNS records and handful of sending habits that decide whether your welcome, verification, and billing emails reach the inbox — or quietly die in spam. A practical setup guide for solo and small AI/SaaS teams.","datePublished":"2026-08-24","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

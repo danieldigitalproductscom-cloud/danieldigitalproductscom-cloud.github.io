@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Server Log Analysis for AI SaaS SEO: What Googlebot Actually Crawls on Your Site — Plinth</title>
+<meta name="description" content="Search Console shows samples; your server logs show everything. How AI SaaS teams can verify Googlebot, find wasted crawl budget, catch broken pages, and see which AI crawlers visit, using a simple weekly log review."/>
+<meta property="og:title" content="Server Log Analysis for AI SaaS SEO: What Googlebot Actually Crawls on Your Site — Plinth"/>
+<meta property="og:description" content="Search Console shows samples; your server logs show everything. How AI SaaS teams can verify Googlebot, find wasted crawl budget, catch broken pages, and see which AI crawlers visit, using a simple weekly log review."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/server-log-analysis-for-ai-saas-seo-what-googlebot-actually-crawls/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/server-log-analysis-for-ai-saas-seo-what-googlebot-actually-crawls/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-23</span>
+    <h1 class="post-title">Server Log Analysis for AI SaaS SEO: What Googlebot Actually Crawls on Your Site</h1>
+    <div class="prose">
+<p>Most SaaS marketing sites are small enough that crawl budget is not a daily worry. But log files still answer questions no other tool can: Is Google fetching your new pricing page? Are crawlers burning requests on parameter URLs? Which pages return errors only bots see? Search Console reports sampled, delayed data. Your server or CDN logs record every request. This guide shows a lightweight way to use them.</p>
+
+<h2>Get the logs you need</h2>
+<p>You need, per request: timestamp, URL path with query string, status code, user agent, IP address, response time, and bytes sent. Where to find them depends on your setup:</p>
+<ul>
+  <li><strong>CDN or host (Cloudflare, Vercel, Netlify, Fastly):</strong> enable log export or log push to storage. Many platforms keep only a few days by default, so turn on retention of at least 30 days.</li>
+  <li><strong>Your own servers (nginx, Apache):</strong> access logs already contain these fields in the combined format; add <code>$request_time</code> if it is missing.</li>
+  <li><strong>Privacy:</strong> logs contain IP addresses. Filter to bot traffic before sharing, and follow your retention policy.</li>
+</ul>
+
+<h2>Verify that "Googlebot" is really Googlebot</h2>
+<p>User agent strings are trivially faked, and a large share of requests claiming to be Googlebot are scrapers. Verify by reverse DNS: the IP should resolve to a hostname ending in <code>googlebot.com</code> or <code>google.com</code>, and that hostname should resolve back to the same IP. Google also publishes its crawler IP ranges as JSON, which is easier to match in bulk. Do the same for Bingbot using Microsoft's published ranges. Drop unverified requests from your analysis, otherwise your crawl counts will be inflated.</p>
+
+<h2>Questions to answer each week</h2>
+<ol>
+  <li><strong>What status codes do bots receive?</strong> Group verified Googlebot requests by status. A healthy site is mostly 200 with a small share of 301 and 304. Many 404s, 5xx errors, or redirect chains deserve investigation.</li>
+  <li><strong>Which directories get the most crawling?</strong> If <code>/app/</code>, <code>/api/</code>, or search result pages receive more requests than <code>/blog/</code> and <code>/pricing</code>, you are spending crawler attention on pages that cannot rank.</li>
+  <li><strong>Are important pages crawled at all?</strong> Compare your sitemap URLs against URLs Googlebot requested in the last 30 days. Pages never fetched are either not discovered (weak internal linking) or deprioritized (low perceived value).</li>
+  <li><strong>How often are key pages recrawled?</strong> Pricing, product, and comparison pages should be revisited within days. Weeks between visits suggest a weak signal of freshness or importance.</li>
+  <li><strong>How slow are responses to bots?</strong> Consistently slow time-to-first-byte reduces how much Google is willing to fetch. Watch the 95th percentile, not the average.</li>
+</ol>
+
+<h2>Common findings and fixes</h2>
+<ul>
+  <li><strong>Parameter sprawl.</strong> URLs like <code>?utm_source=</code>, <code>?ref=</code>, <code>?sort=</code> crawled thousands of times. Fix with canonical tags, remove parameters from internal links, and block truly useless patterns in robots.txt.</li>
+  <li><strong>Redirect chains.</strong> A request that goes http to https to www to a trailing-slash variant wastes four fetches. Point internal links and the sitemap at the final URL and collapse redirects into one hop.</li>
+  <li><strong>Soft 404s and empty templates.</strong> Pages returning 200 with almost no content. Return a real 404 or 410, or add substance.</li>
+  <li><strong>Stale URLs from old launches.</strong> Bots keep requesting removed pages for months. Redirect those with a relevant replacement, and let the rest return 410.</li>
+  <li><strong>JavaScript and API endpoints.</strong> If crawlers hit JSON endpoints your pages depend on, confirm they are not blocked by robots.txt, since blocked resources can prevent correct rendering.</li>
+  <li><strong>Authentication walls.</strong> Bots repeatedly receiving 302 redirects to a login page indicate internal links pointing into the app. Move those links behind a logged-in check or add <code>rel="nofollow"</code> where appropriate.</li>
+</ul>
+
+<h2>See which AI crawlers visit</h2>
+<p>Logs are also the only reliable way to see AI-related crawlers. Search for user agents such as GPTBot, ClaudeBot, PerplexityBot, and Google-Extended related fetches, and Applebot-Extended, then compare against your robots.txt policy. Check that the bots you allowed can reach your docs and product pages, and that the ones you disallowed are honoring it. Not every crawler respects robots.txt; if one does not, block it at the CDN or firewall using verified IP ranges. Decide your policy deliberately: allowing retrieval crawlers can help your product appear in AI answers, while blocking training crawlers is a separate choice.</p>
+
+<h2>A minimal workflow without special software</h2>
+<p>You do not need an enterprise log analyzer. A practical setup for a small team:</p>
+<ol>
+  <li>Export 30 days of logs to a bucket or local folder.</li>
+  <li>Load them into a database, a spreadsheet for small volumes, or a command-line tool such as DuckDB, which queries compressed files directly.</li>
+  <li>Filter to verified search bots and group by path, status, and day.</li>
+  <li>Save the queries so the same report runs every week; compare against the previous week rather than reading raw numbers.</li>
+  <li>Log each fix with a date so you can see the effect on crawl patterns and indexing in Search Console two to four weeks later.</li>
+</ol>
+
+<h2>Cross-check with Search Console</h2>
+<p>Use the Crawl Stats report for the trend and logs for the detail. If Crawl Stats shows a drop in requests, logs tell you which sections stopped being fetched. If Page Indexing shows "Discovered, currently not indexed," check the logs: if Googlebot never requested those URLs, the problem is discovery and internal links; if it requested them and chose not to index, the problem is content quality or duplication.</p>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Retain at least 30 days of logs with path, status, user agent, IP, and response time.</li>
+  <li>Verify Googlebot and Bingbot by reverse DNS or published IP ranges.</li>
+  <li>Review status code mix, top crawled directories, and uncrawled sitemap URLs weekly.</li>
+  <li>Remove parameter URLs, redirect chains, and soft 404s from internal links and sitemaps.</li>
+  <li>Check AI crawler activity against your robots.txt policy.</li>
+  <li>Record each change and recheck the logs after a few weeks.</li>
+</ol>
+
+<p>Log analysis is analytics applied to bots instead of visitors. If your team also wants plain-language answers about on-site behavior, the product analytics landing kit linked here shows how to present that kind of insight clearly on a product page.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/tessera-ai-product-analytics-landing.jpeg" alt="Tessera — AI Product Analytics Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Tessera — AI Product Analytics Copilot Landing Kit</h3><p class="muted">A clear, insight-forward landing page for AI product analytics copilots that answer questions in plain language.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/xqaxm" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Server Log Analysis for AI SaaS SEO: What Googlebot Actually Crawls on Your Site","description":"Search Console shows samples; your server logs show everything. How AI SaaS teams can verify Googlebot, find wasted crawl budget, catch broken pages, and see which AI crawlers visit, using a simple weekly log review.","datePublished":"2026-10-23","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

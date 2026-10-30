@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Content Pruning for AI SaaS Blogs: When to Delete, Redirect, or Consolidate Old Pages — Plinth</title>
+<meta name="description" content="Two years into a content strategy, half your blog is quietly dragging the other half down. A practical framework for deciding what to cut, what to merge, and what to leave alone."/>
+<meta property="og:title" content="Content Pruning for AI SaaS Blogs: When to Delete, Redirect, or Consolidate Old Pages — Plinth"/>
+<meta property="og:description" content="Two years into a content strategy, half your blog is quietly dragging the other half down. A practical framework for deciding what to cut, what to merge, and what to leave alone."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/content-pruning-when-to-delete-redirect-or-consolidate-old-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/content-pruning-when-to-delete-redirect-or-consolidate-old-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-30</span>
+    <h1 class="post-title">Content Pruning for AI SaaS Blogs: When to Delete, Redirect, or Consolidate Old Pages</h1>
+    <div class="prose">
+<p>Every AI SaaS blog that's been running for a year or two ends up with the same problem: a pile of old posts that were written to hit a publishing cadence, not because anyone had something specific to say. Those pages don't just sit there harmlessly. Google's helpful-content systems evaluate sites in aggregate, and a large share of thin, outdated, or overlapping pages can drag down how the rest of your site is trusted and ranked. Pruning isn't about chasing a smaller sitemap for its own sake — it's about making sure the pages that matter aren't being diluted by the ones that don't.</p>
+
+<h2>1. Pull the data before you touch anything</h2>
+<p>Export the Pages report from Search Console for the trailing 16 months (the maximum window it stores), and pair it with your CMS's publish list so nothing is missing from the export. For every URL you want, capture: clicks, impressions, average position, last crawl date, and indexing status. Cross-reference against GA4 (or your analytics tool) for average engagement time and whether the page has any inbound links from other pages on your own site. A page can look fine in Search Console — a handful of impressions — and still be a candidate for action if it's an orphan nobody links to and it hasn't earned a single click in a year.</p>
+
+<h2>2. Sort every page into one of four buckets</h2>
+<p>Once you have the data, every underperforming page falls into one of four categories, and each gets a different treatment:</p>
+<ul>
+  <li><strong>Delete</strong> — thin, outdated, or off-topic content with no traffic and no realistic path to earning any.</li>
+  <li><strong>Redirect</strong> — a page that duplicates or has been superseded by a stronger one you already have.</li>
+  <li><strong>Consolidate</strong> — three or four thin pages that each cover a sliver of the same topic and would be stronger merged into one comprehensive page.</li>
+  <li><strong>Refresh</strong> — a page with real search demand and some existing authority (backlinks, historical rankings) that's simply gone stale.</li>
+</ul>
+
+<h2>3. When to actually delete</h2>
+<p>Delete when a page has zero clicks over 12+ months, no inbound links from elsewhere on your site or the web, and covers a topic that no longer maps to anything your product does — leftover posts from a pivot, or a "2023 trends" listicle nobody will ever search for again in 2026. For these, a hard 404 is fine; if the page ever had meaningful traffic or backlinks historically, return a 410 (Gone) instead of a 404 — it signals intentional removal rather than a broken link, and Google tends to drop 410s from the index faster than 404s, which matters if you want the crawl budget back sooner.</p>
+
+<h2>4. When to redirect instead of delete</h2>
+<p>If a dying page targets a keyword or topic that a stronger, more current page on your site already covers — even partially — 301 redirect it there instead of deleting it. This passes along whatever residual authority and backlinks the old URL accumulated rather than throwing them away. The trap to avoid: redirecting a page to a destination that isn't genuinely relevant just to avoid a 404. Google evaluates redirect relevance, and a graveyard of soft-404-like redirects to your homepage is treated as a quality signal almost as bad as the thin content it replaced. Also check for redirect chains — a page that's already redirecting to another redirect — and collapse them to a single hop each time you touch one.</p>
+
+<h2>5. When to consolidate</h2>
+<p>This is the highest-leverage move and the one teams skip most often because it requires actual writing, not just a redirect rule. Look for clusters of three-plus posts that each rank weakly for close variations of the same query — "AI SEO tools," "best AI SEO tools 2025," "AI SEO software comparison" — none of which individually has enough depth to rank on page one. Merge them into a single, genuinely comprehensive page, 301 redirect the losing URLs into the winner, and update every internal link across the site that pointed at the old pages to point at the new one. The consolidated page almost always outperforms the sum of its parts within two to three months, because you've stopped splitting the same topical authority across competing URLs.</p>
+
+<h2>6. When to refresh instead of remove</h2>
+<p>Some pages don't deserve deletion — they have backlinks, occasional impressions, and cover a topic with real ongoing demand, but the specifics are stale: a 2024 pricing comparison, screenshots of a UI you've since redesigned, statistics that are two years old. Refresh these on the original URL rather than republishing at a new one — you keep the accumulated authority and avoid resetting the page's history. Update the visible content meaningfully (not just the date stamp — Google's systems increasingly discount cosmetic-only "freshness" edits), and resubmit the URL for indexing in Search Console once the update is live.</p>
+
+<h2>7. Update internal links every time, not just the redirect</h2>
+<p>A 301 redirect fixes where the URL points, but it doesn't fix the dozens of internal links across your site still pointing at the old URL — every hop through a redirect is a small crawl-efficiency and (debated but real) authority cost. After any delete, redirect, or consolidation, search your CMS and templates for every internal link to the affected URL and repoint it directly at the final destination. This is tedious and exactly why it's the step most teams skip, which is also why it's the step that separates a clean prune from one that leaves a mess of chained redirects six months later.</p>
+
+<h2>8. Make it a quarterly habit, not a one-time cleanup</h2>
+<p>Run this audit every quarter rather than treating it as a one-time project. A content library that's actively pruned stays lean enough that every new post you publish is competing for authority against fewer, stronger pages instead of getting lost in a long tail of abandoned ones. Track the aggregate number of indexed pages over time in Search Console's Coverage report — for most AI SaaS blogs, a shrinking-then-stabilizing indexed count paired with rising total clicks is the clearest sign the pruning is working, not a red flag.</p>
+
+<p>None of this requires new content ideas or a bigger writing team — it's an editorial discipline, and it's usually the fastest way to move the needle on a blog that's been publishing consistently but has stopped growing in traffic. Fix the foundation before you add another floor.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Content Pruning for AI SaaS Blogs: When to Delete, Redirect, or Consolidate Old Pages","description":"Two years into a content strategy, half your blog is quietly dragging the other half down. A practical framework for deciding what to cut, what to merge, and what to leave alone.","datePublished":"2026-08-30","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
