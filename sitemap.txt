@@ -112,6 +112,7 @@ https://danieldigitalproductscom-cloud.github.io/demo/sage-ai-corporate-training
 https://danieldigitalproductscom-cloud.github.io/demo/kestrel-ai-synthetic-data-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/rubric-ai-grading-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/quorum-ai-board-reporting-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/brief-ai-rfp-proposal-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
