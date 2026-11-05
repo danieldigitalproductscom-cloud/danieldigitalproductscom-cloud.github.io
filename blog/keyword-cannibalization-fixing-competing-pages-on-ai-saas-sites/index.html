@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Keyword Cannibalization: How to Find and Fix Competing Pages on Your AI SaaS Site — Plinth</title>
+<meta name="description" content="A practical guide for AI/SaaS founders to detect pages that compete for the same query in Google Search Console, then merge, differentiate, or re-link them so one page can rank."/>
+<meta property="og:title" content="Keyword Cannibalization: How to Find and Fix Competing Pages on Your AI SaaS Site — Plinth"/>
+<meta property="og:description" content="A practical guide for AI/SaaS founders to detect pages that compete for the same query in Google Search Console, then merge, differentiate, or re-link them so one page can rank."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/keyword-cannibalization-fixing-competing-pages-on-ai-saas-sites/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/keyword-cannibalization-fixing-competing-pages-on-ai-saas-sites/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-07</span>
+    <h1 class="post-title">Keyword Cannibalization: How to Find and Fix Competing Pages on Your AI SaaS Site</h1>
+    <div class="prose">
+<p>AI SaaS sites tend to publish fast: a feature page, a use-case page, a blog post, a comparison, and a glossary entry can all end up targeting "AI meeting notes" within a few months. When several of your pages match the same query, search engines have to pick one, and they often pick inconsistently. Rankings flip between URLs, links and engagement get split, and none of the pages performs as well as a single strong page would. This is keyword cannibalization, and it is one of the cheapest SEO problems to fix because you already own all the content.</p>
+
+<h2>What cannibalization is and is not</h2>
+<p>Two pages ranking for the same query is not automatically a problem. A product page and a blog post can both appear for a term, and that can be fine when they serve different intent. The problem is when pages serve the <em>same</em> intent and take turns appearing, or when a weaker page outranks the page you actually want people to land on.</p>
+<ul>
+  <li><strong>Harmless overlap:</strong> an informational guide and a pricing page both show up for a broad term, each matching a different need.</li>
+  <li><strong>Harmful overlap:</strong> two feature pages, or a blog post and your homepage, both trying to answer "best AI note taker for sales calls" with nearly the same content.</li>
+</ul>
+
+<h2>Step 1: Find candidates in Search Console</h2>
+<p>You do not need a paid tool. In Google Search Console, open the Performance report for the last three to six months, then:</p>
+<ol>
+  <li>Click a query you care about (start with your top 20 by impressions).</li>
+  <li>Switch to the Pages tab. If more than one URL has meaningful impressions for that single query, you have a candidate.</li>
+  <li>Note each URL's impressions, clicks, and average position.</li>
+  <li>Change the date range to a narrower window. If the top URL alternates between two pages over weeks, that is a strong sign of cannibalization.</li>
+</ol>
+<p>Record candidates in a spreadsheet with columns for query, competing URLs, position, clicks, and page intent. A site search operator such as <code>site:yourdomain.com "your target phrase"</code> is a quick sanity check for pages that mention a phrase heavily, though it shows mentions, not rankings.</p>
+
+<h2>Step 2: Decide the intent of each page</h2>
+<p>Before changing anything, label each page honestly with its intent: informational, comparison, transactional, or navigational. Then decide which single URL <em>should</em> own the query. Usually it is the page closest to conversion that also satisfies what searchers want. Ask:</p>
+<ul>
+  <li>Which page has the most relevant inbound links?</li>
+  <li>Which page best answers the query today?</li>
+  <li>Which page do you want a first-time visitor to see?</li>
+</ul>
+<p>Pick a winner for each cluster. Everything else gets one of the treatments below.</p>
+
+<h2>Step 3: Apply the right fix</h2>
+<h3>Merge and redirect</h3>
+<p>If two pages say roughly the same thing, combine the best material into the winner, then 301 redirect the loser to it. Redirect to the closest relevant page, never blindly to the homepage, and update internal links so they point directly at the winner rather than through the redirect. This is the right fix for thin or near-duplicate posts, such as three short articles on "AI chatbot for support" written months apart.</p>
+
+<h3>Differentiate the intent</h3>
+<p>If both pages deserve to exist, make the difference unmistakable. Rewrite the title tag, H1, and opening paragraph so each targets a distinct query. For example, a feature page can target "AI meeting transcription software" while a guide targets "how to run better remote meetings with AI notes". Remove duplicated sections so each page leads with what is unique to it.</p>
+
+<h3>Re-link with intent</h3>
+<p>Internal links tell search engines which page is the authority on a topic. Point descriptive anchors for the main phrase at the winner, and let the supporting page link up to it. Check that the supporting page is not receiving more internal links with that exact anchor than the page you want to rank.</p>
+
+<h3>Canonicalize only for true duplicates</h3>
+<p>A canonical tag is a hint, not a command, and it consolidates signals only when the pages are genuinely near-identical, such as a URL with tracking parameters or a printable version. Do not use it to paper over two different pages that happen to compete.</p>
+
+<h3>Noindex or delete low-value pages</h3>
+<p>If a page has no traffic, no links, and no reason to exist, remove it, or add noindex if it must stay for users. Fewer, stronger pages are easier to rank.</p>
+
+<h2>Step 4: Protect against recurrence</h2>
+<p>Most cannibalization comes from publishing without checking what already exists. Add a few habits:</p>
+<ul>
+  <li><strong>Keep a keyword map.</strong> One row per URL: primary query, secondary queries, intent, and owner. Check it before commissioning any new page.</li>
+  <li><strong>Search your own site first.</strong> Before writing, look in Search Console and in your CMS for existing pages that touch the topic. Update an existing page instead of publishing a near twin.</li>
+  <li><strong>Use programmatic pages carefully.</strong> Templated pages for every integration or use case often collide with each other. Make sure each has unique, substantive content or consolidate them.</li>
+  <li><strong>Review quarterly.</strong> Re-run the Search Console check on your top queries every few months, especially after a content push.</li>
+</ul>
+
+<h2>How to measure whether the fix worked</h2>
+<p>Search engines need time to recrawl and reprocess changes, so expect weeks rather than days. Track the following for the winning URL, comparing the periods before and after:</p>
+<ul>
+  <li>Average position for the target query, which should stabilize rather than flip between URLs.</li>
+  <li>Clicks and impressions for the query, summed across the old and new URLs, since a merge changes which page receives them.</li>
+  <li>Indexed status of redirected URLs in the Page indexing report, to confirm the redirects were picked up.</li>
+</ul>
+<p>Avoid judging by a single day's ranking; use a rolling four-week average. If position does not improve, the cause is often not cannibalization at all but content quality or links, so do not assume this is the whole explanation.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Treating every overlap as a problem.</strong> Different intents can coexist. Fix only the pages that fight over the same intent.</li>
+  <li><strong>Deleting pages without redirects.</strong> You lose the links and any traffic they brought. Redirect to the closest equivalent.</li>
+  <li><strong>Changing the winner repeatedly.</strong> Pick one and leave it for a few months so signals can consolidate.</li>
+  <li><strong>Forgetting internal links.</strong> After a merge, old posts and navigation still point at the retired URL. Update them.</li>
+  <li><strong>Stuffing the same phrase everywhere.</strong> Heavy repetition of one phrase across many pages is what creates the problem in the first place.</li>
+</ul>
+
+<h2>A one-afternoon checklist</h2>
+<ol>
+  <li>Export your top 20 queries from Search Console and check which have multiple ranking URLs.</li>
+  <li>Label intent for each URL and choose one winner per query.</li>
+  <li>Merge and 301 near-duplicates; rewrite titles and H1s for pages that stay.</li>
+  <li>Update internal links and anchors to favor the winner.</li>
+  <li>Create or update your keyword map and add a pre-publish check.</li>
+  <li>Set a calendar reminder to review in four weeks.</li>
+</ol>
+
+<p>Consolidating competing pages is rarely glamorous, but it often produces gains faster than writing something new, because it concentrates links and relevance you have already earned. If you are building out a lean, well-structured set of pages for your product, a purpose-built SEO landing template can give each page a distinct job from the start.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Keyword Cannibalization: How to Find and Fix Competing Pages on Your AI SaaS Site","description":"A practical guide for AI/SaaS founders to detect pages that compete for the same query in Google Search Console, then merge, differentiate, or re-link them so one page can rank.","datePublished":"2026-10-07","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

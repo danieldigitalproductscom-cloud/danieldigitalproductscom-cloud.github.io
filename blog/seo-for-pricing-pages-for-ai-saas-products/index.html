@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SEO for Pricing Pages: How to Rank for "[Product] Pricing" and Comparison Searches — Plinth</title>
+<meta name="description" content="Your pricing page is one of the highest-intent pages on your site, yet most AI SaaS teams accidentally hide it from search. The specific fixes that let it rank — and capture buyers already comparing options."/>
+<meta property="og:title" content="SEO for Pricing Pages: How to Rank for "[Product] Pricing" and Comparison Searches — Plinth"/>
+<meta property="og:description" content="Your pricing page is one of the highest-intent pages on your site, yet most AI SaaS teams accidentally hide it from search. The specific fixes that let it rank — and capture buyers already comparing options."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/seo-for-pricing-pages-for-ai-saas-products/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/seo-for-pricing-pages-for-ai-saas-products/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-09-19</span>
+    <h1 class="post-title">SEO for Pricing Pages: How to Rank for "[Product] Pricing" and Comparison Searches</h1>
+    <div class="prose">
+<p>Most SEO advice is aimed at top-of-funnel content — blog posts, glossary entries, comparison guides. Meanwhile the page with the highest buying intent on your entire site, the one visitors search for by name when they're already deciding whether to sign up, gets treated as pure UI: a price table, dropped into the nav, never optimized. That's a mistake founders make quietly and repeatedly, because a pricing page doesn't feel like "content." It is. Here's how to make it rankable without changing how it sells.</p>
+
+<h2>1. Never noindex your pricing page</h2>
+<p>It happens more than you'd think: a team building an enterprise sales motion gates pricing behind a "contact us" form, and someone — often a well-meaning developer trying to keep an unfinished page out of search during a redesign — adds <code>noindex</code> to <code>/pricing</code> and never removes it. Audit this directly: view source on your live pricing page and confirm there's no <code>&lt;meta name="robots" content="noindex"&gt;</code> tag and no <code>X-Robots-Tag: noindex</code> header. If you truly can't publish numbers (usage-based or enterprise-only pricing), publish a page anyway — with ranges, a cost calculator, or "starting at" figures — rather than removing the page from search entirely. An indexable page with partial numbers still captures the search; a noindexed page captures nothing.</p>
+
+<h2>2. Target the exact query buyers actually type</h2>
+<p>"[Your Product] pricing" is a real, high-volume search for any product with active users — people forget the numbers, want to check for a plan change, or are deciding whether to renew. Make sure your title tag and H1 contain the literal phrase: <code>&lt;title&gt;Pricing – [Product] | Plans starting at $X/mo&lt;/title&gt;</code>. Don't get clever with the H1 ("Simple, transparent pricing" is fine as a subhead, but the H1 should still say "Pricing"). This is one of the few pages on your site where literal, boring keyword matching outperforms creative copy — the search intent is already fully formed before the click.</p>
+
+<h2>3. Make the prices actual text, not an image or a client-rendered widget</h2>
+<p>If your pricing table is a canvas chart, a screenshot, or a component that only renders after a client-side JS fetch, search engines may index a page with no visible price at all — and neither will rich snippets have anything to pull from. Render tier names, prices, and billing periods as plain HTML text in the initial page load. If you need dynamic currency conversion or A/B-tested numbers, render a sensible default (USD, monthly) server-side or at build time, then enhance with JS after — the same pattern that matters for any AI SaaS page relying on client-side rendering.</p>
+
+<h2>4. Add Product and Offer structured data</h2>
+<p>Schema.org's <code>Product</code> type with nested <code>Offer</code> entries lets you mark up each plan's name, price, currency, and billing interval explicitly:</p>
+<pre><code>{
+  "@type": "Offer",
+  "name": "Pro",
+  "price": "49",
+  "priceCurrency": "USD",
+  "priceValidUntil": "2026-12-31",
+  "url": "https://yourdomain.com/pricing"
+}</code></pre>
+<p>This doesn't guarantee a rich result, but it removes ambiguity for anything parsing the page — including AI answer engines summarizing "how much does X cost" queries, where a clearly marked-up price is far more likely to be quoted correctly than one inferred from a screenshot or a table with no semantic markup.</p>
+
+<h2>5. Answer the questions that sit right below the price</h2>
+<p>A short FAQ block under the pricing table — annual vs. monthly discount, what happens on overage, refund policy, whether a card is required for the trial — does double duty: it resolves the objections that stall a signup, and it's a natural home for <code>FAQPage</code> schema, which can win extra visual real estate in search results. Keep answers to one or two sentences; this isn't the place for long-form writing, it's the place for immediate, literal answers to the exact question in the heading.</p>
+
+<h2>6. Handle regional and currency variants with canonical tags, not duplicate pages</h2>
+<p>If you show different pricing by region or detect currency automatically, make sure every variant points a <code>rel="canonical"</code> tag back to one primary URL (typically the USD/English version), rather than letting search engines index <code>/pricing?currency=eur</code> and <code>/pricing?currency=usd</code> as separate, thinly-different pages competing with each other. Use <code>hreflang</code> only if you have genuinely separate localized pages with translated copy — not merely a currency toggle on the same content.</p>
+
+<h2>7. Let your pricing page anchor comparison searches, deliberately</h2>
+<p>Buyers search "[Your Product] vs [Competitor] pricing" constantly, and if you don't have a page that even mentions the competitor by name, you cede that entire search to review sites and the competitor's own comparison page. You don't need an aggressive takedown page — a short, honest paragraph or table on a dedicated <code>/compare/competitor</code> page, linked from your main pricing page, is enough to give search something of yours to surface instead of only third-party sources. Keep claims factual and dated; an inaccurate comparison page is a fast way to lose credibility with the exact buyer you're trying to win.</p>
+
+<h2>8. Track organic pricing-page traffic as its own funnel</h2>
+<p>A visitor who lands directly on <code>/pricing</code> from a search engine is a different buyer than one who arrives via your homepage — they've likely already evaluated the product elsewhere and are checking cost before deciding. Segment this traffic in analytics and watch its trial-start or contact-form conversion rate separately from your blended site average. It's usually higher, and a drop in it is an early signal that something on the page — a price change, a removed feature, a broken FAQ — is quietly costing you deals nobody else will report.</p>
+
+<h2>The checklist</h2>
+<ul>
+  <li>Pricing page is indexable — check for <code>noindex</code> in both the meta tag and the response header</li>
+  <li>Title tag and H1 literally contain "Pricing"</li>
+  <li>Prices render as text in the initial HTML, not an image or client-only widget</li>
+  <li>Product/Offer schema is present and matches the visible prices exactly</li>
+  <li>An FAQ block answers billing-cycle, overage, and refund questions, marked up with FAQPage schema</li>
+  <li>Regional/currency variants canonicalize to one primary URL</li>
+  <li>A comparison page exists for your top one or two competitors, linked from pricing</li>
+</ul>
+
+<p>None of this asks you to redesign the page or change a single number on it — it's markup, indexing hygiene, and a handful of sentences answering questions your visitors were already going to ask in a support ticket. Fix it once and the page keeps earning its own traffic for as long as it's live.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/recur-ai-billing-landing.jpeg" alt="Recur — AI Subscription Billing &amp; Revenue Recovery Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Recur — AI Subscription Billing &amp; Revenue Recovery Copilot Landing Kit</h3><p class="muted">A precise, revenue-focused landing page for AI subscription billing, dunning, and churn-recovery copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SEO for Pricing Pages: How to Rank for \"[Product] Pricing\" and Comparison Searches","description":"Your pricing page is one of the highest-intent pages on your site, yet most AI SaaS teams accidentally hide it from search. The specific fixes that let it rank — and capture buyers already comparing options.","datePublished":"2026-09-19","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

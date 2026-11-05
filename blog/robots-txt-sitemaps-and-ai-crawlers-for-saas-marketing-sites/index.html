@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Robots.txt, Sitemaps, and AI Crawlers: A Technical SEO Setup Guide for AI SaaS Sites — Plinth</title>
+<meta name="description" content="How to configure robots.txt and sitemap.xml correctly, why crawl budget rarely matters for a small marketing site, and how to decide whether to let GPTBot, ClaudeBot, and PerplexityBot in."/>
+<meta property="og:title" content="Robots.txt, Sitemaps, and AI Crawlers: A Technical SEO Setup Guide for AI SaaS Sites — Plinth"/>
+<meta property="og:description" content="How to configure robots.txt and sitemap.xml correctly, why crawl budget rarely matters for a small marketing site, and how to decide whether to let GPTBot, ClaudeBot, and PerplexityBot in."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/robots-txt-sitemaps-and-ai-crawlers-for-saas-marketing-sites/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/robots-txt-sitemaps-and-ai-crawlers-for-saas-marketing-sites/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-09</span>
+    <h1 class="post-title">Robots.txt, Sitemaps, and AI Crawlers: A Technical SEO Setup Guide for AI SaaS Sites</h1>
+    <div class="prose">
+<p>Most founders touch robots.txt once, copy a snippet from a five-year-old Stack Overflow answer, and never look at it again. That's usually fine — until a page you wanted indexed quietly disappears from search, or an AI crawler you never noticed is scraping your entire pricing page for a competitor's training run. The rules here are simple once you separate what each file actually controls, and 2026 has added a genuinely new decision on top: what to do about AI crawlers.</p>
+
+<h2>1. Robots.txt controls crawling, not indexing</h2>
+<p>This is the single most common misunderstanding in technical SEO. A <code>Disallow</code> rule in robots.txt tells a well-behaved crawler "don't fetch this URL" — it does not tell search engines "don't show this URL in results." If another site links to a page you've disallowed, Google can still index the URL using just the link text and surrounding context, producing a bare, unhelpful search result with no description. If you actually want a page kept out of search results, use a <code>&lt;meta name="robots" content="noindex"&gt;</code> tag on the page itself (which requires the page to be crawlable, not disallowed) or an <code>X-Robots-Tag</code> HTTP header. Disallow and noindex solve different problems; using the wrong one is why "blocked" pages keep showing up in search anyway.</p>
+
+<h2>2. What actually belongs in robots.txt for a marketing site</h2>
+<p>Keep it short. A typical AI SaaS marketing site needs to block internal search-result pages, staging/preview paths, admin routes, and duplicate parameterized URLs (tracking params, sort/filter query strings) — not the pages that make you money. Do not disallow <code>/pricing</code>, <code>/blog</code>, or your product pages "to be safe." A minimal, correct file looks like:</p>
+<pre><code>User-agent: *
+Disallow: /admin/
+Disallow: /*?utm_
+Disallow: /search
+Sitemap: https://yourdomain.com/sitemap.xml</code></pre>
+<p>That last line matters more than people expect — pointing directly to your sitemap from robots.txt is one of the few places every major crawler, human and AI alike, reliably checks first.</p>
+
+<h2>3. Crawl budget almost never matters for you — yet</h2>
+<p>Crawl budget (how many pages a search engine bothers to fetch from your site in a given period) is a real constraint for sites with millions of URLs — large e-commerce catalogs, forums, marketplaces. A marketing site with a homepage, a pricing page, a dozen blog posts, and a handful of landing page variants is nowhere near that threshold; Google will happily crawl every page you have multiple times a week. Don't spend time "optimizing crawl budget" at this stage — spend it making sure the pages that exist are worth crawling. The one exception: if you programmatically generate hundreds of near-duplicate landing page variants (city pages, integration pages, industry pages), that's when crawl budget and duplicate-content management start to matter, and thin, unindexed variants should carry a <code>noindex</code> until they have genuinely distinct content.</p>
+
+<h2>4. Deciding what to do about AI crawlers</h2>
+<p>Since 2024, a new category of bot has shown up in server logs: <strong>GPTBot</strong> and <strong>OAI-SearchBot</strong> (OpenAI), <strong>ClaudeBot</strong> and <strong>Claude-SearchBot</strong> (Anthropic), <strong>PerplexityBot</strong>, <strong>Google-Extended</strong> (which controls Gemini and AI Overviews' use of your content, separate from classic Googlebot), and <strong>CCBot</strong> (Common Crawl, which feeds many models indirectly). Each respects its own user-agent line in robots.txt, and each has a different tradeoff:</p>
+<ul>
+  <li><strong>Allowing them</strong> gives you a shot at being cited or summarized when someone asks an AI assistant a question your content answers — increasingly a real referral source, and the entire premise behind writing for generative engine optimization in the first place.</li>
+  <li><strong>Blocking them</strong> keeps your specific wording out of model training runs and third-party AI answers you don't control, at the cost of that visibility.</li>
+</ul>
+<p>For a pre-revenue AI SaaS site trying to get found, the default that makes sense is: allow the search-and-answer bots (OAI-SearchBot, Claude-SearchBot, PerplexityBot, Google-Extended) since being cited by an AI assistant is a distribution channel, and consider blocking pure-training crawlers like CCBot on any page you'd rather keep proprietary (pricing calculators, internal tools). You can set this per-bot:</p>
+<pre><code>User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Disallow: /</code></pre>
+<p>There's no universally correct answer here — it's a real business tradeoff, not a technical default, so make the call deliberately rather than by leaving whatever template you copied in place.</p>
+
+<h2>5. Consider adding an llms.txt file</h2>
+<p><code>llms.txt</code> is an emerging, not-yet-standardized convention — a plain-Markdown file at your site root that gives AI systems a curated summary of what your site is and links to the pages worth reading, similar in spirit to a sitemap but written for language models instead of crawlers. Support is inconsistent and it's not a guaranteed ranking or citation signal yet, but it costs almost nothing to add: a short description of your product, your audience, and links to your three or four most important pages. Low effort, plausible upside, worth doing once your core SEO is already solid.</p>
+
+<h2>6. Sitemap hygiene: the part people skip</h2>
+<p>A sitemap.xml that lists dead pages, noindexed pages, or redirect chains actively wastes crawler trust. Keep it to canonical, indexable, 200-status URLs only, update <code>lastmod</code> when a page's content genuinely changes (not on every deploy), and resubmit it in Google Search Console and Bing Webmaster Tools after a major restructuring — don't assume they'll notice on their own schedule. Priority and changefreq attributes are safe to omit entirely; Google has said for years it ignores both.</p>
+
+<h2>The checklist</h2>
+<ul>
+  <li>robots.txt blocks admin/search/tracking-param paths only — never your money pages</li>
+  <li>Sitemap.xml is linked from robots.txt and contains only canonical, indexable URLs</li>
+  <li>Pages you want out of search use <code>noindex</code>, not <code>Disallow</code></li>
+  <li>You've made a deliberate, not default, call on each major AI crawler</li>
+  <li>An llms.txt exists once the basics above are solid</li>
+</ul>
+
+<p>None of this requires a developer sprint — most of it is a single text file you can write and deploy in an afternoon. If you're setting up a new product page from a template, get this in place on day one; it's far easier to start correct than to untangle a year of accidental disallows later.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/conduit-ai-data-pipeline-landing.jpeg" alt="Conduit — AI Data Pipeline &amp; ETL Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Conduit — AI Data Pipeline &amp; ETL Copilot Landing Kit</h3><p class="muted">A technical, infrastructure-grade landing page for AI-assisted data pipeline and ETL automation platforms.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Robots.txt, Sitemaps, and AI Crawlers: A Technical SEO Setup Guide for AI SaaS Sites","description":"How to configure robots.txt and sitemap.xml correctly, why crawl budget rarely matters for a small marketing site, and how to decide whether to let GPTBot, ClaudeBot, and PerplexityBot in.","datePublished":"2026-08-09","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

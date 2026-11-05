@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SEO Basics Every Pre-Launch AI/SaaS Waitlist Page Needs — Plinth</title>
+<meta name="description" content="A waitlist page with zero SEO setup is invisible until launch day. The specific, concrete technical SEO steps — meta tags, structured data, sitemaps, and directory listings — that get a pre-launch page found while you still have nothing to sell."/>
+<meta property="og:title" content="SEO Basics Every Pre-Launch AI/SaaS Waitlist Page Needs — Plinth"/>
+<meta property="og:description" content="A waitlist page with zero SEO setup is invisible until launch day. The specific, concrete technical SEO steps — meta tags, structured data, sitemaps, and directory listings — that get a pre-launch page found while you still have nothing to sell."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/seo-basics-for-pre-launch-ai-saas-waitlist-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/seo-basics-for-pre-launch-ai-saas-waitlist-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-07-20</span>
+    <h1 class="post-title">SEO Basics Every Pre-Launch AI/SaaS Waitlist Page Needs</h1>
+    <div class="prose">
+<p>Most founders treat the waitlist page as a placeholder — something to replace once the "real" site is ready — so they skip SEO entirely. That's backwards. A waitlist page often has months to accumulate search visibility before launch, and search engines reward pages that have been indexed and linked to for a while over brand-new ones. Skip the setup now and you're starting your SEO clock on launch day instead of months earlier. None of this requires a build step or a framework; it's a checklist you can finish on a single static HTML page in an afternoon.</p>
+
+<h2>1. Write a title tag and meta description like an ad, not a label</h2>
+<p>The default mistake is a title tag that just repeats the product name: "Acme — Coming Soon." Nobody searches for a product name they've never heard of. Write the title around the problem you solve — "AI Meeting Notes That Actually Get Read | Acme (Early Access)" — and a meta description that gives a real reason to click, under 155 characters, with a concrete benefit. These two tags do more for pre-launch discovery than anything else on the page, because they're what shows up in the search result itself, before anyone even visits.</p>
+
+<h2>2. Set Open Graph and Twitter Card tags — every share deserves a real preview</h2>
+<p>Pre-launch traffic mostly comes from people sharing the link, not organic search. If your page is missing <code>og:title</code>, <code>og:description</code>, and <code>og:image</code> tags, every share on X, LinkedIn, or Slack renders as a bare gray link — and bare links get a fraction of the clicks a rich preview gets. Make a single 1200×630 image with your product name and tagline, point <code>og:image</code> at it, and duplicate the same tags under <code>twitter:card</code> (use <code>summary_large_image</code>). This is a ten-minute task that measurably changes click-through on every share you'll ever get.</p>
+
+<h2>3. Add Organization and WebSite structured data</h2>
+<p>A small JSON-LD block in the <code>&lt;head&gt;</code> tells search engines concretely what the page represents, instead of leaving them to guess from prose:</p>
+<pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Acme",
+  "url": "https://acme.com",
+  "logo": "https://acme.com/logo.png"
+}
+&lt;/script&gt;
+</code></pre>
+<p>It won't produce a rich snippet on its own, but it establishes an entity Google can associate with your brand name from day one — which matters later when people start searching for you by name instead of by problem.</p>
+
+<h2>4. Ship a real <code>sitemap.xml</code> and <code>robots.txt</code>, even for one page</h2>
+<p>A single-page site still benefits from a two-line <code>sitemap.xml</code> listing that one URL and a <code>robots.txt</code> that explicitly allows crawling. It costs nothing to add and removes any ambiguity about whether the page should be indexed. Submit the sitemap in Google Search Console the same day you register the domain — indexing can take days to weeks, and that clock only starts once Google knows the page exists.</p>
+
+<h2>5. Give the page enough real content to not read as thin</h2>
+<p>A hero headline and an email field is not enough content for search engines to understand or rank the page for anything. Add a short "what it does," a three-item "how it'll work," and a five-question FAQ — real substance, not filler — so the page has something to actually match a search query against. This is also exactly the content you'll need for launch day, so it's not wasted work; you're writing the real page early instead of at the last minute.</p>
+
+<h2>6. Pick your permanent URL now and never change it</h2>
+<p>Switching domains or even just the URL path after launch (from a landing-page-builder subdomain to your real domain, for instance) throws away every backlink and every bit of indexed history you built pre-launch. Decide on the domain you'll use forever before you publish the waitlist, and if you must move later, set up 301 redirects from every old URL rather than letting them 404.</p>
+
+<h2>7. Get listed on directories that pass real authority</h2>
+<p>Legitimate pre-launch directories — BetaList, Product Hunt's "Upcoming" page, Indie Hackers, relevant subreddits with self-promotion allowed — do two things at once: they send early signups and they're backlinks from established, trusted domains, which meaningfully helps your page's authority before it has any organic links of its own. This is the one form of pre-launch outreach that's both effective and legitimate — a public directory listing is not the same as cold DMs or spam, and it's the channel worth spending your limited pre-launch marketing time on.</p>
+
+<h2>8. Keep it fast — but don't assume static HTML gets you off the hook</h2>
+<p>A static HTML waitlist page starts with a real speed advantage over a framework-heavy one, but it's easy to lose that with an unoptimized hero image or three web-font weights loaded synchronously. Compress images, self-host at most one or two font weights, and check Core Web Vitals in PageSpeed Insights before you publish. Page speed is a ranking factor and, more immediately, a conversion factor — a slow waitlist page loses signups before the copy even gets read.</p>
+
+<h2>The pattern underneath all of this</h2>
+<p>Every item here is about removing a reason search engines or visitors would fail to understand, trust, or find your page — a missing tag, a thin page, an unindexed sitemap, a broken preview. None of it requires paid tools or an agency; it's an afternoon of setup that starts compounding the moment you publish, instead of the moment you launch.</p>
+
+<p>If you're building the waitlist page itself, start from a template that already has the meta tags, structured data hooks, and real content sections in place, so this checklist is mostly filling in your own words rather than building the scaffolding from scratch.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/waitlist-launch-kit.jpeg" alt="Liftoff — Waitlist &amp; Coming-Soon Kit" width="560" height="315"/>
+      <div><h3>Liftoff — Waitlist &amp; Coming-Soon Kit</h3><p class="muted">Three coming-soon / waitlist pages with email capture, countdown, and referral copy.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/irvyh" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SEO Basics Every Pre-Launch AI/SaaS Waitlist Page Needs","description":"A waitlist page with zero SEO setup is invisible until launch day. The specific, concrete technical SEO steps — meta tags, structured data, sitemaps, and directory listings — that get a pre-launch page found while you still have nothing to sell.","datePublished":"2026-07-20","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
