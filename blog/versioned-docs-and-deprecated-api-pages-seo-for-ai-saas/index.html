@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Versioned Docs and Deprecated API Pages: SEO for AI Products That Change Fast — Plinth</title>
+<meta name="description" content="AI APIs ship new model versions and endpoints constantly. How to structure versioned documentation, canonicalize to the current version, and retire deprecated pages without losing rankings or misleading developers."/>
+<meta property="og:title" content="Versioned Docs and Deprecated API Pages: SEO for AI Products That Change Fast — Plinth"/>
+<meta property="og:description" content="AI APIs ship new model versions and endpoints constantly. How to structure versioned documentation, canonicalize to the current version, and retire deprecated pages without losing rankings or misleading developers."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/versioned-docs-and-deprecated-api-pages-seo-for-ai-saas/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/versioned-docs-and-deprecated-api-pages-seo-for-ai-saas/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-21</span>
+    <h1 class="post-title">Versioned Docs and Deprecated API Pages: SEO for AI Products That Change Fast</h1>
+    <div class="prose">
+<p>AI products change faster than most software. Model names are replaced, parameters are renamed, endpoints are deprecated, and SDKs bump major versions every few months. Your documentation accumulates old pages, and search engines index all of them. The result is a familiar failure: a developer searches for how to call your API, lands on a page for a version you retired a year ago, copies code that no longer works, and blames your product. This guide covers how to structure versioned docs so the right page ranks and old ones are retired cleanly.</p>
+
+<h2>Decide what actually needs a version</h2>
+<p>Not every change deserves a parallel copy of your docs. Keeping several full copies multiplies the pages competing with each other. A workable rule:</p>
+<ul>
+  <li><strong>Maintain separate versioned docs</strong> only for versions customers can still run in production, such as a v1 and v2 API with different request shapes.</li>
+  <li><strong>Use inline notes</strong> for small changes: "Added in 2026-09", "Renamed from <code>max_tokens</code>", "Deprecated, removal planned for March".</li>
+  <li><strong>Put model-specific details</strong> in a single model reference table rather than one page per model. A table with columns for model ID, context window, status, and replacement is easy to keep current and easy to cite.</li>
+</ul>
+
+<h2>Use a stable URL for "latest"</h2>
+<p>Give the current version an unversioned path, for example <code>/docs/chat/create</code>, and put older versions under a prefix such as <code>/docs/v1/chat/create</code>. Everything that links to your docs, including blog posts, SDK READMEs, forum answers, and third-party tutorials, then points at one URL that stays valid as the content underneath is updated. If "latest" lives at <code>/docs/v3/...</code>, every release forces you either to redirect or to lose the accumulated links to <code>/v2/</code>.</p>
+
+<h2>Canonicalize older versions to the current page</h2>
+<p>When a page exists in several versions with mostly the same content, point the older copies at the current one with <code>rel="canonical"</code>. This consolidates ranking signals on the page you want people to find. Two cautions:</p>
+<ul>
+  <li>Only canonicalize when the pages are genuinely equivalent. If v1 behaves differently, a canonical to v3 tells engines to ignore content that people searching for v1 still need. In that case, leave the old page self-canonical.</li>
+  <li>Make sure the target exists. If an endpoint was removed in the new version, there is nothing to canonicalize to, so do not point at the docs index just to have one.</li>
+</ul>
+
+<h2>Show a clear version banner</h2>
+<p>On every non-current page, add a visible notice at the top: "You are viewing docs for v1. The latest version is v3," with a link to the equivalent page, not just the docs homepage. Build the mapping once, page by page, and keep it in your docs source so new pages get an entry by default. The banner serves readers directly and also gives crawlers a plain internal link from old pages to the current ones.</p>
+
+<h2>Retire deprecated pages in stages</h2>
+<p>Treat removal as a process with different steps for different cases:</p>
+<ol>
+  <li><strong>Deprecation announced:</strong> keep the page live, add a deprecation notice with the removal date and the replacement, and add the item to your changelog.</li>
+  <li><strong>Sunset reached, replacement exists:</strong> return a 301 redirect to the closest equivalent page. Redirect to the specific replacement, not the docs homepage, which search engines may treat as a soft 404.</li>
+  <li><strong>Sunset reached, no replacement:</strong> return a 410 or 404. Don't redirect to an unrelated page to preserve links, because it misleads both readers and crawlers.</li>
+  <li><strong>Still wanted for reference:</strong> if people migrating from the old version need it, keep a short archived page that is clearly labeled and linked from a migration guide.</li>
+</ol>
+<p>Whichever you choose, update the sitemap so it lists only URLs you want indexed, and remove deleted pages promptly.</p>
+
+<h2>Keep code samples current and testable</h2>
+<p>Outdated code is the most damaging kind of stale content in an API docs set. Reduce the risk by storing samples as real files that run in CI against your API or a mock, rather than pasting them into markdown. When a sample fails, the build fails, and you find out before a developer does. Pin model IDs and SDK versions in samples deliberately, and note the date they were last verified at the bottom of the page.</p>
+
+<h2>Write migration guides as their own pages</h2>
+<p>Searches such as "migrate from v1 to v2 [product]" or "[old parameter] deprecated" are common after a breaking release. A dedicated migration page can capture them. Include a table of changed names, before-and-after request examples, behavior differences that don't show up in a diff (default values, rate limits, error codes), and the timeline for the old version. Link it from the deprecation banners and from each affected reference page.</p>
+
+<h2>Handle model deprecations specifically</h2>
+<p>For AI products, people search for model names directly, including retired ones. Keep a single page that lists every model you have offered, with its status, release date, deprecation date, and recommended replacement. It will attract those queries, answer them honestly, and give you one place to update when a model changes. Avoid creating a thin standalone page for each retired model.</p>
+
+<h2>Check your work</h2>
+<ul>
+  <li>Search your product name plus a common task, such as "create embedding", and confirm the top result is the current version.</li>
+  <li>In Search Console, look at which docs URLs receive impressions. If an old version dominates, strengthen internal links and canonicals toward the current one.</li>
+  <li>Crawl the docs and flag redirect chains, links to removed pages, and pages lacking a version banner.</li>
+  <li>Set a quarterly review for any page whose "last verified" date is older than the last major release.</li>
+</ul>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Version only what customers can still run; use notes for small changes.</li>
+  <li>Serve the current version from unversioned URLs.</li>
+  <li>Canonicalize equivalent old pages to the current one; leave different ones self-canonical.</li>
+  <li>Add banners linking to the equivalent page in the latest version.</li>
+  <li>Retire with 301s to specific replacements, or 410 when none exists.</li>
+  <li>Run code samples in CI and date-stamp verification.</li>
+  <li>Publish migration guides and one consolidated model status page.</li>
+  <li>Audit rankings and crawl errors every quarter.</li>
+</ol>
+
+<p>Developers judge your product by whether the first snippet they copy works. A developer-focused landing template with prominent docs and changelog links, like the one linked here, helps send them to the current version from the start.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/forge-devtools-landing.jpeg" alt="Forge — Developer Tools &amp; API Landing Page Kit" width="560" height="315"/>
+      <div><h3>Forge — Developer Tools &amp; API Landing Page Kit</h3><p class="muted">A landing page tuned for developer tools, APIs, and infrastructure products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Versioned Docs and Deprecated API Pages: SEO for AI Products That Change Fast","description":"AI APIs ship new model versions and endpoints constantly. How to structure versioned documentation, canonicalize to the current version, and retire deprecated pages without losing rankings or misleading developers.","datePublished":"2026-10-21","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

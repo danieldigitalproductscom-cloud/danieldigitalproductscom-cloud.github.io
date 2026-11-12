@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Show HN and Reddit Launches for AI SaaS: Earn Traffic and Links Without Getting Flagged — Plinth</title>
+<meta name="description" content="A practical playbook for AI/SaaS founders launching on Hacker News and Reddit: prepare the landing page, write a post that fits community norms, handle comments, and turn a traffic spike into durable links and signups."/>
+<meta property="og:title" content="Show HN and Reddit Launches for AI SaaS: Earn Traffic and Links Without Getting Flagged — Plinth"/>
+<meta property="og:description" content="A practical playbook for AI/SaaS founders launching on Hacker News and Reddit: prepare the landing page, write a post that fits community norms, handle comments, and turn a traffic spike into durable links and signups."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/show-hn-and-reddit-launches-for-ai-saas-links-and-traffic/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/show-hn-and-reddit-launches-for-ai-saas-links-and-traffic/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-10-19</span>
+    <h1 class="post-title">Show HN and Reddit Launches for AI SaaS: Earn Traffic and Links Without Getting Flagged</h1>
+    <div class="prose">
+<p>A good Show HN or Reddit post can send thousands of visitors in a day, and a few of those visitors will write about you, link to you, or bookmark you for later. A bad one gets flagged, buried, or banned, and can leave a lasting mark on your account. Both communities are hostile to anything that smells like marketing, which is exactly why they reward products that are honest and easy to try. This guide covers how to prepare, post, and follow up so the spike turns into something durable.</p>
+
+<h2>What these communities actually reward</h2>
+<ul>
+  <li><strong>Hacker News (Show HN).</strong> Something you built that people can try now. Technical depth, a clear explanation of how it works, and a founder who answers questions honestly. Pure landing pages with a waitlist are explicitly discouraged for Show HN, because readers cannot try the thing.</li>
+  <li><strong>Reddit.</strong> Each subreddit has its own rules, and many ban self-promotion outright or limit it to specific threads. The posts that do well teach something, share a result, or ask a real question, with your product appearing as context rather than the point.</li>
+</ul>
+<p>Read the rules of each community before you write a word. Moderators remove posts quickly, and repeat violations can get a domain banned from a subreddit.</p>
+
+<h2>Step 1: Make the product triable without friction</h2>
+<p>The biggest launch-day failure for AI products is a signup wall. Visitors from these communities will not hand over an email address to see a demo. Before you post:</p>
+<ul>
+  <li>Offer a no-signup path: a sandbox, a public demo with sample inputs, or a free tier that needs only a login, not a credit card.</li>
+  <li>Cap your own costs. If each demo call hits a paid model API, set per-IP and global rate limits, a daily budget alarm, and a graceful message when you hit the cap. A viral post can burn a month of API budget in an afternoon.</li>
+  <li>Prepare a fallback. Cache responses for the sample inputs you show, so the demo still works if the model provider is slow or you hit rate limits.</li>
+  <li>Load test the page and the demo endpoint. A site that falls over in the first hour rarely recovers its ranking in the feed.</li>
+</ul>
+
+<h2>Step 2: Prepare the landing page for a skeptical audience</h2>
+<p>Visitors from these sources scan quickly and distrust polish. Check that your page does the following above the fold:</p>
+<ul>
+  <li>States in one plain sentence what the product does and who it is for, with no superlatives.</li>
+  <li>Shows real output, such as a screenshot, a short recording, or a live example, not a stock illustration.</li>
+  <li>Links to docs, pricing, and a privacy statement with no login required. Technical readers go looking for pricing and data handling immediately.</li>
+  <li>Says plainly which model or provider you use if that is not secret, and what happens to user data. See our guide on disclosing your model stack for wording that does not scare buyers.</li>
+</ul>
+<p>Also check the basics that matter later for SEO: a canonical URL, a descriptive title tag, and an Open Graph image, since the link will be shared far more than you expect.</p>
+
+<h2>Step 3: Write the post</h2>
+<p>For Show HN, use the format "Show HN: Name, one-line description of what it does". Avoid adjectives like revolutionary or best. Then add a first comment as the author that covers:</p>
+<ol>
+  <li>Why you built it, in two or three sentences.</li>
+  <li>How it works technically: the approach, the stack, what is hard about it, and what you tried that failed.</li>
+  <li>Known limitations. Stating weaknesses first removes the easiest line of attack.</li>
+  <li>What kind of feedback you want.</li>
+</ol>
+<p>For Reddit, write a native post for the subreddit rather than a link drop. A post titled with a lesson or a result, such as what you learned reducing an extraction pipeline's error rate, with the product mentioned briefly near the end where rules allow, tends to survive. Never post the same text in many subreddits at once; it reads as spam and is easy to detect.</p>
+
+<h2>Step 4: Timing and the first hours</h2>
+<ul>
+  <li>Post when you can stay online for at least four to six hours. Your presence in the comments matters more than the exact minute you post.</li>
+  <li>Do not ask friends, coworkers, or a Slack channel to upvote. Both communities detect voting rings, and a flagged post is hard to undo. Sharing the link with people is fine; asking for votes is not.</li>
+  <li>Do not edit the title repeatedly or delete and repost if it does not take off. Repeated reposts are treated as spam.</li>
+</ul>
+
+<h2>Step 5: Handle the comments like a founder, not a marketer</h2>
+<ul>
+  <li>Answer every substantive question with specifics: numbers, model names, trade-offs, costs.</li>
+  <li>Thank people who report bugs, then fix them and say so in the thread. Visible fixes during the discussion earn goodwill and often upvotes.</li>
+  <li>Do not argue with critics. If a criticism is right, agree and note what you will change. If it is wrong, give a short factual correction and move on.</li>
+  <li>Do not paste marketing copy or pricing pitches into replies.</li>
+  <li>Disclose that you are the maker whenever you comment on Reddit, and follow the ten-to-one style guidance many subreddits use, where most of your activity is not about your own product.</li>
+</ul>
+
+<h2>Step 6: Convert the spike into durable SEO value</h2>
+<p>Traffic from a launch is short-lived, but the links and mentions it creates can last. Take these steps within the first week:</p>
+<ol>
+  <li><strong>Check your analytics and referrers.</strong> Tag the launch traffic with a campaign parameter in the shared link so you can see what it did separately from organic traffic, and keep the canonical URL clean so the parameter does not create duplicates.</li>
+  <li><strong>Collect the questions.</strong> The comments are free keyword research. Every repeated question, such as how you handle hallucinations or what the pricing is per thousand documents, is a candidate for an FAQ entry, a docs page, or a blog post.</li>
+  <li><strong>Find new mentions.</strong> Blogs, newsletters, and roundup lists often pick up Show HN projects days later. Search your brand name and domain, and reply to unlinked mentions politely asking for a link if appropriate.</li>
+  <li><strong>Treat these links realistically.</strong> Links on Hacker News and Reddit are usually nofollow or user-generated, so they carry little direct ranking weight. The value is the secondary coverage and the referral traffic, not the link itself.</li>
+  <li><strong>Capture emails properly.</strong> Add a changelog subscription or newsletter option for people who liked it but are not ready to buy, and send a short follow-up with what you shipped based on the feedback.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li>Launching a waitlist page as a Show HN and getting flagged as non-triable.</li>
+  <li>Requiring a signup and credit card before showing any output.</li>
+  <li>Using marketing language, emoji, or all-caps in the title.</li>
+  <li>Asking for upvotes or coordinating votes.</li>
+  <li>Crossposting the same promotional post across many subreddits.</li>
+  <li>Disappearing after posting, or answering critics defensively.</li>
+  <li>Letting an unlimited free demo drain your model budget.</li>
+  <li>Not capturing any follow-up path, so the traffic leaves and never returns.</li>
+</ul>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Read the rules for Show HN and each target subreddit.</li>
+  <li>Make the product triable with no signup, and set rate limits and a spend cap.</li>
+  <li>Cache sample outputs and load test before posting.</li>
+  <li>Make the landing page plain, specific, and honest about models, data, and pricing.</li>
+  <li>Write a native post and a thorough first comment with limitations.</li>
+  <li>Post when you can stay online and never solicit votes.</li>
+  <li>Answer every question with specifics and fix reported bugs publicly.</li>
+  <li>Mine the comments for FAQ and content ideas, and follow up on mentions.</li>
+  <li>Offer a low-pressure way to hear about updates.</li>
+</ol>
+
+<p>If you want a clean, fast starting point for the page that launch traffic will hit, a developer-oriented landing template with a code-block hero and clear docs and pricing links, like the one linked here, lets you spend your prep time on the demo instead of the layout.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/forge-devtools-landing.jpeg" alt="Forge — Developer Tools &amp; API Landing Page Kit" width="560" height="315"/>
+      <div><h3>Forge — Developer Tools &amp; API Landing Page Kit</h3><p class="muted">A landing page tuned for developer tools, APIs, and infrastructure products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Show HN and Reddit Launches for AI SaaS: Earn Traffic and Links Without Getting Flagged","description":"A practical playbook for AI/SaaS founders launching on Hacker News and Reddit: prepare the landing page, write a post that fits community norms, handle comments, and turn a traffic spike into durable links and signups.","datePublished":"2026-10-19","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
