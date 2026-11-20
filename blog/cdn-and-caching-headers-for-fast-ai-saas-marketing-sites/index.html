@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CDN and Caching Headers for Fast AI SaaS Marketing Sites — Plinth</title>
+<meta name="description" content="A practical guide for AI/SaaS founders to put a CDN in front of their marketing site, set Cache-Control headers correctly, and avoid the stale-page and cache-poisoning mistakes that hurt speed and SEO."/>
+<meta property="og:title" content="CDN and Caching Headers for Fast AI SaaS Marketing Sites — Plinth"/>
+<meta property="og:description" content="A practical guide for AI/SaaS founders to put a CDN in front of their marketing site, set Cache-Control headers correctly, and avoid the stale-page and cache-poisoning mistakes that hurt speed and SEO."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/cdn-and-caching-headers-for-fast-ai-saas-marketing-sites/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/cdn-and-caching-headers-for-fast-ai-saas-marketing-sites/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-11-14</span>
+    <h1 class="post-title">CDN and Caching Headers for Fast AI SaaS Marketing Sites</h1>
+    <div class="prose">
+<p>Most AI/SaaS marketing sites are mostly static: a home page, pricing, feature pages and a blog. Yet many are served from a single origin region with no caching, so a visitor in Singapore waits for a server in Virginia on every request. A CDN and correct caching headers are the cheapest speed upgrade available, and faster Time to First Byte helps Largest Contentful Paint, conversion and crawl efficiency. Here is how to do it without serving stale or wrong pages.</p>
+
+<h2>1. Separate your marketing site from your app</h2>
+<p>Your logged-in product is dynamic and personalized; your marketing pages are not. Serve them from different paths or hosts (for example <code>example.com</code> for marketing and <code>app.example.com</code> for the product) so you can cache aggressively on one and never on the other. Mixing them is how private data ends up cached and shown to the wrong visitor.</p>
+
+<h2>2. Put a CDN in front of the origin</h2>
+<p>Static hosts such as Cloudflare Pages, Netlify, Vercel or a CDN like Cloudflare, Fastly or CloudFront in front of your own server all do the same job: keep copies of your pages at edge locations near visitors. For a static or pre-rendered site, serve the whole HTML document from the edge. Check the result by requesting a page twice and looking for a cache-status response header (names vary: <code>cf-cache-status</code>, <code>x-cache</code>, <code>x-vercel-cache</code>). The second request should say HIT.</p>
+
+<h2>3. Cache fingerprinted assets for a year</h2>
+<p>CSS, JavaScript, fonts and images whose filenames contain a content hash (such as <code>app.3f9a1c.css</code>) never change at a given URL, so cache them forever:</p>
+<pre><code>Cache-Control: public, max-age=31536000, immutable</code></pre>
+<p>The <code>immutable</code> directive tells browsers not to revalidate on reload. This only works if your build really fingerprints filenames. If you serve <code>style.css</code> with a one-year lifetime and then edit it, returning visitors keep the old file.</p>
+
+<h2>4. Treat HTML differently</h2>
+<p>HTML references those hashed assets, so it must update quickly after a deploy. Two safe patterns:</p>
+<ul>
+  <li><strong>Short browser cache, longer edge cache:</strong> <code>Cache-Control: public, max-age=0, s-maxage=600, stale-while-revalidate=86400</code>. Browsers revalidate each time; the CDN serves a copy for ten minutes and refreshes in the background.</li>
+  <li><strong>Long edge cache with purge on deploy:</strong> cache HTML at the edge for a day or more and have your deploy pipeline purge the cache. Most CDNs offer a purge API; wire it into CI so a release can never leave stale pages up.</li>
+</ul>
+<p>Avoid <code>max-age</code> of hours on HTML in the browser. You cannot recall a copy that is already sitting in someone's browser, and a stale pricing page is an expensive bug.</p>
+
+<h2>5. Use validators so revalidation is cheap</h2>
+<p>When a cache revalidates, a response with an <code>ETag</code> or <code>Last-Modified</code> header lets the origin answer <code>304 Not Modified</code> with no body. Most static hosts add these automatically. If you run your own server, confirm that compression and ETags are on, and serve Brotli for text assets.</p>
+
+<h2>6. Be careful with cookies and query strings</h2>
+<p>Two common causes of mysteriously low hit rates:</p>
+<ul>
+  <li><strong>Set-Cookie on marketing pages.</strong> Many CDNs refuse to cache responses that set cookies. Do not set session or analytics cookies from the origin on public pages; load analytics client-side.</li>
+  <li><strong>Query strings in the cache key.</strong> Campaign URLs with <code>utm_source</code>, <code>gclid</code> and similar parameters can each become a separate cache entry. Configure the CDN to ignore tracking parameters in the cache key, while keeping them intact for client-side analytics.</li>
+</ul>
+<p>Also make sure the canonical tag on parameterized URLs points to the clean URL, as covered in our canonical tag guide.</p>
+
+<h2>7. Never cache what is personal or error states</h2>
+<p>Pages that depend on the visitor, such as a signed-in dashboard, checkout or a geo-personalized price, should return <code>Cache-Control: private, no-store</code> or vary correctly. If you localize by country, either use separate URLs per locale (best for SEO) or include the relevant header in <code>Vary</code>. Do not cache 5xx responses for long; a one-minute error cache prevents hammering a failing origin, but an hour-long one turns a blip into an outage. Likewise, do not let a CDN cache a soft 404 as a normal page.</p>
+
+<h2>8. Keep crawlers and bots in mind</h2>
+<p>Googlebot benefits from fast responses; a CDN lowers server time per request, so Google can crawl more URLs in the same budget. But bot-protection rules can backfire: challenge pages or aggressive rate limits served to crawlers look like errors. Allow verified search crawlers, and check your server logs or the Crawl Stats report in Search Console for spikes in 403, 429 or 5xx responses after you enable a CDN or firewall rule.</p>
+
+<h2>9. Preload and connect early</h2>
+<p>Caching removes distance; resource hints remove waiting. Preload the hero image and the primary font, and use <code>preconnect</code> for third-party origins you truly need, such as your analytics or video host. Keep the list short. Preloading five things means none of them is a priority.</p>
+
+<h2>10. Verify with real measurements</h2>
+<p>Test, do not assume:</p>
+<ul>
+  <li>Use <code>curl -I</code> on an HTML page and an asset; confirm the Cache-Control, ETag and cache-status headers match your intent.</li>
+  <li>Run a test from a distant location with a tool such as WebPageTest and compare TTFB before and after.</li>
+  <li>Watch field data for LCP and TTFB in the Core Web Vitals report over the following weeks. Lab gains that never appear in field data usually mean a cache is being bypassed for real traffic.</li>
+</ul>
+
+<h2>Quick checklist</h2>
+<ul>
+  <li>Marketing site and product app on separate paths or hosts.</li>
+  <li>CDN serving HTML from the edge; second request shows HIT.</li>
+  <li>Hashed static assets cached for a year with <code>immutable</code>.</li>
+  <li>HTML on short browser cache with edge caching, plus purge on deploy.</li>
+  <li>No cookies set on public marketing pages; tracking parameters ignored in the cache key.</li>
+  <li>Personal pages marked <code>private, no-store</code>; errors cached briefly.</li>
+  <li>Verified search crawlers allowed through bot protection.</li>
+  <li>TTFB and LCP checked in lab and field data after rollout.</li>
+</ul>
+
+<p>A well-cached static page is also the simplest thing to build and maintain. If you want a fast, zero-build starting point for your marketing site, the Nebula kit linked here is plain HTML and CSS that caches beautifully out of the box.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/nebula-ai-saas-landing.jpeg" alt="Nebula — AI SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Nebula — AI SaaS Landing Page Kit</h3><p class="muted">A polished, conversion-focused landing page for AI / SaaS startups. Dark, modern, responsive, zero build step.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/nwfws" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CDN and Caching Headers for Fast AI SaaS Marketing Sites","description":"A practical guide for AI/SaaS founders to put a CDN in front of their marketing site, set Cache-Control headers correctly, and avoid the stale-page and cache-poisoning mistakes that hurt speed and SEO.","datePublished":"2026-11-14","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

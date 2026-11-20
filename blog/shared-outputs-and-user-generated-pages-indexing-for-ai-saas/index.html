@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shared Outputs and User-Generated Pages: What AI SaaS Products Should and Should Not Let Google Index — Plinth</title>
+<meta name="description" content="Public share links, generated reports, and community galleries can create thousands of URLs overnight. How to decide which user-generated pages deserve indexing, which need noindex, and how to avoid leaking private data."/>
+<meta property="og:title" content="Shared Outputs and User-Generated Pages: What AI SaaS Products Should and Should Not Let Google Index — Plinth"/>
+<meta property="og:description" content="Public share links, generated reports, and community galleries can create thousands of URLs overnight. How to decide which user-generated pages deserve indexing, which need noindex, and how to avoid leaking private data."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/shared-outputs-and-user-generated-pages-indexing-for-ai-saas/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/shared-outputs-and-user-generated-pages-indexing-for-ai-saas/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-22</span>
+    <h1 class="post-title">Shared Outputs and User-Generated Pages: What AI SaaS Products Should and Should Not Let Google Index</h1>
+    <div class="prose">
+<p>Many AI products let users publish something: a shareable chat, a generated report, a public prompt, an image gallery, a template. Each shared item gets its own URL, and within weeks you can have tens of thousands of pages you never wrote. Left alone, they can help or hurt. At best they bring long-tail traffic and links. At worst they expose sensitive data, fill the index with near-empty pages, and drag down how search engines judge the rest of your site. This guide covers how to decide what to index and how to enforce the decision.</p>
+
+<h2>Start with privacy, not SEO</h2>
+<p>Before any ranking question, confirm what users believe "share" means. A person who clicks "Share" on a conversation about their company's finances may expect a link only their colleague can open. If that URL is indexable, anyone can find it with a search. Search engines have indexed shared AI conversations in the past, and the resulting exposure was a trust problem for the vendors involved.</p>
+<ul>
+  <li><strong>Default to unlisted and noindex.</strong> A shared link should work for anyone who has it but should not be discoverable through search unless the user explicitly opts in.</li>
+  <li><strong>Make the opt-in specific.</strong> Use a separate toggle such as "Allow this page to appear in search engines," with a sentence explaining that it becomes publicly findable.</li>
+  <li><strong>Use unguessable identifiers.</strong> Random tokens of sufficient length, not sequential IDs, so URLs cannot be enumerated.</li>
+  <li><strong>Provide a delete path that works.</strong> Unsharing should return a 404 or 410 quickly, and you should have a way to request removal from search results when a page was already indexed.</li>
+</ul>
+
+<h2>Know that robots.txt is not a privacy control</h2>
+<p>Blocking <code>/share/</code> in robots.txt stops compliant crawlers from fetching the page, but a blocked URL can still appear in results if other sites link to it, and the block prevents the crawler from seeing a noindex tag. If you want pages kept out of the index, allow crawling and serve <code>&lt;meta name="robots" content="noindex"&gt;</code> or an <code>X-Robots-Tag: noindex</code> header. Real access control (authentication or a signed token) is what protects content. Indexing directives only control search visibility.</p>
+
+<h2>Decide which user pages have search value</h2>
+<p>Opt-in public pages can be genuinely useful: a public prompt library, a template gallery, a benchmark someone published. Index a page only if it passes a quality gate. Useful criteria:</p>
+<ul>
+  <li><strong>Substance:</strong> a minimum amount of unique text, such as 150 words or more, or a meaningful number of items for gallery pages.</li>
+  <li><strong>Uniqueness:</strong> not a duplicate or near-duplicate of another page on your site or a default template output.</li>
+  <li><strong>User intent to publish:</strong> the creator explicitly allowed indexing.</li>
+  <li><strong>Safety:</strong> the content passed your moderation checks, and no personal data was detected.</li>
+  <li><strong>Age and engagement:</strong> optionally, wait several days or require a view count so spam and test pages never enter the index.</li>
+</ul>
+<p>Pages that fail any check get <code>noindex, follow</code> and are left out of the sitemap. Evaluate the rule in code at render time so a page can move in or out of the index as it changes.</p>
+
+<h2>Give indexable pages a real page structure</h2>
+<p>A user-generated page should not look like a database dump. Give each one a descriptive title built from the content, for example the first heading or the prompt's stated goal, plus your brand suffix. Generate a meta description from the opening text, not a fixed string repeated across thousands of URLs. Add a clear H1, show the creator's name only if they agreed, and link to related items and to the product page that explains what created it. A "Create your own" call to action turns these visits into signups. Add a self-referencing canonical tag so parameters such as <code>?utm_source=</code> don't create duplicates.</p>
+
+<h2>Keep thin and spam pages out of the sitemap</h2>
+<p>Your XML sitemap should list only pages you want indexed. For user-generated content, build it from the same quality gate used for the meta robots tag, and split it into several sitemap files by date or ID range so you can monitor each segment in Search Console. If one segment shows many "Crawled, currently not indexed" or "Duplicate" statuses, tighten the gate for that type of page instead of waiting for Google to sort it out.</p>
+
+<h2>Plan for abuse</h2>
+<p>Anything public and indexable attracts spam: link farms, scraped text, and pages stuffed with keywords. Mitigate it:</p>
+<ol>
+  <li>Add <code>rel="ugc nofollow"</code> to links inside user content, or strip links for new accounts.</li>
+  <li>Rate-limit publishing and require a verified email before a page can be made indexable.</li>
+  <li>Run automated moderation on text and images, and keep a report button on every public page.</li>
+  <li>Keep an internal kill switch that can noindex a whole account or content type within minutes.</li>
+</ol>
+
+<h2>Handle model output with care</h2>
+<p>Generated text introduces its own risks. A public page may contain hallucinated claims about real people or companies, copyrighted passages, or output that is wrong. Label generated content clearly on the page, for example "Generated by [Product] on 2026-10-01 and not reviewed by a human," and consider keeping unreviewed outputs unindexed by default. Labeling also helps readers, and it supports the disclosure practices you may already follow elsewhere on the site.</p>
+
+<h2>Monitor what got indexed</h2>
+<ul>
+  <li>Search <code>site:yourdomain.com/share</code> periodically and read what appears. If anything looks private, remove it immediately and fix the cause.</li>
+  <li>In Search Console, compare indexed counts for user-generated segments against what you intended.</li>
+  <li>Track organic landings on these pages and their signup conversion. If they never convert, reduce the number you index rather than the quality of your main pages.</li>
+  <li>Review server logs for unusual crawl spikes on public paths.</li>
+</ul>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Shared links default to unlisted, with <code>noindex</code> and unguessable URLs.</li>
+  <li>Indexing requires an explicit, clearly worded opt-in.</li>
+  <li>Use authentication or signed tokens for privacy, not robots.txt.</li>
+  <li>Index only pages that pass a substance, uniqueness, and safety gate.</li>
+  <li>Generate titles, descriptions, and canonicals from the content.</li>
+  <li>List only qualifying pages in segmented sitemaps.</li>
+  <li>Apply <code>ugc</code> link attributes, rate limits, moderation, and a kill switch.</li>
+  <li>Label generated content and audit the index regularly.</li>
+</ol>
+
+<p>Users share more freely when they trust how you handle their data. A landing page that explains your privacy practices plainly, like the privacy-focused kit linked here, is a good place to say what "share" does and does not make public.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/warden-ai-privacy-landing.jpeg" alt="Warden — AI Data Privacy &amp; Compliance Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Warden — AI Data Privacy &amp; Compliance Copilot Landing Kit</h3><p class="muted">A calm, high-trust landing page for AI data privacy, DSAR automation, and compliance copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Shared Outputs and User-Generated Pages: What AI SaaS Products Should and Should Not Let Google Index","description":"Public share links, generated reports, and community galleries can create thousands of URLs overnight. How to decide which user-generated pages deserve indexing, which need noindex, and how to avoid leaking private data.","datePublished":"2026-10-22","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

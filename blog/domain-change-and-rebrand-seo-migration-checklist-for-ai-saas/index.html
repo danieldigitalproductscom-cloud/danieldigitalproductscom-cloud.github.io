@@ -1,0 +1,135 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Domain Change or Rebrand: An SEO Migration Checklist for AI SaaS Founders — Plinth</title>
+<meta name="description" content="How to move an AI/SaaS marketing site to a new domain or brand name without losing rankings: URL mapping, 301 redirects, Search Console Change of Address, and post-launch monitoring."/>
+<meta property="og:title" content="Domain Change or Rebrand: An SEO Migration Checklist for AI SaaS Founders — Plinth"/>
+<meta property="og:description" content="How to move an AI/SaaS marketing site to a new domain or brand name without losing rankings: URL mapping, 301 redirects, Search Console Change of Address, and post-launch monitoring."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/domain-change-and-rebrand-seo-migration-checklist-for-ai-saas/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/domain-change-and-rebrand-seo-migration-checklist-for-ai-saas/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-08</span>
+    <h1 class="post-title">Domain Change or Rebrand: An SEO Migration Checklist for AI SaaS Founders</h1>
+    <div class="prose">
+<p>AI products rename often. A model vendor trademarks your name, you pivot from a wrapper to an agent platform, or you finally buy the .com you could not afford at launch. A domain change is one of the riskiest things you can do to your organic traffic, but the risk is mostly in execution. Done carefully, sites usually see a temporary dip and then recover. Done carelessly, they lose rankings that take months to rebuild. This checklist covers the steps that matter.</p>
+
+<h2>First, decide whether you really need to move</h2>
+<p>A new domain resets some of the trust your old one built, and even a perfect migration carries risk. Consider alternatives before committing:</p>
+<ul>
+  <li><strong>Keep the domain, change the brand text.</strong> If only the product name is changing, you can often update titles, logos, and copy on the existing domain with no URL changes at all.</li>
+  <li><strong>Move only when the benefit is concrete.</strong> Legal pressure, a name that causes real confusion, or a merger are good reasons. "The new name feels fresher" usually is not.</li>
+  <li><strong>Avoid combining changes.</strong> Moving domains, redesigning, restructuring URLs, and rewriting copy at once makes it impossible to tell what caused any ranking change. Change the domain first, redesign later.</li>
+</ul>
+
+<h2>Step 1: Baseline everything before you touch anything</h2>
+<p>You cannot measure a migration without a "before." Export these while the old site is still live:</p>
+<ol>
+  <li><strong>A full crawl</strong> of every indexable URL with its title, H1, status code, canonical, and internal link count. Free crawlers handle small marketing sites easily.</li>
+  <li><strong>Search Console performance data</strong> for the last 12 months by page and by query. Export it, because access to the old property becomes less convenient later.</li>
+  <li><strong>Your top linked pages.</strong> Use the Links report in Search Console to list the URLs that receive the most external links. These are the pages whose redirects matter most.</li>
+  <li><strong>Analytics conversions</strong> by landing page, so you can tell whether traffic that arrives still converts.</li>
+</ol>
+
+<h2>Step 2: Build a one-to-one URL map</h2>
+<p>Create a spreadsheet with two columns: every old URL and the exact new URL that replaces it. Keep the path structure identical where you can, so <code>old.com/pricing</code> maps to <code>new.com/pricing</code>. Rules that prevent most disasters:</p>
+<ul>
+  <li><strong>Map to the closest equivalent page,</strong> not the homepage. Mass redirects to the homepage are treated as soft 404s and discard the relevance of the old page.</li>
+  <li><strong>Include everything that gets traffic or links:</strong> blog posts, docs, changelog entries, integration pages, images, PDFs, and your sitemap and robots paths.</li>
+  <li><strong>Retire deliberately.</strong> If a page has no equivalent, let it return a 404 or 410 rather than redirecting to something unrelated.</li>
+  <li><strong>Watch query strings and trailing slashes.</strong> Decide on one canonical form and make the redirect rules consistent.</li>
+</ul>
+
+<h2>Step 3: Prepare the new site while it is still private</h2>
+<p>Before launch day, get the destination ready:</p>
+<ul>
+  <li>Verify the new domain in Search Console as its own property (a Domain property via DNS is the most complete).</li>
+  <li>Make sure the staging copy is blocked from indexing, then remove that block on launch. A leftover <code>noindex</code> or a <code>Disallow: /</code> in robots.txt on the new domain is the classic migration failure, so put it on your launch checklist explicitly.</li>
+  <li>Update canonical tags, Open Graph URLs, hreflang annotations, structured data, and the XML sitemap to use the new domain, with no references to the old one.</li>
+  <li>Update internal links to point directly at new URLs instead of relying on redirects.</li>
+  <li>Confirm HTTPS works, with a valid certificate and a single redirect from HTTP and from www or non-www to your chosen version.</li>
+</ul>
+
+<h2>Step 4: Launch with 301 redirects</h2>
+<p>Use server-level 301 (permanent) redirects from each old URL to its mapped new URL, in a single hop. Avoid chains such as old to temporary to new, since each hop adds delay and risk. Then test thoroughly:</p>
+<ul>
+  <li>Spot-check at least your top 50 URLs by traffic and links with a header checker or <code>curl -I</code>, confirming a 301 status and the right destination.</li>
+  <li>Crawl the old URL list and confirm that no entry ends in a 404, a loop, or an unexpected 200.</li>
+  <li>Submit the new sitemap in the new property.</li>
+</ul>
+<p>Keep the old domain registered and the redirects live for at least a year. Many teams keep them indefinitely, because old backlinks and bookmarks never stop arriving.</p>
+
+<h2>Step 5: Tell Google, then everyone else</h2>
+<p>If you are moving between domains you control, use the Change of Address tool in Search Console on the old property after the redirects are working. It applies to domain moves, not to path changes within one site, and it requires both properties to be verified. It is a signal that speeds up processing, not a substitute for correct redirects.</p>
+<p>Then update the places that link to you, starting with the ones that matter most:</p>
+<ul>
+  <li>Your social profiles, GitHub organization, app store listings, and any package registry pages.</li>
+  <li>Directory and review profiles for your product, since many of these carry meaningful links.</li>
+  <li>Partners and integration pages that link to you. A short, friendly note asking for a URL update works well, because redirects pass most signals but a direct link is cleaner.</li>
+  <li>Email sending domains, if they change. Authentication records need updating and the new domain needs a warm-up before volume, otherwise deliverability suffers.</li>
+</ul>
+
+<h2>Step 6: Monitor for at least 90 days</h2>
+<p>Expect some turbulence for a few weeks as search engines reprocess the move. Check on a schedule rather than every hour:</p>
+<ul>
+  <li><strong>Daily in week one:</strong> the Page indexing report on the new property for unexpected exclusions, plus server logs for 404s on old URLs you forgot to map.</li>
+  <li><strong>Weekly after that:</strong> clicks and impressions for the new property compared against your baseline, summed with the old property so you see the combined picture.</li>
+  <li><strong>Fix the 404s that matter.</strong> Any old URL receiving real traffic or links should get a redirect added.</li>
+  <li><strong>Compare branded queries.</strong> If people search for your old name, keep that name mentioned on the new site for a while, such as "Formerly OldName" in the header or about page, so they can find you.</li>
+</ul>
+<p>A drop of 10 to 20 percent in the first weeks is not unusual. If you are still well below baseline after two to three months, audit the redirect map, canonicals, and indexing status before assuming the algorithm is at fault.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Redirecting everything to the homepage.</strong> It wastes the relevance of every deep page.</li>
+  <li><strong>Blocking the new site by accident.</strong> Check robots.txt and meta robots on day one.</li>
+  <li><strong>Using 302 redirects.</strong> Temporary redirects signal that the old URL is still the real one. Use 301 or 308 for a permanent move.</li>
+  <li><strong>Letting the old domain expire.</strong> You lose the redirects and the links pointing at them, and someone else may register it.</li>
+  <li><strong>Forgetting assets.</strong> Images, PDFs, and JavaScript files that other sites embed will break unless they are redirected or kept available.</li>
+  <li><strong>Launching on a busy day.</strong> Avoid a migration the same week as a product launch or a big press push, when you most need stable traffic.</li>
+</ul>
+
+<h2>A short pre-launch checklist</h2>
+<ol>
+  <li>Baseline crawl, Search Console exports, and top-linked page list saved.</li>
+  <li>One-to-one URL map reviewed, with no homepage catch-alls.</li>
+  <li>New domain verified; staging blocks removed; canonicals, sitemap, and hreflang updated.</li>
+  <li>301 redirects tested in a single hop for the top 50 URLs and a full crawl of the old list.</li>
+  <li>Change of Address submitted, and external profiles and partners updated.</li>
+  <li>Monitoring schedule set for 90 days, with an owner named.</li>
+</ol>
+
+<p>A migration is mostly careful bookkeeping, and the founders who recover fastest are the ones who mapped every URL before launch day. If your new brand needs a fresh, crawlable home page to land on, a clean SEO-ready landing template gives you a solid starting structure so the rebuild does not become a second risk on top of the move.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Domain Change or Rebrand: An SEO Migration Checklist for AI SaaS Founders","description":"How to move an AI/SaaS marketing site to a new domain or brand name without losing rankings: URL mapping, 301 redirects, Search Console Change of Address, and post-launch monitoring.","datePublished":"2026-10-08","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

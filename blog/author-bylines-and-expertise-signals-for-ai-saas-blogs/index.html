@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Author Bylines and Expertise Signals: Making an AI SaaS Blog Look Like It Was Written by People Who Know the Topic — Plinth</title>
+<meta name="description" content="Anonymous, team-voice blog posts struggle to earn trust from readers or search engines. How AI SaaS founders can add real bylines, author pages, first-hand evidence, and review dates that demonstrate experience without faking credentials."/>
+<meta property="og:title" content="Author Bylines and Expertise Signals: Making an AI SaaS Blog Look Like It Was Written by People Who Know the Topic — Plinth"/>
+<meta property="og:description" content="Anonymous, team-voice blog posts struggle to earn trust from readers or search engines. How AI SaaS founders can add real bylines, author pages, first-hand evidence, and review dates that demonstrate experience without faking credentials."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/author-bylines-and-expertise-signals-for-ai-saas-blogs/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/author-bylines-and-expertise-signals-for-ai-saas-blogs/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-25</span>
+    <h1 class="post-title">Author Bylines and Expertise Signals: Making an AI SaaS Blog Look Like It Was Written by People Who Know the Topic</h1>
+    <div class="prose">
+<p>Open ten AI SaaS blogs and most posts are signed "The Acme Team" or not signed at all. Readers cannot tell whether the advice comes from someone who has run the thing they describe, and neither can reviewers evaluating quality. Google's quality guidance asks for experience, expertise, authoritativeness, and trustworthiness. These are not ranking factors you can toggle with a tag, but they describe what a useful page looks like, and bylines are the cheapest visible step toward it.</p>
+
+<h2>What a byline can and cannot do</h2>
+<p>Adding a name does not raise rankings by itself. What it does is make the page accountable: a real person, with a verifiable background, stands behind the claims. That helps in three concrete ways: readers trust the advice more, other sites are more willing to cite a named author, and AI answer engines have an entity to attribute a statement to. Do not invent authors, borrow stock-photo faces, or attach credentials nobody holds. A made-up "Head of Growth" is a trust liability the moment someone searches the name.</p>
+
+<h2>Who should be the author</h2>
+<p>Match the author to the claim. A post about vector database costs should come from whoever chooses and pays for the infrastructure. A post about pricing experiments should come from whoever ran them. If you are a solo founder, you are the author of nearly everything, and that is fine. If a writer drafted the piece, use a two-line pattern: "Written by Jo Lee, reviewed by Sam Ortiz, CTO" where the reviewer actually reviewed it. Technical and compliance topics especially benefit from a named subject-matter reviewer.</p>
+
+<h2>Build a real author page</h2>
+<p>Each byline should link to a page at a stable URL such as /authors/jo-lee/. Include:</p>
+<ul>
+  <li>A real photo and a short bio that states the person's actual role and what they have done, such as "built the evaluation pipeline for our retrieval product since 2024".</li>
+  <li>Links to verifiable profiles: LinkedIn, GitHub, conference talks, or published papers. Only link accounts the person controls.</li>
+  <li>A list of articles written or reviewed, so the page works as a hub linking back to your content.</li>
+  <li>Optional Person structured data with name, jobTitle, and sameAs links to those profiles. Keep it consistent with the visible page; markup that contradicts the content is worse than none.</li>
+</ul>
+<p>Link the byline in the article markup using rel="author" on the anchor, and include the author in your Article structured data. Neither is a magic switch, but they make the relationship unambiguous to crawlers.</p>
+
+<h2>Show first-hand experience in the text</h2>
+<p>A byline fails if the body reads like a rewritten top-ten result. The strongest expertise signal is evidence that only someone who did the work could include:</p>
+<ul>
+  <li><strong>Your own numbers.</strong> "Our median response time dropped from 2.4s to 1.1s after we cached embeddings" beats "caching improves latency". If numbers are small or from a single product, say so.</li>
+  <li><strong>Screenshots and artifacts.</strong> Real dashboards, prompts, config files, error messages, and before/after diffs. Label anything that is a mock-up or sample.</li>
+  <li><strong>What went wrong.</strong> Mention the approach you abandoned and why. Generic content rarely includes failures.</li>
+  <li><strong>Specific constraints.</strong> State the model, the data volume, the team size, and the date. Advice with context is easier to trust and to apply.</li>
+</ul>
+
+<h2>Dates, updates, and review notes</h2>
+<p>AI tooling changes fast, so a post about prompt caching from last year may now be wrong. Show a published date and a "last reviewed" date, and only change the latter when someone actually rechecked the content. Add a one-line note when you correct something: "Updated October 2026: pricing tiers changed; see section 3." Keep the dateModified value in your structured data in sync with what the page shows. Faking freshness by bumping dates without edits is easy to spot and erodes the trust you are building.</p>
+
+<h2>Cite sources and be careful with claims</h2>
+<ul>
+  <li>Link primary sources for statistics, such as the original study or documentation, rather than a blog that summarized it.</li>
+  <li>Separate what you measured from what you read. "In our tests" and "according to the vendor docs" are different claims.</li>
+  <li>Avoid absolute promises on topics like compliance, security, or legal outcomes unless the author is qualified to make them. Add a plain note when the content is general information, not professional advice.</li>
+  <li>If AI helped draft the piece, a human with the right background should verify every factual claim before it is published.</li>
+</ul>
+
+<h2>Connect the site around the people</h2>
+<p>Expertise signals work better when they are consistent across the site. The About page should name the founders and what they have built. The blog byline should match the names on the team page and the profiles linked from them. Conference talks, podcasts, and guest posts should use the same name and bio so that search engines and readers can connect them. A branded search for your author's name should lead somewhere coherent.</p>
+
+<h2>A 90-minute implementation plan</h2>
+<ol>
+  <li>Pick your ten highest-traffic posts and decide the real author and, where useful, a reviewer for each.</li>
+  <li>Create one author page per person with photo, bio, verifiable links, and an article list.</li>
+  <li>Add a byline block to the post template: name, role, published date, last-reviewed date, and a link to the author page.</li>
+  <li>Add Article and Person structured data that matches the visible content, and validate it with the Rich Results Test.</li>
+  <li>Edit each of the ten posts to add at least one first-hand element: a measurement, a screenshot, or a lesson learned.</li>
+  <li>Replace secondary sources for key statistics with primary ones.</li>
+  <li>Re-check Search Console performance for those pages after four to six weeks, and expand to the next batch if they improve.</li>
+</ol>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Every post names a real author who actually wrote or reviewed it.</li>
+  <li>Author pages exist with a photo, honest bio, and verifiable profile links.</li>
+  <li>Published and last-reviewed dates are visible and truthful.</li>
+  <li>Each post contains first-hand evidence, not only summarized advice.</li>
+  <li>Key claims link to primary sources, and AI-assisted drafts are fact-checked by a person.</li>
+  <li>Structured data and visible content agree.</li>
+  <li>About, team, and author pages tell the same story.</li>
+</ol>
+
+<p>If your blog doubles as a sales channel, the product page it links to should carry the same credibility. The AI content landing kit linked here includes a tone-of-voice and proof section you can adapt to show who is behind your product.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/scribe-ai-content-landing.jpeg" alt="Scribe — AI Content &amp; Marketing Copilot Landing Kit" width="560" height="315"/>
+      <div><h3>Scribe — AI Content &amp; Marketing Copilot Landing Kit</h3><p class="muted">A friendly, benefit-led landing page for AI content, copywriting, and marketing copilot tools.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Author Bylines and Expertise Signals: Making an AI SaaS Blog Look Like It Was Written by People Who Know the Topic","description":"Anonymous, team-voice blog posts struggle to earn trust from readers or search engines. How AI SaaS founders can add real bylines, author pages, first-hand evidence, and review dates that demonstrate experience without faking credentials.","datePublished":"2026-10-25","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
