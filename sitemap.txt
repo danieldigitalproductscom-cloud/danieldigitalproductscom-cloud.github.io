@@ -133,11 +133,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/tonic-ai-patient-engagemen
 https://danieldigitalproductscom-cloud.github.io/demo/murmur-ai-customer-feedback-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/vectra-ai-vector-database-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/mirage-ai-agent-simulation-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/harrow-ai-web-data-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/utm-parameters-and-campaign-link-hygiene-for-ai-saas-launches/
 https://danieldigitalproductscom-cloud.github.io/blog/search-console-regex-filters-for-ai-saas-query-analysis/
 https://danieldigitalproductscom-cloud.github.io/blog/indexnow-and-faster-indexing-for-new-ai-saas-pages/
 https://danieldigitalproductscom-cloud.github.io/blog/cdn-and-caching-headers-for-fast-ai-saas-marketing-sites/
