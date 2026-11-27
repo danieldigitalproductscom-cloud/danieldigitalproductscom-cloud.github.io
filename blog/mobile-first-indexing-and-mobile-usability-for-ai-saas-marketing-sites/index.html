@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mobile-First Indexing and Mobile Usability for AI SaaS Marketing Sites — Plinth</title>
+<meta name="description" content="Google indexes the mobile version of your pages. A practical checklist for AI/SaaS founders: content parity, viewport, tap targets, sticky elements, mobile pricing tables and how to test it all."/>
+<meta property="og:title" content="Mobile-First Indexing and Mobile Usability for AI SaaS Marketing Sites — Plinth"/>
+<meta property="og:description" content="Google indexes the mobile version of your pages. A practical checklist for AI/SaaS founders: content parity, viewport, tap targets, sticky elements, mobile pricing tables and how to test it all."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/mobile-first-indexing-and-mobile-usability-for-ai-saas-marketing-sites/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/mobile-first-indexing-and-mobile-usability-for-ai-saas-marketing-sites/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-11-05</span>
+    <h1 class="post-title">Mobile-First Indexing and Mobile Usability for AI SaaS Marketing Sites</h1>
+    <div class="prose">
+<p>Google uses the mobile version of your pages for indexing and ranking. If your desktop page has a full feature comparison, a pricing table and a FAQ, but the mobile version hides or drops them, the dropped content may not count at all. Many AI SaaS buyers are desktop users at the point of purchase, so teams design for large screens and treat mobile as an afterthought. That is a ranking risk and a conversion risk, because founders, investors and researchers often first open your link on a phone from Slack, X or an email.</p>
+
+<h2>1. Check content parity first</h2>
+<p>Mobile-first indexing means the content Googlebot sees with a smartphone user agent is what gets evaluated. Compare the two versions of your key pages (home, pricing, top feature and comparison pages) and confirm that these match:</p>
+<ul>
+  <li><strong>Main text.</strong> Headings and body copy should be the same. Do not trim mobile copy to "keep it short" if the removed text carries the keywords or answers.</li>
+  <li><strong>Structured data.</strong> JSON-LD for Organization, SoftwareApplication, FAQ or Product should be present on the mobile HTML, not injected only on desktop.</li>
+  <li><strong>Meta tags.</strong> Title, description, canonical and robots directives must be identical across versions.</li>
+  <li><strong>Links.</strong> Navigation and footer links to pricing, docs and key pages should exist on mobile, even inside a menu, so crawlers can follow them.</li>
+  <li><strong>Images and video.</strong> Use the same alt text, and keep embedded demos crawlable.</li>
+</ul>
+<p>If you use a responsive layout with one HTML document, parity is mostly automatic. Trouble appears with separate mobile templates, components that render only above a certain width in JavaScript, or cookie and chat widgets that cover the page.</p>
+
+<h2>2. Collapsed content is fine, missing content is not</h2>
+<p>Accordions, tabs and "read more" sections are acceptable on mobile when the text is in the HTML or loaded without requiring a user action that crawlers cannot perform. Check this by viewing the rendered HTML in Search Console's URL Inspection: if an FAQ answer appears there, it is available. If it loads only after a click that triggers a network request, it likely is not. Use a native <code>&lt;details&gt;</code> element or CSS-based collapsing so the text is always in the document.</p>
+
+<h2>3. Set the viewport and avoid fixed widths</h2>
+<p>Every page needs <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>. Without it, phones render a zoomed-out desktop layout. Then look for hard-coded widths: a 1100px hero image, a code sample in a non-wrapping block, or a wide table that forces horizontal scrolling for the whole page. Horizontal page scroll is a common sign of a layout bug. Constrain media with <code>max-width: 100%</code> and put wide content such as code blocks and tables inside their own scroll container.</p>
+
+<h2>4. Make tap targets and text comfortably usable</h2>
+<p>Aim for body text of at least 16px and interactive targets around 44 by 44 CSS pixels with some spacing, the figure commonly recommended in accessibility guidance. Typical offenders on AI SaaS sites: tiny footer links stacked tightly, a language switcher, small "x" buttons on banners, and pricing toggles (monthly or yearly) that are hard to hit. Poor targets cause accidental taps and frustrated exits more than they cause direct ranking changes, but they hurt the signals that matter, like engagement and conversions.</p>
+
+<h2>5. Tame sticky bars, banners and popups</h2>
+<p>Stacked fixed elements consume a large part of a small screen. A sticky header, a cookie banner, an announcement bar and a chat bubble can leave little room for content. Google's guidance on intrusive interstitials warns about popups that cover the main content right after arriving from search. Practical rules:</p>
+<ul>
+  <li>Keep one sticky element at most, and make the header compact on scroll.</li>
+  <li>Show cookie consent as a small bottom bar, not a full-screen overlay, unless the law requires otherwise for your region.</li>
+  <li>Delay chat widgets and email capture until engagement, not on load.</li>
+  <li>Make every close button reachable and large enough to tap.</li>
+</ul>
+
+<h2>6. Rework pricing tables and comparisons for narrow screens</h2>
+<p>A five-column plan matrix does not fit a phone. Do not hide columns, since that removes content. Options that keep everything: stack plans as cards with the same feature list in each; use a horizontally scrollable table with a sticky first column; or show a plan selector that switches the visible column while the others stay in the markup. Keep the price, billing period and main call to action visible without scrolling inside each card. Test that "Contact sales" and "Start free" are both easy to reach.</p>
+
+<h2>7. Watch performance on mid-range phones</h2>
+<p>Mobile Core Web Vitals field data (from the Chrome UX Report, visible in Search Console) is usually worse than desktop. Heavy hero animations, large product screenshots, third-party scripts and web fonts are the usual causes. Serve responsive images with <code>srcset</code>, lazy-load below-the-fold media, preload the hero image only if it is the largest element, and defer analytics and chat scripts. Test with throttled CPU and network, not just a fast laptop.</p>
+
+<h2>8. Test the way Google sees it</h2>
+<ol>
+  <li>Run URL Inspection in Search Console on your five most important URLs and review the rendered screenshot and HTML.</li>
+  <li>Open Lighthouse mobile reports in Chrome DevTools and note layout shift, tap-target and viewport warnings.</li>
+  <li>Use device emulation, then confirm on at least one real iPhone and one mid-range Android phone.</li>
+  <li>Check the Page Indexing and Core Web Vitals reports for mobile-specific issues, and review the mobile segment of your analytics for conversion gaps against desktop.</li>
+  <li>Re-test after every template, theme or widget change.</li>
+</ol>
+
+<h2>Quick checklist</h2>
+<ul>
+  <li>Same content, structured data, meta tags and links on mobile and desktop.</li>
+  <li>Collapsed sections hold text in the HTML, not behind a fetch.</li>
+  <li>Viewport meta tag present; no page-level horizontal scroll.</li>
+  <li>16px body text, roughly 44px tap targets with spacing.</li>
+  <li>One sticky element at most; no full-screen popups on arrival.</li>
+  <li>Pricing and comparison tables readable without removing content.</li>
+  <li>Mobile field Core Web Vitals reviewed monthly.</li>
+</ul>
+
+<p>A template that is responsive from the start removes most of these problems before they exist. If you are building or rebuilding a product page, the Nebula AI SaaS landing kit linked here is a responsive, no-build-step starting point you can adapt and then run through the checks above.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/nebula-ai-saas-landing.jpeg" alt="Nebula — AI SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Nebula — AI SaaS Landing Page Kit</h3><p class="muted">A polished, conversion-focused landing page for AI / SaaS startups. Dark, modern, responsive, zero build step.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/nwfws" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Mobile-First Indexing and Mobile Usability for AI SaaS Marketing Sites","description":"Google indexes the mobile version of your pages. A practical checklist for AI/SaaS founders: content parity, viewport, tap targets, sticky elements, mobile pricing tables and how to test it all.","datePublished":"2026-11-05","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

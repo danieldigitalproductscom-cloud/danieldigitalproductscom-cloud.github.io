@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><defs>
+<linearGradient id="bgstrataaicdplanding" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c0c14"/><stop offset="1" stop-color="#16161f"/></linearGradient>
+<radialGradient id="glstrataaicdplanding" cx="50%" cy="2%" r="85%"><stop offset="0" stop-color="#4f46e5" stop-opacity=".5"/><stop offset="1" stop-color="#4f46e5" stop-opacity="0"/></radialGradient>
+<linearGradient id="txstrataaicdplanding" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs>
+<rect width="640" height="360" fill="url(#bgstrataaicdplanding)"/><rect width="640" height="360" fill="url(#glstrataaicdplanding)"/>
+<rect x="296" y="84" width="48" height="8" rx="4" fill="url(#txstrataaicdplanding)"/>
+<text x="320" y="196" font-family="Space Grotesk,Arial,sans-serif" font-size="62" font-weight="700" fill="url(#txstrataaicdplanding)" text-anchor="middle">Strata</text>
+<text x="320" y="238" font-family="Inter,Arial,sans-serif" font-size="21" fill="#9b9bb4" text-anchor="middle">AI Customer Data Platform Landing Kit</text>
+<text x="320" y="300" font-family="Inter,Arial,sans-serif" font-size="15" fill="#4f46e5" font-weight="600" text-anchor="middle">HTML + CSS · No build step</text></svg>

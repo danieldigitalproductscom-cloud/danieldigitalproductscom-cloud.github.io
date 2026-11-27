@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>IndexNow and Faster Indexing for New AI SaaS Pages — Plinth</title>
+<meta name="description" content="How AI/SaaS founders can get new and updated pages discovered faster: what IndexNow does and does not cover, how to set it up, and the sitemap, internal-link and Search Console habits that matter more for Google."/>
+<meta property="og:title" content="IndexNow and Faster Indexing for New AI SaaS Pages — Plinth"/>
+<meta property="og:description" content="How AI/SaaS founders can get new and updated pages discovered faster: what IndexNow does and does not cover, how to set it up, and the sitemap, internal-link and Search Console habits that matter more for Google."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/indexnow-and-faster-indexing-for-new-ai-saas-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/indexnow-and-faster-indexing-for-new-ai-saas-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-11-19</span>
+    <h1 class="post-title">IndexNow and Faster Indexing for New AI SaaS Pages</h1>
+    <div class="prose">
+<p>You ship a new feature page, a pricing change or a comparison post, and then you wait. Days later it still is not in search results, or the old version is still showing. For a young AI/SaaS site with little authority, discovery speed is a real constraint. There are two separate problems here: telling search engines a URL changed, and convincing them it is worth indexing. This guide covers both, honestly, including where IndexNow helps and where it does not.</p>
+
+<h2>1. What IndexNow is, and what it is not</h2>
+<p>IndexNow is an open protocol that lets you notify participating search engines the moment a URL is added, updated or deleted. Bing, Yandex, Naver and Seznam support it; submitting to one participating endpoint shares the notification with the others. <strong>Google does not support IndexNow.</strong> For Google you rely on sitemaps, internal links and Search Console. So IndexNow is worth doing if Bing visibility matters to you (it also feeds some AI assistants and search products that draw on Bing's index), but it is not a Google shortcut.</p>
+<p>It is also a notification, not a guarantee. A submitted URL still has to pass quality checks to be indexed. Thin or duplicate pages stay out no matter how you ping.</p>
+
+<h2>2. Set up IndexNow in four steps</h2>
+<ol>
+  <li><strong>Generate a key.</strong> Any string of 8 to 128 characters using letters, digits and dashes. A random UUID works.</li>
+  <li><strong>Host the key file.</strong> Create a text file at your site root, for example <code>https://example.com/3f9a1c2e-your-key.txt</code>, containing only the key. This proves you control the host.</li>
+  <li><strong>Submit URLs.</strong> Send an HTTP POST to <code>https://api.indexnow.org/indexnow</code> with a JSON body:
+<pre><code>{
+  "host": "example.com",
+  "key": "3f9a1c2e-your-key",
+  "keyLocation": "https://example.com/3f9a1c2e-your-key.txt",
+  "urlList": [
+    "https://example.com/features/auto-triage",
+    "https://example.com/pricing"
+  ]
+}</code></pre>
+  A single URL can also be submitted with a GET request. You can send up to 10,000 URLs per request.</li>
+  <li><strong>Check the response.</strong> 200 or 202 means received. 400 is a malformed request, 403 means the key could not be validated, 422 means the URLs do not belong to the host, and 429 means you are sending too much.</li>
+</ol>
+<p>If you use Cloudflare, or a CMS or static-site plugin that offers IndexNow, enabling it there is simpler than writing your own script. Otherwise add the POST as a final step in your deploy pipeline, sending only URLs that actually changed.</p>
+
+<h2>3. Only submit what changed</h2>
+<p>Do not submit your whole sitemap on every deploy. Compare the new build against the previous one and send added, edited and removed URLs only. Repeated submission of unchanged pages is noise and can trigger rate limiting. Send removed pages too, so engines drop them quickly instead of rechecking dead URLs.</p>
+
+<h2>4. For Google: sitemaps with honest lastmod</h2>
+<p>Google reads sitemaps, and it uses <code>lastmod</code> only if it has proven reliable. Set <code>lastmod</code> to the date of the last meaningful content change, not the build date. If every page claims to have changed today, Google learns to ignore the field. Keep the sitemap limited to canonical, indexable, 200-status URLs, and reference it in <code>robots.txt</code> and Search Console.</p>
+
+<h2>5. Internal links do more than pings</h2>
+<p>The most dependable discovery signal is a crawlable link from a page that is already indexed and visited often. When you publish a new page, link to it the same day from your home page, a relevant hub page or the navigation where appropriate, and from two or three related articles. An orphan page, even in the sitemap, is treated as low priority. Use plain <code>&lt;a href&gt;</code> links; links that exist only after a client-side click handler may never be followed.</p>
+
+<h2>6. Use URL Inspection sparingly and wisely</h2>
+<p>In Search Console, URL Inspection shows whether a page is indexed, the last crawl date, and the canonical Google chose. For a high-value new page you can use Request Indexing. Treat it as a nudge for a handful of important URLs, not a bulk tool; quotas are limited and repeat requests do not speed anything up. If Inspection reports "Discovered, currently not indexed" or "Crawled, currently not indexed," the issue is usually quality or duplication, not discovery. Strengthen the page with unique content, a clear purpose and internal links rather than resubmitting.</p>
+
+<h2>7. Make sure the page is indexable first</h2>
+<p>Before any pinging, rule out self-inflicted blocks. A leftover <code>noindex</code> meta tag or <code>X-Robots-Tag</code> header from staging, a <code>Disallow</code> rule in robots.txt, a canonical pointing at another URL, or a redirect chain will all stop indexing. Fetch the live page and confirm a 200 status, a self-referencing canonical, and that the main content is in the initial HTML rather than injected late by JavaScript.</p>
+
+<h2>8. Do not use the Indexing API for ordinary pages</h2>
+<p>Google's Indexing API is officially limited to job posting and livestream structured data. Using it for marketing pages is unsupported, and automated tools that promise instant indexing this way are not a dependable strategy. Stick to the supported methods above.</p>
+
+<h2>9. Measure time to index</h2>
+<p>Track how long new pages take to appear. For each new URL, record the publish date, the date it first shows as indexed in Search Console (and in Bing Webmaster Tools), and the date of first impressions. After a month you will see your typical lag, and you can tell whether a change such as adding hub links or IndexNow shortened it. This is far more useful than guessing.</p>
+
+<h2>Quick checklist</h2>
+<ul>
+  <li>IndexNow key generated, key file live at the site root, POST wired into the deploy step.</li>
+  <li>Only added, changed and removed URLs submitted, not the whole site.</li>
+  <li>Expectations set: IndexNow covers Bing and others, not Google.</li>
+  <li>Sitemap lists canonical 200 URLs with a truthful <code>lastmod</code>.</li>
+  <li>Every new page linked from at least one indexed hub page and a few related articles.</li>
+  <li>No stray <code>noindex</code>, robots block, or conflicting canonical on the live page.</li>
+  <li>Request Indexing used only for key pages; time to index tracked per URL.</li>
+</ul>
+
+<p>Fast discovery starts with a clean, crawlable page structure. If you are building a product page meant to rank, the Ranked landing kit linked here gives you a semantic, plain-HTML base that search engines can read without any extra setup.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"IndexNow and Faster Indexing for New AI SaaS Pages","description":"How AI/SaaS founders can get new and updated pages discovered faster: what IndexNow does and does not cover, how to set it up, and the sitemap, internal-link and Search Console habits that matter more for Google.","datePublished":"2026-11-19","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

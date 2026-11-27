@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Search Console Regex Filters: Finding Real Opportunities in Your AI SaaS Queries — Plinth</title>
+<meta name="description" content="How AI/SaaS founders can use regular expressions in Google Search Console to separate branded from non-branded traffic, find question queries, group pages by section, and spot content gaps without paying for a tool."/>
+<meta property="og:title" content="Search Console Regex Filters: Finding Real Opportunities in Your AI SaaS Queries — Plinth"/>
+<meta property="og:description" content="How AI/SaaS founders can use regular expressions in Google Search Console to separate branded from non-branded traffic, find question queries, group pages by section, and spot content gaps without paying for a tool."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/search-console-regex-filters-for-ai-saas-query-analysis/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/search-console-regex-filters-for-ai-saas-query-analysis/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-11-20</span>
+    <h1 class="post-title">Search Console Regex Filters: Finding Real Opportunities in Your AI SaaS Queries</h1>
+    <div class="prose">
+<p>The default Search Console report shows thousands of queries in one undifferentiated list. For an AI/SaaS site, that list is dominated by your brand name, which hides the searches that tell you whether your content is actually working. Search Console supports regular expressions (RE2 syntax) in its query and page filters, and a handful of patterns turn the report into a decision tool. Everything below is free and takes minutes.</p>
+
+<h2>1. Where to find the regex filter</h2>
+<p>In the Performance report, click <strong>New</strong> (or the existing filter chip) and choose <strong>Query</strong> or <strong>Page</strong>. Change the match type from "Queries containing" to <strong>"Custom (regex)"</strong>, then choose <em>Matches regex</em> or <em>Doesn't match regex</em>. Patterns are case-sensitive unless you start with <code>(?i)</code>, so put that at the front of almost every query pattern.</p>
+
+<h2>2. Split branded from non-branded queries</h2>
+<p>Branded traffic is people who already know you. Non-branded traffic is where SEO earns new customers. Filter with <em>Doesn't match regex</em>:</p>
+<pre><code>(?i)acmeai|acme ai|acme\.ai</code></pre>
+<p>Include common misspellings and the spaced and unspaced versions of your name. Now compare clicks and impressions over 3 months against the previous period. If total clicks are growing only because branded clicks are growing, your content is not yet pulling in strangers, which is the first thing to know before you invest further.</p>
+
+<h2>3. Surface question queries</h2>
+<p>Questions reveal what people want explained and map well to FAQ sections and guides:</p>
+<pre><code>(?i)^(how|what|why|can|does|is|are|should|which|when)\b</code></pre>
+<p>Sort by impressions. Queries with many impressions and a position beyond 10 are topics you appear for but do not answer well. Either expand the existing page to answer that question directly in the first paragraph under a matching heading, or write a dedicated page if the intent differs from what you have.</p>
+
+<h2>3b. Find comparison and alternative intent</h2>
+<pre><code>(?i)\b(vs|versus|alternative|alternatives|compare|comparison|competitor)\b</code></pre>
+<p>These are high-intent searches. If you see impressions for "[competitor] alternative" and have no page for it, that is a clear gap. If you have a page but it ranks at position 15, check that the title and H1 contain the exact phrasing.</p>
+
+<h2>4. Isolate commercial-intent modifiers</h2>
+<pre><code>(?i)\b(pricing|price|cost|free|trial|demo|plans|review|reviews)\b</code></pre>
+<p>Compare the pages receiving these clicks with your pricing and demo pages. Often a blog post is catching a pricing query that should land on the pricing page. That is a prompt to add an internal link, adjust the post's call to action, or consolidate pages if two compete.</p>
+
+<h2>5. Filter pages by site section</h2>
+<p>Use the Page filter with regex to compare sections as groups:</p>
+<ul>
+  <li>Blog only: <code>/blog/</code> (a plain "URLs containing" filter works too).</li>
+  <li>Feature and use-case pages: <code>/(features|use-cases|solutions)/</code></li>
+  <li>Everything except the blog and docs: <code>^https://example\.com/(?!blog|docs)</code> — RE2 does not support lookaheads, so for this use <em>Doesn't match regex</em> with <code>/(blog|docs)/</code> instead.</li>
+</ul>
+<p>That last point matters: Search Console uses RE2, which does not support lookaheads, lookbehinds or backreferences. If a pattern from a regex tutorial errors out, rewrite it with an inverted filter instead.</p>
+
+<h2>6. Find long-tail queries</h2>
+<p>Long-tail queries tend to convert better and are easier to win. Match queries with five or more words:</p>
+<pre><code>^(\S+\s){4,}\S+$</code></pre>
+<p>On a young site these often make up most of the non-branded impressions. Group them by theme. If twenty long-tail queries share one topic, that is a content cluster waiting to be built around a single strong page.</p>
+
+<h2>7. Spot wrong-intent and irrelevant impressions</h2>
+<p>Use a query filter to look for terms you do not want, for example "free download", "jobs", "course" or "tutorial pdf" if you sell software. Large impressions here mean a page is attracting the wrong audience. Tighten the title and description, or add clarifying language. It is also a reason not to chase every impression: a high-impression query with a mismatched intent will never convert.</p>
+
+<h2>8. Turn findings into a weekly routine</h2>
+<ol>
+  <li><strong>Export</strong> the filtered tables (Export, then Google Sheets or CSV) so you can track changes, since the interface only keeps 16 months.</li>
+  <li><strong>Pick three actions</strong> per week: one question query to answer, one position 8 to 20 page to improve, one mismatched-intent page to retitle.</li>
+  <li><strong>Annotate</strong> the date and change in a simple log, then recheck in four to six weeks. Rankings take time to settle and changes made over days are hard to attribute.</li>
+</ol>
+
+<h2>9. Know the limits</h2>
+<p>Search Console samples and anonymizes rare queries, so totals across filters will not always add up. Data lags by a couple of days. Position is an average across devices and locations, so treat it as a trend, not an exact rank. And impressions from AI answer features are not separated out, so judge success by clicks and conversions, not impressions alone.</p>
+
+<h2>Quick checklist</h2>
+<ul>
+  <li>Branded regex built, including misspellings, and used as an exclusion filter.</li>
+  <li>Question, comparison and pricing-intent patterns saved in a note for reuse.</li>
+  <li>Page filters set for each major site section.</li>
+  <li>RE2 limits remembered: no lookaheads, lookbehinds or backreferences.</li>
+  <li>Filtered data exported monthly to preserve history beyond 16 months.</li>
+  <li>Three concrete actions chosen each week, with dates logged.</li>
+</ul>
+
+<p>Better query data only helps if the pages you improve are clean and crawlable. The Ranked landing kit linked here is a semantic, plain-HTML starting point so the fixes you find in Search Console are content changes, not structural ones.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Search Console Regex Filters: Finding Real Opportunities in Your AI SaaS Queries","description":"How AI/SaaS founders can use regular expressions in Google Search Console to separate branded from non-branded traffic, find question queries, group pages by section, and spot content gaps without paying for a tool.","datePublished":"2026-11-20","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lightweight A/B Testing for AI SaaS Landing Pages (No Engineering Team Required) — Plinth</title>
+<meta name="description" content="A practical way for a solo founder to test headlines, CTAs, and pricing display without a data team, a dedicated experimentation platform, or enough traffic for "real" statistical significance."/>
+<meta property="og:title" content="Lightweight A/B Testing for AI SaaS Landing Pages (No Engineering Team Required) — Plinth"/>
+<meta property="og:description" content="A practical way for a solo founder to test headlines, CTAs, and pricing display without a data team, a dedicated experimentation platform, or enough traffic for "real" statistical significance."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/lightweight-ab-testing-for-ai-saas-landing-pages/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/lightweight-ab-testing-for-ai-saas-landing-pages/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">7 min read · 2026-08-13</span>
+    <h1 class="post-title">Lightweight A/B Testing for AI SaaS Landing Pages (No Engineering Team Required)</h1>
+    <div class="prose">
+<p>Most advice about A/B testing assumes you have the traffic of a company running a growth team — thousands of weekly visitors, a dedicated experimentation platform, and a data analyst checking significance. A solo founder launching an AI SaaS product usually has none of that. That doesn't mean testing is pointless; it means you need a version of it sized to the traffic you actually have. Here's what that looks like in practice.</p>
+
+<h2>1. Don't split-test with low traffic — sequence-test instead</h2>
+<p>Splitting fifty visitors a day into two variants means you'll wait months for a result that's still noise. At founder-scale traffic, the honest move is a <strong>sequence test</strong>: run version A for one to two weeks, record the conversion rate, then run version B for the same length of time under similar conditions (same traffic sources, no big publicity spike in either window), and compare. It's less statistically clean than a true split test, but it's far more useful than guessing, and it's the method that actually fits the traffic you have instead of the traffic a blog post assumes you have.</p>
+
+<h2>2. Pick one variable per test, and pick the ones that actually move the needle</h2>
+<p>Button color and font weight are the tests people run because they're easy, not because they matter. On an early-stage landing page, the variables with real leverage are almost always: the hero headline (outcome-focused vs. feature-focused), the primary CTA's label ("Start free trial" vs. "See how it works" vs. "Get my first draft in 30 seconds"), and how pricing is framed (a visible price vs. "Contact us," or monthly vs. annual shown by default). Test one of these at a time — changing the headline and the CTA together means you'll never know which one caused the shift.</p>
+
+<h2>3. Set a decision threshold before you look at the numbers</h2>
+<p>It's tempting to peek at results daily and call a winner the moment one variant pulls ahead. Decide in advance how large a gap you'll treat as meaningful — for most early-stage pages, a swing of at least 20–30% in conversion rate, sustained across the full test window, is a reasonable bar given the noise inherent in small samples. Anything smaller than that at low traffic is very likely to be random variation, not a real signal. Writing the threshold down before you start stops you from rationalizing a coin-flip result into a decision.</p>
+
+<h2>4. Tools that don't require an engineering ticket</h2>
+<ul>
+  <li><strong>Two static pages, one redirect.</strong> Build variant B as a second static HTML file, and alternate which one you link to from your ad, tweet, or newsletter for each send. No JavaScript split-testing library needed — you're testing across time windows, not simultaneously, so a simple swap is enough.</li>
+  <li><strong>A privacy-friendly analytics tool with goal tracking.</strong> Plausible, Fathom, or PostHog's free tier can track a "signup click" or "checkout started" event without the cookie-consent overhead of a full marketing suite. Set up the goal once and both variants report into the same dashboard.</li>
+  <li><strong>Session recordings for the "why," not just the "what."</strong> A tool like Microsoft Clarity (free) shows you where people scroll, pause, and rage-click. A losing variant's numbers tell you it lost; a recording often tells you why — people scrolled past the CTA, or bounced right after the pricing section.</li>
+</ul>
+
+<h2>5. Give each test a minimum sample, not just a minimum time</h2>
+<p>Two weeks with 40 visitors and two weeks with 4,000 visitors are not comparable tests, even though both satisfy a "run for two weeks" rule. Set a floor on visitors too — a rough rule of thumb for founder-scale testing is at least 100 visitors per variant before you trust the result at all, and closer to 300–500 before you'd bet a real pricing decision on it. If you're below that after two weeks, the test isn't done; it's just inconclusive, and the right move is to keep the better-performing variant live by default rather than declare a winner you can't actually support.</p>
+
+<h2>6. Log every test, win or lose</h2>
+<p>The value of testing compounds only if you remember what you tried. Keep a plain text file or spreadsheet: date range, what changed, baseline rate, result rate, and your call. A losing test is not wasted — "outcome-focused headline beat feature-focused by 35%, but 'Get my first draft in 30 seconds' beat both" is exactly the kind of finding that should shape your next three headlines, not just this one page. Without a log, founders re-run the same losing idea a year later because they forgot they'd already tried it.</p>
+
+<h2>7. Know when not to test</h2>
+<p>Below roughly 50–100 visitors a week, spend your time on distribution instead — no amount of methodological rigor extracts a signal from a sample that small. Testing earns its keep once you have a steady trickle of traffic and want to stop guessing which version of your page is actually working harder. Before that point, ship your best single guess, informed by the sections in this guide's companion piece on landing page anatomy, and put your energy into getting more people to see it.</p>
+
+<h2>The takeaway</h2>
+<p>You don't need a growth team or a five-figure experimentation budget to stop guessing. You need one variable at a time, a decision threshold set before you peek, a free analytics tool wired to a real goal, and a log you actually update. That's a lightweight process a solo founder can run from a static HTML page — which is exactly the kind of page a good template gets you to on day one, leaving your time for the testing instead of the building.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/amplify-ai-social-media-landing.jpeg" alt="Amplify — AI Social Media &amp; Content Scheduling Landing Kit" width="560" height="315"/>
+      <div><h3>Amplify — AI Social Media &amp; Content Scheduling Landing Kit</h3><p class="muted">A vibrant, creator-friendly landing page for AI social media management and scheduling copilots.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Lightweight A/B Testing for AI SaaS Landing Pages (No Engineering Team Required)","description":"A practical way for a solo founder to test headlines, CTAs, and pricing display without a data team, a dedicated experimentation platform, or enough traffic for \"real\" statistical significance.","datePublished":"2026-08-13","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

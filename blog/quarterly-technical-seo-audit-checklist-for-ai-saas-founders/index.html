@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>A Quarterly Technical SEO Audit Checklist for AI SaaS Founders — Plinth</title>
+<meta name="description" content="A practical 90-minute technical SEO audit for AI and SaaS marketing sites: indexing, crawl waste, templates, performance and structured data, with the exact checks and fixes."/>
+<meta property="og:title" content="A Quarterly Technical SEO Audit Checklist for AI SaaS Founders — Plinth"/>
+<meta property="og:description" content="A practical 90-minute technical SEO audit for AI and SaaS marketing sites: indexing, crawl waste, templates, performance and structured data, with the exact checks and fixes."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/quarterly-technical-seo-audit-checklist-for-ai-saas-founders/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/quarterly-technical-seo-audit-checklist-for-ai-saas-founders/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">5 min read · 2026-11-13</span>
+    <h1 class="post-title">A Quarterly Technical SEO Audit Checklist for AI SaaS Founders</h1>
+    <div class="prose">
+<p>AI SaaS sites change fast. You ship a new feature page, a docs section, a pricing experiment and a few programmatic pages, and each one can quietly break something for search engines. A short audit every quarter catches those breaks before they cost you months of traffic. This checklist takes about 90 minutes and needs only Google Search Console, a crawler such as Screaming Frog (the free tier covers 500 URLs) and your browser.</p>
+
+<h2>1. Start with indexing, not rankings</h2>
+<p>Open Search Console, then Pages (Indexing). Compare the number of indexed URLs with the number you actually want indexed, which is usually your sitemap count.</p>
+<ul>
+  <li><strong>Indexed far below sitemap count:</strong> look at the reasons list. "Crawled - currently not indexed" on many pages usually means thin or near-duplicate content. "Discovered - currently not indexed" points to weak internal links or crawl budget issues.</li>
+  <li><strong>Indexed far above sitemap count:</strong> you are probably leaking parameter URLs, staging paths, search result pages or shared-output pages into the index.</li>
+  <li><strong>"Duplicate, Google chose different canonical":</strong> inspect three examples. If Google disagrees with your canonical, your pages are probably too similar, or your canonical points at a URL that redirects.</li>
+</ul>
+<p>Write down the three biggest buckets. Those are your fix list, in order.</p>
+
+<h2>2. Crawl your own site like a bot</h2>
+<p>Run a crawl from your homepage with JavaScript rendering off first, then on. Compare the two. If key content, links or headings only exist after rendering, you depend on Google's rendering queue, which is slower and less reliable than plain HTML.</p>
+<p>Filter the crawl results for:</p>
+<ol>
+  <li><strong>Non-200 internal links.</strong> Every internal link to a 301 should be updated to the final URL. Every link to a 404 should be removed or repaired.</li>
+  <li><strong>Redirect chains.</strong> Anything longer than one hop should be collapsed. Chains often appear after a rebrand or a docs migration.</li>
+  <li><strong>Orphan pages.</strong> Compare crawled URLs with your sitemap. Sitemap URLs the crawl never reached have no internal links, so add links from a relevant hub page.</li>
+  <li><strong>Missing or duplicate titles and H1s.</strong> Templates are the usual culprit: one bad template can duplicate a title across hundreds of pages.</li>
+  <li><strong>Noindex or canonical errors on pages you want ranking.</strong> A forgotten noindex from a staging deploy is the single most expensive SEO bug a small team can ship.</li>
+</ol>
+
+<h2>3. Check robots.txt and the sitemap</h2>
+<p>Open your robots.txt and read it line by line. Confirm it does not block CSS, JavaScript or your main content directories, and that it still references the sitemap. Then check the sitemap itself: it should list only canonical, indexable, 200-status URLs with accurate lastmod dates. Remove redirected, noindexed and 404 URLs. A sitemap full of junk teaches Google to distrust it.</p>
+
+<h2>4. Audit your templates, not individual pages</h2>
+<p>AI SaaS sites are template-heavy: feature pages, use-case pages, integration pages, comparison pages and docs. Pick one page from each template and check:</p>
+<ul>
+  <li>The title and meta description are generated from unique fields, not just the product name.</li>
+  <li>There is one H1 that matches the page's purpose, followed by a logical H2 structure.</li>
+  <li>The canonical points to itself.</li>
+  <li>Breadcrumbs and internal links render in the raw HTML.</li>
+  <li>Structured data validates in the Rich Results Test and matches visible content.</li>
+</ul>
+<p>Fixing a template once fixes every page built from it, which is the best return on time in the whole audit.</p>
+
+<h2>5. Look at real-user performance</h2>
+<p>Skip single lab scores. In Search Console, open Core Web Vitals and look at field data grouped by URL pattern. The common failures on AI product sites are an oversized hero image or video hurting Largest Contentful Paint, third-party chat and analytics scripts hurting interaction responsiveness, and late-loading fonts or banners causing layout shifts. Fix the worst pattern first, then re-check after about 28 days, since field data is a rolling window.</p>
+
+<h2>6. Review what Google actually does with your pages</h2>
+<p>Use the URL Inspection tool on your five most important pages: homepage, pricing, top feature page, top use-case page and your best article. Check the rendered HTML, the Google-selected canonical and the last crawl date. If the last crawl is months old, your internal linking and sitemap freshness need work.</p>
+
+<h2>7. Check for quiet regressions</h2>
+<p>Compare this quarter's Search Console data with last quarter's for queries and pages. Look for pages that lost more than 30 percent of clicks with stable impressions, which often signals a title or snippet change, and for pages that lost impressions, which often signals an indexing or relevance problem. Cross-check against your deploy history: most sudden drops line up with a release.</p>
+
+<h2>8. Turn findings into a short, ranked list</h2>
+<p>Do not leave the audit as a spreadsheet of 200 warnings. Score each issue by how many pages it affects and how important those pages are, then pick the top five. Ship those fixes before the next quarter and log what you changed, with the date, so you can attribute any movement later.</p>
+
+<h2>Quick checklist</h2>
+<ul>
+  <li>Indexed count compared with sitemap count, top three exclusion reasons noted.</li>
+  <li>Crawl run with and without JavaScript; broken links, chains and orphans listed.</li>
+  <li>robots.txt and sitemap contain only what you intend.</li>
+  <li>One page per template inspected for titles, H1, canonical and schema.</li>
+  <li>Core Web Vitals field data reviewed by URL pattern.</li>
+  <li>Key pages inspected in URL Inspection.</li>
+  <li>Quarter-over-quarter drops matched against deploys.</li>
+  <li>Top five fixes chosen, owned and dated.</li>
+</ul>
+
+<p>A routine audit is cheap insurance, and it compounds: each quarter you remove one more leak. If you are building or reworking an SEO-focused product page and want a clean, crawlable structure to start from, the Ranked landing kit linked here is a solid base.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/ranked-ai-seo-landing.jpeg" alt="Ranked — AI SEO &amp; Content Optimization Landing Kit" width="560" height="315"/>
+      <div><h3>Ranked — AI SEO &amp; Content Optimization Landing Kit</h3><p class="muted">A sharp, results-driven landing page for AI SEO and content optimization copilot products.</p>
+      <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"A Quarterly Technical SEO Audit Checklist for AI SaaS Founders","description":"A practical 90-minute technical SEO audit for AI and SaaS marketing sites: indexing, crawl waste, templates, performance and structured data, with the exact checks and fixes.","datePublished":"2026-11-13","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>

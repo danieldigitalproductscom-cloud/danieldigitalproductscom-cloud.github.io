@@ -1,0 +1,115 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pagination and "Load More" SEO for AI SaaS Blogs, Changelogs, and Resource Hubs — Plinth</title>
+<meta name="description" content="Once your blog or changelog passes a few dozen posts, pagination decides whether older pages get crawled. How AI SaaS teams should structure paginated archives, canonicals, infinite scroll, and internal links so every article stays discoverable."/>
+<meta property="og:title" content="Pagination and "Load More" SEO for AI SaaS Blogs, Changelogs, and Resource Hubs — Plinth"/>
+<meta property="og:description" content="Once your blog or changelog passes a few dozen posts, pagination decides whether older pages get crawled. How AI SaaS teams should structure paginated archives, canonicals, infinite scroll, and internal links so every article stays discoverable."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://danieldigitalproductscom-cloud.github.io/blog/pagination-and-load-more-seo-for-ai-saas-blogs-and-changelogs/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://danieldigitalproductscom-cloud.github.io/blog/pagination-and-load-more-seo-for-ai-saas-blogs-and-changelogs/"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+</head><body><header class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="dot"></span>Plinth</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Free tools</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Updates</a>
+  </nav>
+  <a href="/#templates" class="btn btn-primary btn-sm">Browse templates</a>
+</div></header><main><article class="section"><div class="container narrow">
+    <a href="/blog/" class="muted back">← All guides</a>
+    <span class="eyebrow" style="margin-top:18px;display:inline-block">6 min read · 2026-10-24</span>
+    <h1 class="post-title">Pagination and "Load More" SEO for AI SaaS Blogs, Changelogs, and Resource Hubs</h1>
+    <div class="prose">
+<p>A young SaaS blog has ten posts and one page. A year later it has 120 posts, a changelog with 80 entries, and a resource hub that "loads more" as you scroll. At that point, how you paginate decides whether older articles are still reachable by crawlers and by people. Many teams ship a JavaScript "load more" button and quietly make everything past the first 10 posts invisible. This guide covers what to do instead.</p>
+
+<h2>What Google does and does not use</h2>
+<p>Google stopped using <code>rel="next"</code> and <code>rel="prev"</code> as an indexing signal years ago. That does not mean pagination is dead; it means each paginated page is treated as an ordinary page, and Google finds deeper pages only by following plain links. Two consequences follow:</p>
+<ul>
+  <li>Every page in a series needs a crawlable <code>&lt;a href&gt;</code> link to the next one. A button that fetches more posts through JavaScript without changing the URL gives the crawler nothing to follow.</li>
+  <li>Each page in the series needs its own unique, indexable URL such as <code>/blog/page/2/</code> or <code>/blog?page=2</code>.</li>
+</ul>
+<p>Keeping the <code>rel</code> attributes is harmless, and some other crawlers and browsers still read them, but do not rely on them.</p>
+
+<h2>Canonical tags: the mistake that hides your archive</h2>
+<p>The most common error is pointing the canonical of page 2, 3, and 4 back to page 1. This tells Google that those pages are duplicates of the first, so the posts that appear only on deeper pages can lose their main discovery path. Use a self-referencing canonical on each page instead: page 3 canonicalizes to page 3. Reserve canonicals to page 1 for a genuine "view all" page that contains the full list and loads acceptably fast.</p>
+<p>Also avoid <code>noindex</code> on paginated pages in a way that persists. Google eventually treats long-standing <code>noindex</code> pages as nofollow, which means links on them may stop passing discovery. If you want deeper archive pages out of the index, make sure your posts are still linked from elsewhere, such as category hubs, related-article modules, and the sitemap.</p>
+
+<h2>Making "load more" and infinite scroll safe</h2>
+<p>Infinite scroll is fine for visitors and risky for crawlers. The safe pattern is progressive enhancement:</p>
+<ol>
+  <li>Render real paginated pages on the server, each with its own URL and a normal "Next" link.</li>
+  <li>Use JavaScript to upgrade the "Next" link into a "Load more" button for people.</li>
+  <li>Update the address bar with <code>history.pushState</code> to the matching paginated URL as new items load, so any item can be shared and revisited.</li>
+  <li>Test with JavaScript disabled. If you can still browse from page 1 to the last page by clicking links, crawlers can too.</li>
+</ol>
+<p>Use the URL Inspection tool in Search Console and view the rendered HTML for a deep page to confirm the links appear in the markup, not only after a click event.</p>
+
+<h2>Reduce depth instead of only fixing pagination</h2>
+<p>Pagination is a workaround for long lists. The better fix is to make fewer posts live at depth. Crawlers and users both favor pages that are a few clicks from the home page.</p>
+<ul>
+  <li><strong>Topic hubs.</strong> Group posts into categories, such as pricing, technical SEO, or launch strategy, so each article is reachable in two clicks from a hub linked in your main navigation.</li>
+  <li><strong>Pinned and featured posts.</strong> Link your top 10 articles from the home page, the footer, or a "start here" page.</li>
+  <li><strong>Related-article links.</strong> Add three to five contextual links at the end of each post to older, relevant pieces. This is the strongest fix for old content that has sunk to page 9.</li>
+  <li><strong>Larger page sizes.</strong> Moving from 10 posts per page to 25 cuts depth by more than half with little cost, as long as the page stays light.</li>
+</ul>
+
+<h2>Handling a changelog</h2>
+<p>Changelogs grow quickly and are often paginated by date. Two practical rules work well. First, give every release its own permalink and heading, such as <code>/changelog/2026-10-model-update</code>, so a specific change can rank and be cited, and link to it from the list. Second, group older entries by year or quarter with a short summary at the top of each archive. A summary page that says what changed in the year carries more search value than 20 thin entries.</p>
+
+<h2>Titles, descriptions, and thin pages</h2>
+<ul>
+  <li><strong>Titles:</strong> add the page number to deeper pages, for example "AI SaaS Growth Blog - Page 3", so they do not look like duplicates of page 1.</li>
+  <li><strong>Descriptions:</strong> you can omit them on deeper pages, or write short ones. Do not repeat the same description on every page.</li>
+  <li><strong>Intro copy:</strong> put the introductory text only on page 1. Repeating a long intro on every page creates near-duplicate content.</li>
+  <li><strong>Sitemaps:</strong> include the individual posts, which are what you want to rank. Paginated list pages do not need to be in the sitemap.</li>
+</ul>
+
+<h2>Filters and sort options</h2>
+<p>If your resource hub lets users filter by tag, sort by date, or search, each combination can create a new URL. Decide which are worth indexing. A tag page for "pricing" may be a useful landing page; a page for "tag=pricing&amp;sort=oldest&amp;page=4" is not. Canonicalize sort variants to the default sort, keep filter parameters out of internal links where possible, and review your server logs or the Crawl Stats report for runaway parameter URLs.</p>
+
+<h2>How to check your current setup</h2>
+<ol>
+  <li>Disable JavaScript in your browser and try to reach your oldest post from the blog index using only links. Count the clicks.</li>
+  <li>Crawl your site with a desktop crawler and sort by crawl depth. Anything deeper than four clicks needs more internal links.</li>
+  <li>View source on page 2 and confirm its canonical points to page 2.</li>
+  <li>In Search Console, check "Discovered - currently not indexed" for older post URLs; a cluster of them often points to a depth problem.</li>
+  <li>Compare impressions for your oldest posts before and after changes, over four to six weeks.</li>
+</ol>
+
+<h2>Checklist</h2>
+<ol>
+  <li>Every list page has a unique URL and a real link to the next page.</li>
+  <li>Each paginated page uses a self-referencing canonical, not page 1.</li>
+  <li>"Load more" and infinite scroll are layered over working paginated URLs.</li>
+  <li>Important posts are reachable within three clicks through hubs, featured links, and related-article modules.</li>
+  <li>Page numbers appear in titles; intro copy appears only on page 1.</li>
+  <li>Filter and sort URLs are canonicalized or kept out of internal links.</li>
+  <li>The individual posts, not the list pages, are in your sitemap.</li>
+</ol>
+
+<p>A clean, fast content hub starts with a solid page structure. The AI SaaS landing kit linked here ships with semantic markup and a simple layout you can extend into a blog index without fighting your template.</p>
+</div>
+    <div class="inline-cta">
+      <img src="/assets/shots/nebula-ai-saas-landing.jpeg" alt="Nebula — AI SaaS Landing Page Kit" width="560" height="315"/>
+      <div><h3>Nebula — AI SaaS Landing Page Kit</h3><p class="muted">A polished, conversion-focused landing page for AI / SaaS startups. Dark, modern, responsive, zero build step.</p>
+      <a href="https://digitaldaniel6.gumroad.com/l/nwfws" class="btn btn-primary" rel="noopener">Get the template — $24 →</a></div>
+    </div>
+  </div></article>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Pagination and \"Load More\" SEO for AI SaaS Blogs, Changelogs, and Resource Hubs","description":"Once your blog or changelog passes a few dozen posts, pagination decides whether older pages get crawled. How AI SaaS teams should structure paginated archives, canonicals, infinite scroll, and internal links so every article stays discoverable.","datePublished":"2026-10-24","author":{"@type":"Organization","name":"Plinth"}}</script></main><section class="section"><div class="container"><div class="cta-band">
+  <h2>New templates + founder guides, in your inbox</h2>
+  <p class="muted">Follow on Gumroad — you'll get an email whenever a new template or guide drops. No spam, unfollow anytime.</p>
+  <a href="https://digitaldaniel6.gumroad.com" class="btn btn-primary btn-lg" rel="noopener">Follow for updates →</a>
+</div></div></section><footer class="footer"><div class="container foot-inner">
+  <div><a class="brand" href="/"><span class="dot"></span>Plinth</a>
+    <p class="muted" style="max-width:34ch;margin-top:10px">Launch-ready landing pages for AI & SaaS founders.</p></div>
+  <div class="foot-links">
+    <a href="/#templates">Templates</a><a href="/tools/headline-generator/">Headline generator</a>
+    <a href="/blog/">Guides</a><a href="https://digitaldaniel6.gumroad.com" rel="noopener">Get new drops</a>
+  </div>
+</div><div class="container foot-bottom">© 2026 Plinth. Built for founders who ship.</div></footer></body></html>
