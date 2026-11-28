@@ -140,11 +140,13 @@ https://danieldigitalproductscom-cloud.github.io/demo/greeter-ai-receptionist-la
 https://danieldigitalproductscom-cloud.github.io/demo/lattice-ai-contract-negotiation-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/sprig-ai-nutrition-coaching-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/folio-ai-documentation-landing/
+https://danieldigitalproductscom-cloud.github.io/demo/quarry-ai-lead-enrichment-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/nebula-ai-saas-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/ledger-fintech-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/pulse-mobile-app-landing/
 https://danieldigitalproductscom-cloud.github.io/demo/waitlist-launch-kit/
 https://danieldigitalproductscom-cloud.github.io/demo/atrium-agency-landing/
+https://danieldigitalproductscom-cloud.github.io/blog/beta-and-early-access-pages-for-ai-saas-startups/
 https://danieldigitalproductscom-cloud.github.io/blog/thank-you-and-post-signup-pages-for-ai-saas-conversion-and-activation/
 https://danieldigitalproductscom-cloud.github.io/blog/content-calendar-and-publishing-cadence-for-solo-ai-saas-founders/
 https://danieldigitalproductscom-cloud.github.io/blog/customer-logo-bars-and-social-proof-placement-for-ai-saas-landing-pages/
